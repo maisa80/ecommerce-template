@@ -2,8 +2,8 @@
 
 $host 	  = '';
 $database = '';
-$user     = '';
-$password = '';
+$user     = 'root';
+$password = 'root';
 $charset  = 'utf8mb4';
 
 $dns 	  = "mysql:host={$host};dbname={$database};charset={$charset}";
