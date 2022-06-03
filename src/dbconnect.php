@@ -1,7 +1,7 @@
 <?php
 
-$host 	  = '';
-$database = '';
+$host 	  = 'localhost';
+$database = 'e-butik';
 $user     = 'root';
 $password = 'root';
 $charset  = 'utf8mb4';
