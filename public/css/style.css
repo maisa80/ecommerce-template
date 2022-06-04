@@ -42,7 +42,7 @@ body {
 
 /* Product page ---------------------------------*/
 #productPage {
-    background: url("../img/logo.svg") no-repeat center center fixed;
+    background: url("../img/") no-repeat center center fixed;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     background-size: contain;
