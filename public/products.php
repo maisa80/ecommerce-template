@@ -58,7 +58,7 @@
                     <h6 class="mb-4 align-self-end"><?=htmlentities($article['price'])?> SEK</h6>
                 </div>
  
-                <form action="show-content.php" method="GET" class="col-lg-9 mx-auto">
+                <form action="view.php" method="GET" class="col-lg-9 mx-auto">
                     <input type="hidden" name="id" value="<?=$article['id']?>">
                     <input type="submit" class="form-control" value="Read more">
                 </form>
