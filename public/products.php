@@ -48,7 +48,7 @@
                     <input type="hidden" name="id" value="<?=$article['id']?>">
                 </form>
                 
-                <image class="rounded mx-auto d-block" src="admin/<?=$article['image_url']?>" style="width:70px;height:200px;">
+                <image class="rounded mx-auto d-block" src="admin/<?=$article['image_url']?>" style="width:300px;height:auto;">
 
                 <div class="col-lg-9 mx-auto mt-4">
                     <h5 class="m-0"><?=substr(htmlentities($article['title']), 0, 20)?></h5> <br>
