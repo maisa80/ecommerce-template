@@ -50,7 +50,7 @@ class ProductDbHandler
 
        
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id', $_POST['productId']);
         $stmt->bindParam(':title', $title);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':price', $price);
@@ -58,4 +58,18 @@ class ProductDbHandler
         $stmt->bindParam(':img_url', $img_url);
         $stmt->execute();
     }
+
+
+    /*------------------------------------------------------------*/
+    // Används på view.php
+
+    public function fetchProductById($id)
+    {
+        $sql = "SELECT * FROM products WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+   
 }
