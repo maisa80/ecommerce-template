@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400;700&display=swap');
+
+body {
+    font-family: 'Kameron', sans-serif;    
+    color: #333 !important;
+}
+
+/* Main page ---------------------------------*/
+.indexPage {
+    background: url("../img/slider_1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    color: white;
+    min-height: 100vh;
+    margin-top: -18rem !important;
+}
+
+.logo {
+    margin: 0 auto;
+}
+
+.indexPage .shopBtn {
+    background-color: #fcbd4d;
+    margin-bottom: 30em;    
+  }
+
+.indexBtn {
+    color: black;   
+  }
+
+
+/* Header ---------------------------------*/
+.navBtn {text-transform: uppercase;}
+
+.logInBtn, .logInBtn a, .navBtn, .logInBtn span {color:#bf1f2d !important;}
+
+.cartBtn {background:#fcbd4d;}
+
+/* Product page ---------------------------------*/
+#productPage {
+    background: url("../img/logo.svg") no-repeat center center fixed;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    -o-background-size: contain;
+    width: auto;
+    height: 100vh;
+}
+
+.innerProductPage {
+    margin-top: 5em !important;
+}
+
+.logoContainer .logo {margin-top: 17rem;}
+
+.innerContactPage {
+    margin: 4em 8em 0 8em; 
+}
+
+.priset  {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.lists th {font-weight: bold !important;}
+
+/* Admin page ---------------------------------*/
+
+.adminBtn {margin-top: 25em;}

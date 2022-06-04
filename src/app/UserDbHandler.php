@@ -38,15 +38,16 @@ class UserDbHandler
         return $stmt->fetch();
     }
 
-    public function addUser($first_name, $last_name, $email, $password, $phone, 
+    public function addUser($username,$first_name, $last_name, $email, $password, $phone, 
             $street, $postal_code, $city, $country) {
         $sql = "
-            INSERT INTO users (first_name, last_name, email, password, phone, street, postal_code, city, country)
-            VALUES (:first_name, :last_name, :email, :password, :phone, :street, :postal_code, :city, :country);
+            INSERT INTO users (username, first_name, last_name, email, password, phone, street, postal_code, city, country)
+            VALUES (:username,:first_name, :last_name, :email, :password, :phone, :street, :postal_code, :city, :country);
         ";
 
         $encryptedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
         $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':username', $username);
         $stmt->bindParam(':first_name', $first_name);
         $stmt->bindParam(':last_name', $last_name);
         $stmt->bindParam(':email', $email);

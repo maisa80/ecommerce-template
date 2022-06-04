@@ -1,4 +1,7 @@
 <?php
+// echo "<pre>";
+// print_r(PDO::getAvailableDrivers());
+// echo "</pre>";
 
 $host 	  = 'localhost';
 $database = 'e-butik';
@@ -27,7 +30,7 @@ $options = [
 // Upprätta en DB koppling
 try {
 	// Försök köra koden i try-blocket
-	$dbconnect = new PDO($dns, $user, $password, $options);
+	$pdo = new PDO($dns, $user, $password, $options);
 } catch (\PDOException $e) {
 	// Catch-blocket körs om något gick fel i try-blocket
 	// echo $e->getMessage();

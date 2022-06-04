@@ -1,6 +1,6 @@
 <?php
     require('../src/config.php');
-    require('../src/dbconnect.php');
+    debug($_POST);
 
     $first_name  = '';
     $last_name   = '';
@@ -14,7 +14,7 @@
     $error       = '';
     $msg         = '';
 
-    if (isset($_POST['signup'])) {
+    if (isset($_POST['createUserBtn'])) {
         $username          = trim($_POST['username']);
         $first_name        = trim($_POST['first_name']);
         $last_name         = trim($_POST['last_name']);
@@ -96,6 +96,8 @@
             $result = ($userData);
 
             if ($result) {
+                $userDbHandler->addUser($username,$first_name, $last_name, $email, $password, $phone, 
+                $street, $postal_code, $city, $country);
                 $msg = '<div class="alert alert-success" role="alert">The account was successfully created</div>';
             } else {
                 $msg = '<div class="alert alert-danger" role="alert">Failed to create an account. Please try again.</div>';
@@ -169,18 +171,19 @@
                 <tr>
                     <td>
                         <label for="country">Country</label><br>
-                        <select id="country" name="country" class="form-control">   
+                        <input type="text" class="text form-control" name="country" value="<?=htmlentities($country)?>">
+                        <!-- <select id="country" name="country" class="form-control">   
                             <option value="sweden">Sweden</option>                        
                             <option value="denmark">Denmark</option>
                             <option value="finland">Finland</option>
                              <option value="norway">Norway</option>                            
-                        </select>
+                        </select> -->
                     </td>
                 </tr>
                 <br>
                 <tr>
                     <td>
-                        <input type="submit" name="signup" value="Sign Up" class="btn btn-dark text-light mt-4 d-block">
+                        <input type="submit" name="createUserBtn" value="Create" class="btn btn-dark text-light mt-4 d-block">
                     </td>
                 <tr>
             </table>
