@@ -171,13 +171,7 @@
                 <tr>
                     <td>
                         <label for="country">Country</label><br>
-                        <input type="text" class="text form-control" name="country" value="<?=htmlentities($country)?>">
-                        <!-- <select id="country" name="country" class="form-control">   
-                            <option value="sweden">Sweden</option>                        
-                            <option value="denmark">Denmark</option>
-                            <option value="finland">Finland</option>
-                             <option value="norway">Norway</option>                            
-                        </select> -->
+                        <input type="text" class="text form-control" name="country" value="<?=htmlentities($country)?>">                        
                     </td>
                 </tr>
                 <br>
