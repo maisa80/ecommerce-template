@@ -1,6 +1,6 @@
 <?php
     require('../src/config.php');
-    require('../src/dbconnect.php');
+ 
 
     $msg = "";
     if (isset($_GET['mustLogin'])) {

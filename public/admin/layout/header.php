@@ -29,7 +29,7 @@
 			</div>
 			<div class="d-flex justify-content-end">
 				<div class="p-2 logInBtn">                      
-        <a href='register.php'>Sign up</a> | <a href='login.php'>Log in</a>                      
+        <a href='../register.php'>Sign up</a> | <a href='../login.php'>Log in</a>                      
 				</div>
 			</div>
 		</div>
