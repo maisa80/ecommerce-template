@@ -7,83 +7,44 @@
 	<!-- Bootstrap CSS -->
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 	
     <title>Baby's & Me</title>
 </head>
 <body>
-	<div class="container-fluid p-0">
-		<!-- Log in/ Log out -->
-		<div class="d-flex justify-content-end bg-transparent">
-			<div class="d-flex justify-content-end">
-				<form action="my-pages.php?" method="GET">
-					<input type="hidden" name="id" value="">
-					<input type="submit" value="My page" class="btn logInBtn">
-				</form>
+<div class="grid-container">
+   <div class="menu-icon">
+    <i class="fas fa-bars header__menu"></i>
+  </div>
+   
+  <header class="header">
+    <div class="header__search">
 
-				<form action="admin/admin.php?">
-					<input type="submit" value="Admin" class="btn logInBtn">
-				</form>
-			</div>
-			<div class="d-flex justify-content-end">
-				<div class="p-2 logInBtn">                      
-        <a href='../register.php'>Sign up</a> | <a href='../login.php'>Log in</a>                      
-				</div>
-			</div>
-		</div>
-	
-		<!-- Navbar -->
-		<div class="d-flex justify-content-center text-center bg-transparent pb-4">
-			<div class="col">
-				<form action="index.php?">
-					<input type="submit" value="Home" class="btn navBtn">
-				</form>
-			</div>
-			<div class="col">
-				<form action="products.php?">
-					<input type="submit" value="Products" class="btn navBtn">
-				</form>
-			</div>
-			<div class="col">
-				<form action="contact.php?">
-					<input type="submit" value="Contact" class="btn navBtn">
-				</form>
-			</div>
-			<div class="d-flex justify-content-end mr-2">
-				<a href="products.php" data-toggle="dropdown" role="button" aria-expanded="false">
-					<button type="button" class="btn dropdown-toggle cartBtn" data-toggle="dropdown-toggle">
-						<span class="fa fa-gift bigicon">View Cart</span>
-						<span class="badge badge-pill badge-danger"></span>
-					</button>
-				</a>
-				
-				<!-- Dropdown Menu -->
-				<div class="dropdown-menu">
-					<div class="d-flex flex-column">
-						<div class="col">
-							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-						</div>
+    <div class="imgDiv">
+      <h2><img src="img/logo_socials.png"> Baby's & Me</h2>
+    </div>
+    </div>
+    <div class="header__avatar">
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    </div>
+  </header>
 
-						<div class="col total-section text-left">
-							
-								<div class="row cart-detail">
-									<div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-										<img src="admin/" style="width:50px;height:auto;">
-									</div>
-									<div class="col">									
-									</div>
-									<div class="col">
-										Antal: 
-									</div>
-								</div>							
-							<span class="count">Total:kr</span>
-							<form action="checkout.php" method="POST">
-								<input type="submit" name="" value="Checkout" class="btn btn-primary">
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+  <aside class="sidenav">
+    <div class="sidenav__close-icon">
+      <i class="fas fa-times sidenav__brand-close"></i>
+    </div>
+    
+    <ul class="sidenav__list">
+      <li class="sidenav__list-item"><a href="index.php"><i class="fas fa-gamepad"></i> Dashboard</a></li>
+      <li class="sidenav__list-item"><a href="users.php"><i class="fas fa-users"></i> Users</a></li>
+      <li class="sidenav__list-item"><a href="products.php"><i class="fas fa-baby"></i> Products</a></li>
+      <li class="sidenav__list-item"><a href="orders.php"><i class="fas fa-cart-arrow-down"></i> Orders</a></li>
+     
+    </ul>
+  </aside>
+ 
