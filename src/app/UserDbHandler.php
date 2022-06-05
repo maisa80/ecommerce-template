@@ -1,20 +1,23 @@
 <?php
 
-class UserDbHandler 
+class UserDbHandler
 {
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->pdo = $pdo;
     }
 
     // Fetch all users and returns the value
-    public function fetchAllUsers() {
+    public function fetchAllUsers()
+    {
         $sql = "SELECT * FROM users;";
         $stmt = $this->pdo->query($sql);
         
         return $stmt->fetchAll();
     }
 
-    public function deleteUser () {
+    public function deleteUser()
+    {
         $sql = "
             DELETE FROM users 
             WHERE id = :id;
@@ -25,7 +28,8 @@ class UserDbHandler
     }
 
     
-    public function fetchUserByEmail($email) {
+    public function fetchUserByEmail($email)
+    {
         $sql = "
             SELECT id, first_name, last_name, password FROM users
             WHERE email = :email
@@ -38,8 +42,18 @@ class UserDbHandler
         return $stmt->fetch();
     }
 
-    public function addUser($username,$first_name, $last_name, $email, $password, $phone, 
-            $street, $postal_code, $city, $country) {
+    public function addUser(
+        $username,
+        $first_name,
+        $last_name,
+        $email,
+        $password,
+        $phone,
+        $street,
+        $postal_code,
+        $city,
+        $country
+    ) {
         $sql = "
             INSERT INTO users (username, first_name, last_name, email, password, phone, street, postal_code, city, country)
             VALUES (:username,:first_name, :last_name, :email, :password, :phone, :street, :postal_code, :city, :country);
@@ -60,8 +74,18 @@ class UserDbHandler
         $stmt->execute();
     }
 
-    public function updateUser($id, $first_name, $last_name, $email, $password, $phone, 
-    $street, $postal_code, $city, $country) {
+    public function updateUser(
+        $id,
+        $first_name,
+        $last_name,
+        $email,
+        $password,
+        $phone,
+        $street,
+        $postal_code,
+        $city,
+        $country
+    ) {
         $sql = "
             UPDATE users
             SET first_name = :first_name, last_name= :last_name, email = :email, password = :password
@@ -82,5 +106,28 @@ class UserDbHandler
         $stmt->bindParam(':city', $city);
         $stmt->bindParam(':country', $country);
         $stmt->execute();
+    }
+
+    /*------------------------------------------------------------*/
+    // Används på view.php
+
+    public function deleteProduct()
+    {
+        global $dbconnect;
+
+        if (empty($title)) {
+            try {
+                $query = "
+                DELETE FROM products
+                WHERE id = :id;
+                ";
+        
+                $stmt = $dbconnect->prepare($query);
+                $stmt->bindValue(':id', $_POST['id']);
+                $stmt->execute();
+            } catch (\PDOException $e) {
+                throw new \PDOException($e->getMessage(), (int) $e->getCode());
+            }
+        }
     }
 }
