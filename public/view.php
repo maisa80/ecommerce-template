@@ -3,11 +3,7 @@
     require('../src/config.php');
 
     if (isset($_POST['deleteBtn'])) {
-        $id = $_POST['id'];
-        $query = "DELETE FROM products WHERE id = :id";
-        $stmt = $dbconnect->prepare($query);
-        $stmt->bindValue(':id', $id);
-        $stmt->execute();
+        $productDbHandler -> deleteProduct($_POST['id']);
     }
     
     $title          = '';
@@ -41,7 +37,11 @@
         }
     }
     
-    $product = $productDbHandler -> fetchAllProducts($id);    
+    $productDbHandler -> fetchProductById($id);
+
+    
+    
+    
 ?>
 
     <?php include('layout/header.php'); ?>
@@ -50,7 +50,7 @@
         <form action="#" method="POST">
             <div class="d-flex justify-content-center">
                 <div class="col-3">
-                    <image src="admin/<?=$product['image_url']?>" style="width:90px;height:auto;">
+                    <img src="admin/<?=$product['img_url']?>" style="width:90px;height:auto;">
                 </div>
 
                 <div class="d-flex flex-column">
