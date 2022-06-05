@@ -126,7 +126,7 @@
         }
     }
     
-    $konto = fetchAccountById($_GET['id']);
+    $users = $userDbHandler-> fetchUserByEmail($_GET['id']);     
 
 ?>
 
@@ -141,65 +141,59 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="input1">Username:</label> <br>
-                        <input type="text" class="text" name="username" value="<?=htmlentities($konto['username'])?>">
+                        <input type="text" class="text" name="username" value="<?=htmlentities($users['username'])?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="input1">E-mail address:</label> <br>
-                        <input type="texter" class="texter" name="email" value="<?=htmlentities($konto['email'])?>">
+                        <input type="texter" class="texter" name="email" value="<?=htmlentities($users['email'])?>">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="input1">Password:</label> <br>
-                        <input type="password" class="text" name="password" value="<?=htmlentities($konto['password'])?>"
+                        <input type="password" class="text" name="password" value="<?=htmlentities($users['password'])?>"
                         >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="input2">Confirm password:</label> <br>
-                        <input type="password" class="text" name="confirmPassword" value="<?=htmlentities($konto['password'])?>">
+                        <input type="password" class="text" name="confirmPassword" value="<?=htmlentities($users['password'])?>">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="input3">First name:</label> <br>
-                        <input type="text" class="text" name="first_name" value="<?=htmlentities($konto['first_name'])?>">
+                        <input type="text" class="text" name="first_name" value="<?=htmlentities($users['first_name'])?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="input4">Last name:</label> <br>
-                    <input type="text" class="text" name="last_name" value="<?=htmlentities($konto['last_name'])?>">
+                    <input type="text" class="text" name="last_name" value="<?=htmlentities($users['last_name'])?>">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="input6">Street:</label> <br>
-                    <input type="text" class="text" name="street" value="<?=htmlentities($konto['street'])?>"> 
+                    <input type="text" class="text" name="street" value="<?=htmlentities($users['street'])?>"> 
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="input7">City</label> <br>
-                        <input type="text" class="text" name="city" value="<?=htmlentities($konto['city'])?>">
+                        <input type="text" class="text" name="city" value="<?=htmlentities($users['city'])?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="input8">Postal code</label> <br>
-                        <input type="text" class="text" name="postal_code" value="<?=htmlentities($konto['postal_code'])?>">
+                        <input type="text" class="text" name="postal_code" value="<?=htmlentities($users['postal_code'])?>">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <?php
-                        $countries = [
-                            'norway' => 'Norway',
-                            'denmark' => 'Denmark',
-                            'finland' => 'Finland',
-                            'sweden' => 'Sweden',
-                        ];
+                        $countries = [];
                         ?>
-
                         <label for="country">Country</label>
                         <select id="country" name="country">
                             <?php foreach ($countries as $countryKey => $countryName) { ?> 
-                               <?php if ($konto['country'] == $countryKey) { ?>
+                               <?php if ($users['country'] == $countryKey) { ?>
                                     <option selected value="<?=$countryKey?>"> <?=$countryName?></option> 
                                <?php } else { ?>
                                     <option value="<?=$countryKey?>"> <?=$countryName?></option>
@@ -210,7 +204,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="input5">Phone:</label> <br>
-                        <input type="text" class="text" name="phone" value="<?=htmlentities($konto['phone'])?>">
+                        <input type="text" class="text" name="phone" value="<?=htmlentities($users['phone'])?>">
                     </div>
                 </div>
                 
