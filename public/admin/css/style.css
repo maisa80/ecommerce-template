@@ -9,11 +9,12 @@ body {
     font-family: 'Mukta', sans-serif;
     box-sizing: border-box;
   }
-
+h3{ font-weight: 600;
+}
   table{
       margin-top: 20px;
   }
-  #new-user{
+  #new-user, #new-product{
       display: flex;
       justify-content: flex-end;
   }
@@ -24,6 +25,12 @@ body {
   a{
       text-decoration: none;
       color: #000;
+  }
+  a:hover{
+    color: #333;
+  }
+  td{
+    border:none;
   }
   .manage{
       display: flex;

@@ -88,18 +88,17 @@ class UserDbHandler
     ) {
         $sql = "
             UPDATE users
-            SET first_name = :first_name, last_name= :last_name, email = :email, password = :password
+            SET first_name = :first_name, last_name= :last_name, email = :email, 
             phone = :phone, street = :street, postal_code= :postal_code, city = :city, country = :country   
             WHERE id = :id
         ";
 
-        $encryptedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+       
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':first_name', $first_name);
         $stmt->bindParam(':last_name', $last_name);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $encryptedPassword);
         $stmt->bindParam(':phone', $phone);
         $stmt->bindParam(':street', $street);
         $stmt->bindParam(':postal_code', $postal_code);
@@ -113,7 +112,6 @@ class UserDbHandler
 
     public function deleteProduct()
     {
-        global $dbconnect;
 
         if (empty($title)) {
             try {
@@ -129,5 +127,18 @@ class UserDbHandler
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
             }
         }
+    }
+  
+    public function fetchUserById($id) {
+        $sql = "
+            SELECT * FROM users
+            WHERE id = :id
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 }

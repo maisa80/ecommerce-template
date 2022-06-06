@@ -1,6 +1,6 @@
 <?php
     require('../../src/config.php');
-    debug($_POST);
+    // debug($_POST);
 
     $first_name  = '';
     $last_name   = '';
@@ -82,6 +82,8 @@
         if (empty($error)) {
             $userData = [
                 'username'      => $username,
+                'first_name'    => $first_name,
+                'last_name'     => $last_name,
                 'password'      => $password,
                 'email'         => $email,
                 'phone'         => $phone,
@@ -89,18 +91,17 @@
                 'postal_code'   => $postal_code,
                 'city'          => $city,
                 'country'       => $country,
-                'first_name'    => $first_name,
-                'last_name'     => $last_name,
+               
             ];
 
             $result = ($userData);
 
             if ($result) {
-                $userDbHandler->addUser($username,$first_name, $last_name, $email, $password, $phone, 
+                $userDbHandler->addUser($username, $first_name, $last_name, $email, $password, $phone, 
                 $street, $postal_code, $city, $country);
-                $msg = '<div class="alert alert-success" role="alert">The account was successfully created</div>';
+                $msg = '<div class="alert alert-success" role="alert">The user was successfully created</div>';
             } else {
-                $msg = '<div class="alert alert-danger" role="alert">Failed to create an account. Please try again.</div>';
+                $msg = '<div class="alert alert-danger" role="alert">Failed to create a user. Please try again.</div>';
             }
         }
     }
@@ -108,12 +109,12 @@
 ?>
 
 <?php include('layout/header.php'); ?>
-
+<div id="content">
     <div class="d-flex justify-content-center ">
         <?=$msg?>
     </div>
-    <div class="d-flex justify-content-center mt-5">
-        <table class="table-light card p-5 rounded border-0 shadow">
+   
+        <table class="table">
             <form method="POST" action="#">
                 <tr>
                     <td>
