@@ -21,12 +21,12 @@
       <div class="overviewcard">
         <div class="overviewcard__icon"><i class="fas fa-users"></i></div>
         <div class="overviewcard__info"><h2><a href="users.php">Users </a></h2></div>
-        <h3><?echo "(" .count($users); echo")" ?></h3>
+        <h3>( <?=count($users); ?> )</h3>
       </div>
       <div class="overviewcard">
         <div class="overviewcard__icon"><i class="fas fa-baby"></i></div>
         <div class="overviewcard__info"><h2><a href="products.php">Products</a></h2></div>
-        <h3><?echo "(" .count($products); echo")" ?></h3>
+        <h3>( <?=count($products);?> )</h3>
       </div>
       <div class="overviewcard">
         <div class="overviewcard__icon"><i class="fas fa-cart-arrow-down"></i></div>

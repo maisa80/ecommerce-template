@@ -31,15 +31,18 @@ require('../../src/config.php');
 
     $users = $userDbHandler->fetchAllUsers();
    
+  
+
+  
 ?>
 <?php include('layout/header.php'); ?>
 
     <!-- Sidans/Dokumentets huvudsakliga innehåll -->
     <div id="content">
 
-        <h4>Manage users</h4>
+        <h4>Manage users </h4>
 
-
+        
         <div id="user">
             <form action="create-user.php" method="GET">
            <button type="submit" class="btn btn-warning"><i class="fas fa-plus"></i> Add new user</button> 
@@ -47,6 +50,7 @@ require('../../src/config.php');
         </div>
             <br>
             <?=$message ?>
+            <p>Total: <span>( <?=count($users); ?> ) users</span></p>
             <table class="table ">
             	<thead>
 	            	<tr>
