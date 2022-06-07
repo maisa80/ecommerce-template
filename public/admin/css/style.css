@@ -14,10 +14,13 @@ h3{ font-weight: 600;
   table{
       margin-top: 20px;
   }
-  #new-user, #new-product{
+  #user, #new-product{
       display: flex;
       justify-content: flex-end;
   }
+
+
+
   #new-user input{
     color: #333;
     font-weight: 500;
@@ -69,7 +72,7 @@ h3{ font-weight: 600;
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;
-    margin-top: 10px;
+    margin-top: 50px;
    
   }
   
@@ -135,7 +138,7 @@ h3{ font-weight: 600;
     
   }
   #content{
-      margin: 20px;
+      margin: 50px 20px;
   }
   .main-header {
     display: flex;

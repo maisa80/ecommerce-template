@@ -105,7 +105,13 @@
                     $city,
                     $country
                 );
-                $msg = '<div class="alert alert-success" role="alert">The user was successfully updates</div>';
+                $msg = '   
+                <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+                  <i class="bi-check-circle-fill"></i>
+                  <strong class="mx-2">Success!</strong> The user was successfully updated.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+              ';
             } else {
                 $msg = '<div class="alert alert-danger" role="alert">Failed to update the user. Please try again.</div>';
             }
@@ -120,76 +126,76 @@
 
 <?php include('layout/header.php'); ?>
 <div id="content">
-    <div class="d-flex justify-content-center ">
-        <?=$msg?>
-    </div>
+    <h4>Manage users</h4>
+    <?=$msg?>
    
-        <table class="table">
-            <form method="POST" action="#">
-                <tr>
-                    <td>
-                        <label for="input1">Username:</label><br>
-                        <input type="text" class="text form-control" name="username" value="<?=htmlentities($userById['username']) ?>">
-                    </td>
-                    <td>
-                        <label for="input2">E-mail address:</label><br>
-                        <input type="text" class="text form-control" name="email" value="<?=htmlentities($userById['email']) ?>">
-                    </td>
-                    
-                </tr>
+   
+    <table class="table">
+        <form method="POST" action="#">
+            <tr>
+                <td>
+                    <label for="input1">Username:</label><br>
+                    <input type="text" class="text form-control" name="username" value="<?=htmlentities($userById['username']) ?>">
+                </td>
+                <td>
+                    <label for="input2">E-mail address:</label><br>
+                    <input type="text" class="text form-control" name="email" value="<?=htmlentities($userById['email']) ?>">
+                </td>                 
+            </tr>
                 
-                <tr>    
-                    <td>
-                        <label for="input5">First name:</label><br>
-                        <input type="text" class="text form-control" name="first_name" value="<?=htmlentities($userById['first_name']) ?>">
-                    </td>
-                    <td>
-                        <label for="input6">Last name:</label><br>
-                        <input type="text" class="text form-control" name="last_name" value="<?=htmlentities($userById['last_name']) ?>">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="input7">Phone:</label><br>
-                        <input type="text" class="text form-control" name="phone" value="<?=htmlentities($userById['phone']) ?>">
-                    </td>
-                        <td>
-                        <label for="input8">Street:</label><br>
-                        <input type="text" class="text form-control" name="street" value="<?=htmlentities($userById['street']) ?>">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="input9">City</label><br>
-                        <input type="text" class="text form-control" name="city" value="<?=htmlentities($userById['city']) ?>">
-                    </td>
+            <tr>    
+                <td>
+                    <label for="input5">First name:</label><br>
+                    <input type="text" class="text form-control" name="first_name" value="<?=htmlentities($userById['first_name']) ?>">
+                </td>
+                <td>
+                    <label for="input6">Last name:</label><br>
+                    <input type="text" class="text form-control" name="last_name" value="<?=htmlentities($userById['last_name']) ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="input7">Phone:</label><br>
+                    <input type="text" class="text form-control" name="phone" value="<?=htmlentities($userById['phone']) ?>">
+                </td>
+                <td>
+                    <label for="input8">Street:</label><br>
+                    <input type="text" class="text form-control" name="street" value="<?=htmlentities($userById['street']) ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="input9">City</label><br>
+                    <input type="text" class="text form-control" name="city" value="<?=htmlentities($userById['city']) ?>">
+                </td>
 
-                    <td>
-                        <label for="input7">Postal code</label><br>
-                        <input type="text" class="text form-control" name="postal_code"value="<?=htmlentities($userById['postal_code']) ?>">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="country">Country</label><br>
-                        <input type="text" class="text form-control" name="country" value="<?=htmlentities($userById['country']) ?>">
-                        <!-- <select id="country" name="country" class="form-control">   
-                            <option value="sweden">Sweden</option>                        
-                            <option value="denmark">Denmark</option>
-                            <option value="finland">Finland</option>
-                             <option value="norway">Norway</option>                            
-                        </select> -->
-                    </td>
-                </tr>
+                <td>
+                    <label for="input7">Postal code</label><br>
+                    <input type="text" class="text form-control" name="postal_code"value="<?=htmlentities($userById['postal_code']) ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="country">Country</label><br>
+                    <input type="text" class="text form-control" name="country" value="<?=htmlentities($userById['country']) ?>">
+                    <!-- <select id="country" name="country" class="form-control">   
+                        <option value="sweden">Sweden</option>                        
+                        <option value="denmark">Denmark</option>
+                        <option value="finland">Finland</option>
+                        <option value="norway">Norway</option>                            
+                    </select> -->
+                </td>
+            </tr>
              
-                <tr>
-                    <td>
-                        <input type="submit" name="updateUserBtn" value="Update" class="btn btn-dark text-light mt-4 d-block">
-                    </td>
-                <tr>
-            </table>
+            <tr>
+                <td id="user">
+                    <input type="submit" name="updateUserBtn" value="Update" class="btn btn-dark text-light mt-4 d-block">
+                </td>
+            <tr>
             </form>
-      
+            </table>
+            
+            <a href="users.php"><i class="fas fa-angle-left"></i> Back</a>
     
 </div>
 <?php include('layout/footer.php'); ?>

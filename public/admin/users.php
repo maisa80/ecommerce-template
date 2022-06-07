@@ -15,30 +15,38 @@ require('../../src/config.php');
             </div>
         ';
     }
-
+    
     if (isset($_POST['deleteUserBtn'])) {
         $userDbHandler->deleteUser();
+         // Success message
+      $message = '   
+      <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+        <i class="bi-check-circle-fill"></i>
+        <strong class="mx-2">Success!</strong> The user was successfully deleted.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    ';
     }
    
 
     $users = $userDbHandler->fetchAllUsers();
- 
+   
 ?>
 <?php include('layout/header.php'); ?>
 
     <!-- Sidans/Dokumentets huvudsakliga innehåll -->
     <div id="content">
 
-            <h2>Manage users</h2>
+        <h4>Manage users</h4>
 
-         <?=$message ?> 
-        <div id="new-user">
+
+        <div id="user">
             <form action="create-user.php" method="GET">
            <button type="submit" class="btn btn-warning"><i class="fas fa-plus"></i> Add new user</button> 
             </form>
         </div>
             <br>
-            
+            <?=$message ?>
             <table class="table ">
             	<thead>
 	            	<tr>
@@ -78,5 +86,5 @@ require('../../src/config.php');
             </table>          
      
     </div>
-
+   
  <?php include('layout/footer.php'); ?> 

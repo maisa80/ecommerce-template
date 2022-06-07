@@ -99,7 +99,13 @@
             if ($result) {
                 $userDbHandler->addUser($username, $first_name, $last_name, $email, $password, $phone, 
                 $street, $postal_code, $city, $country);
-                $msg = '<div class="alert alert-success" role="alert">The user was successfully created</div>';
+                $msg =  '<div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+                <i class="bi-check-circle-fill"></i>
+                <strong class="mx-2">Success!</strong> The user was successfully created.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              </div>
+            ';
+                
             } else {
                 $msg = '<div class="alert alert-danger" role="alert">Failed to create a user. Please try again.</div>';
             }
@@ -110,11 +116,11 @@
 
 <?php include('layout/header.php'); ?>
 <div id="content">
-    <div class="d-flex justify-content-center ">
-        <?=$msg?>
-    </div>
    
-        <table class="table">
+        <?=$msg?>
+   
+   
+    <table class="table">
             <form method="POST" action="#">
                 <tr>
                     <td>
@@ -183,13 +189,14 @@
                 </tr>
                 <br>
                 <tr>
-                    <td>
+                    <td id="user">
                         <input type="submit" name="createUserBtn" value="Create" class="btn btn-dark text-light mt-4 d-block">
                     </td>
                 <tr>
             </table>
             </form>
+            <a href="users.php"><i class="fas fa-angle-left"></i> Back</a>
         </div>
-    </div>
+ 
 
 <?php include('layout/footer.php'); ?>
