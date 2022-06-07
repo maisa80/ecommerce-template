@@ -10,6 +10,7 @@ class UserDbHandler
     // Fetch all users and returns the value
     public function fetchAllUsers()
     {
+       
         $sql = "SELECT * FROM users;";
         $stmt = $this->pdo->query($sql);
         
@@ -76,10 +77,10 @@ class UserDbHandler
 
     public function updateUser(
         $id,
+        $username,
         $first_name,
         $last_name,
         $email,
-        $password,
         $phone,
         $street,
         $postal_code,
@@ -88,7 +89,7 @@ class UserDbHandler
     ) {
         $sql = "
             UPDATE users
-            SET first_name = :first_name, last_name= :last_name, email = :email, 
+            SET username=:username, first_name = :first_name, last_name= :last_name, email = :email, 
             phone = :phone, street = :street, postal_code= :postal_code, city = :city, country = :country   
             WHERE id = :id
         ";
@@ -96,6 +97,7 @@ class UserDbHandler
        
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':username', $username);
         $stmt->bindParam(':first_name', $first_name);
         $stmt->bindParam(':last_name', $last_name);
         $stmt->bindParam(':email', $email);
