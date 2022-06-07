@@ -32,7 +32,7 @@ class UserDbHandler
     public function fetchUserByEmail($email)
     {
         $sql = "
-            SELECT id, first_name, last_name, password FROM users
+            SELECT id,username, first_name, last_name, password FROM users
             WHERE email = :email
         ";
 

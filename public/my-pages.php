@@ -1,26 +1,26 @@
 <?php
     require('../src/config.php');
     checkLoginSession();
-    require('../src/dbconnect.php');
+  
 
-    $msg = '';
+    $message = "";
 
-    if (isset($_POST['deleteBtn'])) {
-        if (empty($title)) {
-            try {
-                $query = "
-                    DELETE FROM users
-                    WHERE id = :id;
-                ";
+    // if (isset($_POST['deleteBtn'])) {
+    //     if (empty($title)) {
+    //         try {
+    //             $query = "
+    //                 DELETE FROM users
+    //                 WHERE id = :id;
+    //             ";
     
-                $stmt = $dbconnect->prepare($query);
-                $stmt->bindValue(':id', $_POST['id']);
-                $stmt->execute();
-            } catch (\PDOException $e) {
-                throw new \PDOException($e->getMessage(), (int) $e->getCode());
-            }
-        }
-    }
+    //             $stmt = $dbconnect->prepare($query);
+    //             $stmt->bindValue(':id', $_POST['id']);
+    //             $stmt->execute();
+    //         } catch (\PDOException $e) {
+    //             throw new \PDOException($e->getMessage(), (int) $e->getCode());
+    //         }
+    //     }
+    // }
     
     $first_name  = '';
     $last_name   = '';
@@ -100,24 +100,24 @@
         }
 
         try {
-            $query = "
+            $sql = "
                 UPDATE users
                 SET username = :username, password = :password, email = :email, phone = :phone, street = :street, postal_code = :postal_code, city = :city, country = :country, first_name = :first_name, last_name = :last_name 
                 WHERE id = :id
             ";
-            $stmt = $dbconnect->prepare($query);
-            $stmt->bindValue(':username', $username);
-            $stmt->bindValue(':password', $password);
-            $stmt->bindValue(':email', $email);
-            $stmt->bindValue(':phone', $phone);
-            $stmt->bindValue(':street', $street);
-            $stmt->bindValue(':postal_code', $postal_code);
-            $stmt->bindValue(':city', $city);
-            $stmt->bindValue(':country', $country);
-            $stmt->bindValue(':first_name', $first_name);
-            $stmt->bindValue(':last_name', $last_name);
-            $stmt->bindValue(':id', $_GET['id']);
-            $result = $stmt->execute();
+            $encryptedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':first_name', $first_name);
+            $stmt->bindParam(':last_name', $last_name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $encryptedPassword);
+            $stmt->bindParam(':phone', $phone);
+            $stmt->bindParam(':street', $street);
+            $stmt->bindParam(':postal_code', $postal_code);
+            $stmt->bindParam(':city', $city);
+            $stmt->bindParam(':country', $country);
+            $stmt->execute();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int) $e->getCode());
         }
@@ -126,7 +126,7 @@
         }
     }
     
-    $users = $userDbHandler-> fetchUserByEmail($_GET['id']);     
+    $users =  $userDbHandler->fetchUserByEmail($_GET['email']);    
 
 ?>
 
@@ -136,7 +136,7 @@
 
     <div class="d-flex justify-content-center bg-dark text-light py-5">
         <form action="" method="POST">      
-            <?=$msg?>  
+        <?=$message ?> 
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -214,11 +214,7 @@
                         <input type="submit" name="signup" value="Uppdatera">
                     </div>
                     
-                    <div class="col text-center">
-                        <form method="POST">
-                            <input type="hidden" name="id" value="<?=$_SESSION['id']?>">
-                            <input type="submit" name="deleteBtn" value="Delete user" class="deleteBtn>
-                        </form>
+                   
                     </div>
                 </div>
             </form>

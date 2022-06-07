@@ -23,7 +23,7 @@
     <div class="header__search">
 
     <div class="imgDiv">
-      <h2><img src="img/logo_socials.png"> Baby's & Me</h2>
+      <h2><img src="img/logo_socials.png"><a href="../index.php"> Baby's & Me</a></h2>
     </div>
     </div>
     <div class="header__avatar">

@@ -1,38 +1,48 @@
 <?php
     require('../src/config.php');
-    require('../src/dbconnect.php');
+
  
 
-    $msg = "";
+    $message = "";
     if (isset($_GET['mustLogin'])) {
-        $msg = '<div class="alert alert-danger" role="alert">Error! You need to log in to view this page. Please log in och sign up.</div>';
+        $message = '<div class="alert alert-danger" role="alert">Error! You need to log in to view this page. Please log in och sign up.</div>';
     }
 
     if (isset($_GET['logout'])) {
-        $msg = '<div class="alert alert-success" role="alert">You have logged out!</div>';
+        $message = '<div class="alert alert-success" role="alert">You have logged out!</div>';
     }
 
     if (isset($_POST['doLogin'])) {
-        $username = $_POST['username'];
+        $email    = trim($_POST['email']);
         $password = $_POST['password'];
 
-        $user =($username);
+        $user = $userDbHandler->fetchUserByEmail($email);
+    
 
-        if ($user && $password === $user['password']) {
-            $_SESSION['id'] = $user['id'];
+
+        // Tom array => false
+        // Icke tim array => true
+        if ($user && password_verify($password, $user['password'])) { // password_verify($password, $encryptedPassword);
+            // User exists
             $_SESSION['username'] = $user['username'];
-            redirect('index.php');
-
+            $_SESSION['id']       = $user['id'];
+            redirect('my-pages.php');
         } else {
-            $msg = '<div class="alert alert-danger" role="alert">Fel inloggningsuppgifter. Var snäll och försök igen.</div>';
+            $message = '
+                <div class="error_msg">
+                    Fel inloggningsuppgifter. Försök igen!
+                </div>
+            ';
         }
+
+
     }
 ?>
 
 <?php include('layout/header.php'); ?>
 
     <div class="d-flex justify-content-center mt-5">
-        <?=$msg?>
+    <?=$message ?>
     </div>
 
     <div class="d-flex justify-content-center mt-5">
@@ -40,8 +50,8 @@
             <form method="POST">
                 <tr>
                     <td>
-                        <label for="input1">Username:</label> <br>
-                        <input type="text" class="text" name="username">
+                        <label for="input1">email:</label> <br>
+                        <input type="text" class="text" name="email">
                     </td>
                 </tr>
 

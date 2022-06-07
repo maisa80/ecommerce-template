@@ -15,6 +15,19 @@
     <title>Baby's & Me</title>
 </head>
 <body>
+<nav class="login">
+        <?php
+          if (isset($_SESSION['username'])) {
+            // ucfirst makes the first letter to a CAPITAL letter :)
+            $loggedInUsername = htmlentities(ucfirst($_SESSION['username']));
+            $aboveNave = "{$loggedInUsername} | <a href='logout.php'>Logga ut</a>";
+          } else {
+            $aboveNave = "<a href='register.php'>Registrera dig</a> | <a href='login.php'>Logga in</a>";
+          }
+
+          echo $aboveNave;
+        ?>
+      </nav> 
 	<div class="container-fluid p-0">
 		<!-- Log in/ Log out -->
 		<div class="d-flex justify-content-end bg-transparent">
@@ -28,11 +41,7 @@
 					<input type="submit" value="Admin" class="btn logInBtn">
 				</form>
 			</div>
-			<div class="d-flex justify-content-end">
-				<div class="p-2 logInBtn">                      
-        <a href='register.php'>Sign up</a> | <a href='login.php'>Log in</a>                      
-				</div>
-			</div>
+			
 		</div>
 	
 		<!-- Navbar -->
