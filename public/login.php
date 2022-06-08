@@ -1,8 +1,6 @@
 <?php
     require('../src/config.php');
 
- 
-
     $message = "";
     if (isset($_GET['mustLogin'])) {
         $message = '<div class="alert alert-danger" role="alert">Error! You need to log in to view this page. Please log in och sign up.</div>';
@@ -26,7 +24,7 @@
             // User exists
             $_SESSION['username'] = $user['username'];
             $_SESSION['id']       = $user['id'];
-            redirect('my-pages.php');
+            redirect('index.php');
         } else {
             $message = '
                 <div class="error_msg">
@@ -38,6 +36,7 @@
 
     }
 ?>
+
 
 <?php include('layout/header.php'); ?>
 

@@ -15,24 +15,31 @@
     <title>Baby's & Me</title>
 </head>
 <body>
-<nav class="login">
-        <?php
-          if (isset($_SESSION['username'])) {
-            // ucfirst makes the first letter to a CAPITAL letter :)
-            $loggedInUsername = htmlentities(ucfirst($_SESSION['username']));
-            $aboveNave = "{$loggedInUsername} | <a href='logout.php'>Logga ut</a>";
-          } else {
-            $aboveNave = "<a href='register.php'>Registrera dig</a> | <a href='login.php'>Logga in</a>";
-          }
-
-          echo $aboveNave;
-        ?>
-      </nav> 
+      
 	<div class="container-fluid p-0">
 		<!-- Log in/ Log out -->
 		<div class="d-flex justify-content-end bg-transparent">
 			<div class="d-flex justify-content-end">
-				<form action="my-pages.php?" method="GET">
+			<a id="mypages"  class="btn logInBtn" href="my-pages.php">My pages</a>
+        	<a id="dashboard"  class="btn logInBtn" href="admin/index.php">Dashboard</a>
+			
+			<?php
+				if (isset($_SESSION['username'])) {
+					
+				// ucfirst makes the first letter to a CAPITAL letter :)
+				$loggedInUsername = htmlentities(ucfirst($_SESSION['username']));
+				$aboveNave = "<a href='my-pages.php' class='btn logInBtn'><b>Hej {$loggedInUsername}</b></a>  <a href='logout.php' class='btn logInBtn' >Log out</a>";
+				} else {
+				$aboveNave = "<a href='register.php' class='btn logInBtn'>Sin up</a> 
+				 <a href='login.php' class='btn logInBtn'>Log in</a>";
+				}
+
+				echo $aboveNave;
+				
+        	?>
+		</div>			  
+	</div>
+	<!-- <form action="my-pages.php?" method="GET">
 					<input type="hidden" name="id" value="">
 					<input type="submit" value="My page" class="btn logInBtn">
 				</form>
@@ -40,10 +47,7 @@
 				<form action="admin/admin.php?">
 					<input type="submit" value="Admin" class="btn logInBtn">
 				</form>
-			</div>
-			
-		</div>
-	
+			</div> -->
 		<!-- Navbar -->
 		<div class="d-flex justify-content-center text-center bg-transparent pb-4">
 			<div class="col">

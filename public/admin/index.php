@@ -1,8 +1,8 @@
 <?php
       require('../../src/config.php');
-    $pageTitle = "Users";
-    $pageId    = "users";
-    // checkLoginSession();
+    $pageTitle = "Dashboard";
+    $pageId    = "dashboard";
+   
     
     $users = $userDbHandler->fetchAllUsers();
     $products = $productDbHandler->fetchAllProducts();

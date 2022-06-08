@@ -4,7 +4,7 @@
             redirect("login.php?mustLogin");
         }
     }
-
+  
     function redirect($path) {
         header("Location: {$path}");
         exit;

@@ -1,6 +1,6 @@
 <?php
     require('../src/config.php');
-    debug($_POST);
+    // debug($_POST);
 
     $first_name  = '';
     $last_name   = '';
