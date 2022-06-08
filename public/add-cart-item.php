@@ -1,10 +1,11 @@
 <?php
     require('../src/config.php');
-    require('../src/dbconnect.php');
+    $pageTitle= 'Cart';
+    $pageId = 'cart';
 
-    echo"<pre>";
-    print_r($_POST);
-    echo"<pre>";
+    // echo"<pre>";
+    // print_r($_POST);
+    // echo"<pre>";
     
     if(!empty($_POST['quantity'])) {
         $articleId = (int) $_POST['articleId'];

@@ -1,5 +1,7 @@
 <?php
     require('../src/config.php');
+    $pageTitle= 'Sign up';
+    $pageId = 'sign up';
     // debug($_POST);
 
     $first_name  = '';

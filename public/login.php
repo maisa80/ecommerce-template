@@ -1,6 +1,7 @@
 <?php
     require('../src/config.php');
-
+    $pageTitle= 'Login';
+    $pageId = 'login';
     $message = "";
     if (isset($_GET['mustLogin'])) {
         $message = '<div class="alert alert-danger" role="alert">Error! You need to log in to view this page. Please log in och sign up.</div>';

@@ -1,6 +1,7 @@
 <?php
     require('../src/config.php');
-    require('../src/dbconnect.php');
+    $pageTitle= 'Products';
+    $pageId = 'products';
 
     $title       = '';
     $description = '';

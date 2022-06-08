@@ -1,7 +1,7 @@
 <?php
 
 require('../../src/config.php');
-    $pageTitle = "users";
+    $pageTitle = "Manage users";
     $pageId    = "users";
     // checkLoginSession();
    

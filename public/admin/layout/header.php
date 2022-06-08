@@ -11,9 +11,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 	
-    <title>Baby's & Me</title>
+    <title><?=$pageTitle ?></title>
 </head>
-<body>
+<body id="<?=$pageId ?>">
 <div class="grid-container">
    <div class="menu-icon">
     <i class="fas fa-bars header__menu"></i>

@@ -1,5 +1,5 @@
 <?php
-      require('../../src/config.php');
+    require('../../src/config.php');
     $pageTitle = "Dashboard";
     $pageId    = "dashboard";
    
@@ -9,7 +9,6 @@
 ?>
  <?php include('layout/header.php'); ?> 
 
- 
  
   <main class="main">
     <div class="main-header">

@@ -1,6 +1,7 @@
 <?php
     require('../../src/config.php');
-
+    $pageTitle= 'Manage Products';
+    $pageId = 'manage-products';
 
     $products = $productDbHandler -> fetchAllProducts();
 

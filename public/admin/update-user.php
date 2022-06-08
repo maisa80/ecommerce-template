@@ -126,7 +126,7 @@
 
 <?php include('layout/header.php'); ?>
 <div id="content">
-    <h4>Manage users</h4>
+    <h4>Update user</h4>
     <?=$msg?>
    
    

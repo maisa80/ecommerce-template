@@ -1,5 +1,7 @@
 <?php
     require('../../src/config.php');
+    $pageTitle= 'Create User';
+    $pageId = 'create';
     // debug($_POST);
 
     $first_name  = '';

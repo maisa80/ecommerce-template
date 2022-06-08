@@ -1,5 +1,7 @@
 <?php
     require('../src/config.php');
+    $pageTitle= 'My pages';
+    $pageId = 'my pages';
     checkLoginSession();
   
 

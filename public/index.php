@@ -1,5 +1,7 @@
 <?php
     require('../src/config.php');
+	$pageTitle= 'Babys & Me';
+	$pageId = 'babyme';
 ?>
 
 <?php include('layout/header.php'); ?>

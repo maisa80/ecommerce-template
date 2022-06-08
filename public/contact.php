@@ -1,5 +1,7 @@
 <?php
     require('../src/config.php');
+    $pageTitle= 'Contact';
+    $pageId = 'contact';
 ?>	
     
     <?php include('layout/header.php'); ?>
