@@ -117,8 +117,8 @@
             }
         }
     }
-  /**
-     * Fetch user
+    /**
+     * Fetch user by Id
      */
     $userById = $userDbHandler->fetchUserById($_GET['userId']);
     
