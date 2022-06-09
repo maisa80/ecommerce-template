@@ -1,6 +1,6 @@
 <footer class="footer">
-<div class="footer__copyright">&copy; 2018 MTH</div>
-    <div class="footer__signature">Made with love by pure genius</div>
+<div class="footer__copyright">&copy; 2019 - <?php echo date('Y'); ?> <a href="#">Baby's & Me</a>. All rights reserved</div>
+    <div class="footer__signature">Made with 🧡 by Maisa, Yoseph and Julian</div>
 </footer>
 </div>
     

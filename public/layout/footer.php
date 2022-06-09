@@ -1,16 +1,53 @@
 <footer class="footer">
-    <div class="footer__copyright">&copy; 2018 MTH</div>
-    <div class="footer__signature">Made with love by pure genius</div>
-  </footer>
-</div>
-    
-	<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.5/umd/popper.min.js" integrity="sha512-8cU710tp3iH9RniUh6fq5zJsGnjLzOWLWdZqBMLtqaoZUA6AWIE34lwMB3ipUNiTBP5jEZKY95SfbNnQ8cCKvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <!-- CUSTOM JavaScript -->
-    <!-- <script src="js/main.js"></script> -->
-    
-  </body>
+     <div class="container">
+          <div class="row">
+               <div class="col-md-4">
+                    <div class="footer-col">
+                         <h4>About us</h4>
+                         <p>Welcome to Baby's & Me, your one-stop shop for finding the best baby clothing and accessories. Shop for the top-quality baby supplies and accessories online.</p>
+                         <p>&copy; 2019 - <?php echo date('Y'); ?> <a href="#">Baby's & Me</a>. All rights reserved.</p>
+                    </div>
+               </div>
+               <div class="col-md-4">
+                    <div class="footer-col middle">
+                         <h4>More from us</h4>
+                         <ul class="list-unstyled">
+                              <li><a href="index.php">About us</a></li>
+                              <li><a href="#">Faq's</a></li>
+                              <li><a href="contact.php">Contact us</a></li>
+                              <li><a href="#">Terms & Conditions</a></li>
+                              <li><a href="#">Privacy</a></li>
+                         </ul>
+                    </div>
+               </div>
+               <div class="col-md-4">
+                    <div class="footer-col last">
+                         <h4>Follow us</h4>
+                         <ul class="list-inline">
+                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>                             
+                              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                              <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                         </ul>
+                    </div>
+               </div>
+          </div>
+     </div>
+</footer>
+<!-- /container -->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/js/fontawesome.min.js"></script>
+
+<!-- CUSTOM JavaScript -->
+<script src="js/main.js"></script>
+
+</body>
+
 </html>
