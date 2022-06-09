@@ -108,7 +108,7 @@ class UserDbHandler
         $stmt->bindParam(':country', $country);
         $stmt->execute();
     }
-    public function resetUserPassword(
+    public function changeUserPassword(
         $id,
         $password
     ) {
@@ -118,10 +118,10 @@ class UserDbHandler
             WHERE id = :id
         ";
 
-       
+        $encryptedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':password', $encryptedPassword);
         $stmt->execute();
     }
     /*------------------------------------------------------------*/

@@ -17,7 +17,8 @@
     $username    = '';
     $email       = '';
     $error       = '';
-    $msg         = '';
+    $msgProfile  = '';
+    $msgPassword  = '';
 
     if (isset($_POST['updateUserBtn'])) {
         $username          = trim($_POST['username']);
@@ -101,7 +102,7 @@
                     $city,
                     $country
                 );
-                $msg = '   
+                $msgProfile = '   
                 <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
                   <i class="bi-check-circle-fill"></i>
                   <strong class="mx-2">Success!</strong> The user was successfully updated.
@@ -109,7 +110,50 @@
                 </div>
               ';
             } else {
-                $msg = '<div class="alert alert-danger" role="alert">Failed to update the user. Please try again.</div>';
+                $msgProfile = '<div class="alert alert-danger" role="alert">Failed to update the user. Please try again.</div>';
+            }
+        }
+    }
+    if (isset($_POST['updateUserPasswordBtn'])) {
+        $password        = trim($_POST['password']);
+        $confirmPassword = trim($_POST['confirmPassword']);
+
+        if ($password !== $confirmPassword) {
+            $message = '
+                <div class="error_msg">
+                    Confirmed password incorrect!
+                </div>
+            ';
+        } else {
+            $userDbHandler->changeUserPassword($_GET['userId'], $password);
+        }
+
+        if ($error) {
+            $msg = "<ul class='error_msg'>{$error}</ul>";
+        }
+
+        if (empty($error)) {
+            $userData = [
+                'password'           => $password,
+              
+            ];
+
+            $result = ($userData);
+
+            if ($result) {
+                $userDbHandler->changeUserPassword(
+                    $_GET['userId'],
+                    $password
+                );
+                $msgPassword = '   
+                <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+                  <i class="bi-check-circle-fill"></i>
+                  <strong class="mx-2">Success!</strong> Your password was successfully updated.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+              ';
+            } else {
+                $msgPassword = '<div class="alert alert-danger" role="alert">Failed to update the password. Please try again.</div>';
             }
         }
     }
@@ -124,20 +168,30 @@
 
     
 
-    <div class="container emp-profile">
+<div class="container emp-profile">
     
-            <form method="post">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
-                        </div>
+    <form method="post">   
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                    <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="file"/>
                     </div>
-                    <div class="col-md-6">
+                </div>
+
+            <div class="col-md-8 ">
+                <div class="profile-work">
+                        <ul>
+                            <li>Registerd <?=htmlentities($userById['create_date']) ?></li>
+                            <li><a href="">Order History</a></li>
+                            
+                        </ul>   
+                        </div>
+                </div>
+            </div>
+                <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
                                     <?=htmlentities(ucfirst($userById['first_name']))?> <?=htmlentities(ucfirst($userById['last_name']))?>
@@ -213,29 +267,31 @@
                     </div>
                     <div class="col-md-2">
                    
-                    </p>
-                    <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Edit Profile
-                    </button>
+                        <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfile" aria-expanded="false" aria-controls="collapseProfile">
+                        Edit Profile
+                        </button>
+                        <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapsePassword" aria-expanded="false" aria-controls="collapsePassword">
+                        Change Password
+                        </button>
                         <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
                     </div>
-                </div>
-              
-                   
-                </div>
-            </form>           
+                    
+                
+            </div>       
         </div>
+    </form>                 
+ </div>
        
-</p>
 
-<div class="collapse" id="collapseExample">
+
+<div class="collapse" id="collapseProfile">
 
     <div class="d-flex justify-content-center bg-dark text-light py-5">
         <form action="" method="POST">      
-            <?=$msg ?> 
+            <?=$msgProfile ?> 
             <div class="col-md-12">
                 <label for="input1">Username</label>
-                <input class="form-control" type="text" name="username" value="<?=htmlentities($userById['username'])?>">
+                <input class="text" type="text" name="username" value="<?=htmlentities($userById['username'])?>">
             </div>
             <div class="col-md-12">
                 <label for="input3">First name</label> <br>
@@ -268,7 +324,7 @@
                 <input type="text" class="text" name="postal_code" value="<?=htmlentities($userById['postal_code'])?>">
             </div>
             <div class="col-md-12">
-                <label for="input8">Country</label> <br>
+                <label for="input9">Country</label> <br>
                 <input type="text" class="text" name="country" value="<?=htmlentities($userById['country'])?>">
             </div>
                 
@@ -279,7 +335,36 @@
                     </div>
                     
                    
+                    
+                </div>
+
+        </form>
+    </div> 
+</div>
+<div class="collapse" id="collapsePassword">
+
+    <div class="d-flex justify-content-center bg-dark text-light py-5">
+        <form action="" method="POST">      
+            <?=$msgPassword ?> 
+          
+            <div class="col-md-12">
+                <label for="input10">Password</label> 
+                <input type="password" class="form-control" name="password">
+                
+            </div>
+            <div class="col-md-12">
+                <label for="input11">Confirm password</label>
+                <input type="password" class="text" name="confirmPassword">
+            </div>
+            
+                
+                <div class="d-flex justify-content-center">
+
+                    <div class="col text-center">
+                        <input type="submit" class="btn btn-secondary" name="updateUserPasswordBtn" value="Update Password">
                     </div>
+
+                  
                 </div>
 
         </form>

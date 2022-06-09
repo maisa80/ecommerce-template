@@ -50,14 +50,14 @@
             <form method="POST">
                 <tr>
                     <td>
-                        <label for="input1">email:</label> <br>
+                        <label for="input1">Email</label> <br>
                         <input type="text" class="text" name="email">
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                        <label for="input2">Password:</label> <br>
+                        <label for="input2">Password</label> <br>
                         <input type="password" class="text" name="password">
                     </td>
                 </tr>
