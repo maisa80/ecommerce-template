@@ -108,7 +108,22 @@ class UserDbHandler
         $stmt->bindParam(':country', $country);
         $stmt->execute();
     }
+    public function resetUserPassword(
+        $id,
+        $password
+    ) {
+        $sql = "
+            UPDATE users
+            SET password=:password
+            WHERE id = :id
+        ";
 
+       
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+    }
     /*------------------------------------------------------------*/
     // Används på view.php
 

@@ -7,7 +7,6 @@
         redirect('my-pages.php?invalidUser');
     }
     // debug($_POST);
-
     $first_name  = '';
     $last_name   = '';
     $phone       = '';
@@ -25,8 +24,6 @@
         $first_name        = trim($_POST['first_name']);
         $last_name         = trim($_POST['last_name']);
         $email             = trim($_POST['email']);
-        $password          = trim($_POST['password']);
-        $confirmPassword   = trim($_POST['confirmPassword']);
         $phone             = trim($_POST['phone']);
         $street            = trim($_POST['street']);
         $postal_code       = trim($_POST['postal_code']);
@@ -119,14 +116,14 @@
     /**
      * Fetch user by Id
      */
-    $user = $userDbHandler->fetchUserById($_GET['userId']);
+    $userById = $userDbHandler->fetchUserById($_GET['userId']);
     
 ?>
 
 <?php include('layout/header.php'); ?>
 
     
-<h2 class="text-center">User Profile</h2>
+
     <div class="container emp-profile">
     
             <form method="post">
@@ -143,7 +140,7 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                    <?=htmlentities(ucfirst($user['first_name']))?> <?=htmlentities(ucfirst($user['last_name']))?>
+                                    <?=htmlentities(ucfirst($userById['first_name']))?> <?=htmlentities(ucfirst($userById['last_name']))?>
                                     </h5>
                                     
                                     <div class="col-md-6">
@@ -152,10 +149,10 @@
                                        
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Name</label>
+                                                <label>User Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?=htmlentities($user['username']) ?></p>
+                                                <p><?=htmlentities($userById['username']) ?></p>
 
                                             </div>
                                         </div>
@@ -164,7 +161,7 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?=htmlentities($user['email']) ?></p>
+                                                <p><?=htmlentities($userById['email']) ?></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -172,7 +169,7 @@
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?=htmlentities($user['phone']) ?></p>
+                                                <p><?=htmlentities($userById['phone']) ?></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -180,7 +177,7 @@
                                                 <label>Postal Code</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?=htmlentities($user['postal_code']) ?></p>
+                                                <p><?=htmlentities($userById['postal_code']) ?></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -188,7 +185,7 @@
                                                 <label>Street</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?=htmlentities($user['street']) ?></p>
+                                                <p><?=htmlentities($userById['street']) ?></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -196,7 +193,7 @@
                                                 <label>City</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?=htmlentities($user['city']) ?></p>
+                                                <p><?=htmlentities($userById['city']) ?></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -204,7 +201,7 @@
                                                 <label>Country</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?=htmlentities($user['country']) ?></p>
+                                                <p><?=htmlentities($userById['country']) ?></p>
                                             </div>
                                         </div>
                             </div>
@@ -215,7 +212,12 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                   
+                    </p>
+                    <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Edit Profile
+                    </button>
+                        <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
                     </div>
                 </div>
               
@@ -223,90 +225,64 @@
                 </div>
             </form>           
         </div>
+       
+</p>
+
+<div class="collapse" id="collapseExample">
+
     <div class="d-flex justify-content-center bg-dark text-light py-5">
         <form action="" method="POST">      
-        <?=$message ?> 
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="input1">Username:</label> <br>
-                        <input type="text" class="text" name="username" value="<?=htmlentities($user['username'])?>">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="input1">E-mail address:</label> <br>
-                        <input type="texter" class="texter" name="email" value="<?=htmlentities($user['email'])?>">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="input1">Password:</label> <br>
-                        <input type="password" class="text" name="password" value="<?=htmlentities($user['password'])?>"
-                        >
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="input2">Confirm password:</label> <br>
-                        <input type="password" class="text" name="confirmPassword" value="<?=htmlentities($user['password'])?>">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="input3">First name:</label> <br>
-                        <input type="text" class="text" name="first_name" value="<?=htmlentities($user['first_name'])?>">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="input4">Last name:</label> <br>
-                    <input type="text" class="text" name="last_name" value="<?=htmlentities($user['last_name'])?>">
-                    </div>
-                </div>
+            <?=$msg ?> 
+            <div class="col-md-12">
+                <label for="input1">Username</label>
+                <input class="form-control" type="text" name="username" value="<?=htmlentities($userById['username'])?>">
+            </div>
+            <div class="col-md-12">
+                <label for="input3">First name</label> <br>
+                <input type="text" class="text" name="first_name" value="<?=htmlentities($userById['first_name'])?>">
+            </div>
+            <div class="col-md-12">
+                <label for="input4">Last name</label> <br>
+                <input type="text" class="text" name="last_name" value="<?=htmlentities($userById['last_name'])?>">     
+            </div>
+  
+            <div class="col-md-12">
+                <label for="input1">E-mail address</label> <br>
+                <input type="text" class="text" name="email" value="<?=htmlentities($userById['email'])?>">
+            </div>
+            <div class="col-md-12">
+                <label for="input1">Phone</label> <br>
+                <input type="text" class="text" name="phone" value="<?=htmlentities($userById['phone'])?>">
+            </div>
+            <div class="col-md-12">
+                <label for="input6">Street</label> <br>
+                <input type="text" class="text" name="street" value="<?=htmlentities($userById['street'])?>"> 
+            </div>
 
-                <div class="form-group">
-                    <label for="input6">Street:</label> <br>
-                    <input type="text" class="text" name="street" value="<?=htmlentities($user['street'])?>"> 
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="input7">City</label> <br>
-                        <input type="text" class="text" name="city" value="<?=htmlentities($user['city'])?>">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="input8">Postal code</label> <br>
-                        <input type="text" class="text" name="postal_code" value="<?=htmlentities($user['postal_code'])?>">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <?php
-                        $countries = [];
-                        ?>
-                        <label for="country">Country</label>
-                        <select id="country" name="country">
-                            <?php foreach ($countries as $countryKey => $countryName) { ?> 
-                               <?php if ($users['country'] == $countryKey) { ?>
-                                    <option selected value="<?=$countryKey?>"> <?=$countryName?></option> 
-                               <?php } else { ?>
-                                    <option value="<?=$countryKey?>"> <?=$countryName?></option>
-                             <?php   } ?>
-                            <?php }  ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="input5">Phone:</label> <br>
-                        <input type="text" class="text" name="phone" value="<?=htmlentities($user['phone'])?>">
-                    </div>
-                </div>
+            <div class="col-md-12">
+                <label for="input7">City</label> <br>
+                <input type="text" class="text" name="city" value="<?=htmlentities($userById['city'])?>">
+            </div>
+            <div class="col-md-12">
+                <label for="input8">Postal code</label> <br>
+                <input type="text" class="text" name="postal_code" value="<?=htmlentities($userById['postal_code'])?>">
+            </div>
+            <div class="col-md-12">
+                <label for="input8">Country</label> <br>
+                <input type="text" class="text" name="country" value="<?=htmlentities($userById['country'])?>">
+            </div>
                 
                 <div class="d-flex justify-content-center">
 
                     <div class="col text-center">
-                        <input type="submit" name="signup" value="Uppdatera">
+                        <input type="submit" class="btn btn-secondary" name="updateUserBtn" value="Update">
                     </div>
                     
                    
                     </div>
                 </div>
-            </form>
+
         </form>
     </div> 
+</div>
 <?php include('layout/footer.php'); ?>
