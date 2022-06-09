@@ -29,18 +29,18 @@
 				// ucfirst makes the first letter to a CAPITAL letter :)
 				$loggedInUsername = htmlentities(ucfirst($_SESSION['username']));
 				$loggedInUserId = htmlentities($_SESSION['id']);
-				$aboveNave = "<p class='btn logInBtn'><b>Hi {$loggedInUsername}</b></p>
-				<a id='mypages' class='btn logInBtn' href='my-pages.php?userId=$loggedInUserId'>My pages</a>
-				<a href='logout.php' class='btn logInBtn' >Log out</a>";
+				$aboveNave = "<span class='logInBtn'><b>Hi {$loggedInUsername}</b></span>
+				<a id='mypages' class='logInBtn' href='my-pages.php?userId=$loggedInUserId'>My pages</a>
+				<a href='logout.php' class='logInBtn' >Log out</a>";
 				} else {
 				$aboveNave = "<a href='register.php' class='btn logInBtn'>Sin up</a> 
-				 <a href='login.php' class='btn logInBtn'>Log in</a>";
+				 <a href='login.php' class='logInBtn'>Log in</a>";
 				}
 
 				echo $aboveNave;
 				
         	?>
-			<a id="dashboard"  class="btn logInBtn" href="admin/index.php">Dashboard</a>
+			<a id="dashboard"  class="logInBtn" href="admin/index.php">Dashboard</a>
 		</div>			  
 	</div>
 	<!-- <form action="my-pages.php?" method="GET">

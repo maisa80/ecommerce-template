@@ -42,6 +42,9 @@ a{
     color:#bf1f2d !important;
     
 }
+a, span{
+    margin:10px;
+}
 
 .cartBtn {background:#fcbd4d;}
 
