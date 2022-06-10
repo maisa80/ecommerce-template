@@ -37,7 +37,7 @@
 						<a id='mypages' class='logInBtn' href='my-pages.php?userId=$loggedInUserId'><i class='fas fa-user-alt'></i> My account</a>
 						<a href='logout.php' class='logInBtn' ><i class='fas fa-sign-out-alt'></i> Log out</a>";
 						} else {
-						$aboveNave = "<a href='register.php' class='logInBtn'><i class='fas fa-user'></i> Sin up</a> 
+						$aboveNave = "<a href='register.php' class='logInBtn'><i class='fas fa-user'></i> Sign up</a> 
 						<a href='login.php' class='logInBtn'><i class='fas fa-sign-in-alt'></i> Log in</a>";
 						}
 
