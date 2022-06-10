@@ -8,34 +8,34 @@
    
 ?>
 
-    <?php include('layout/header.php'); ?>
-    
-    <div id="content">
+<?php include('layout/header.php'); ?>
 
-<h2>Manage Products</h2>
+<div id="content">
 
-<?=$message ?> 
-<div id="new-product">
-<form action="create-product.php" method="GET">
-<button type="submit" class="btn btn-warning"><i class="fas fa-plus"></i> Add new product</button> 
-</form>
-</div>
-<br>
+    <h2>Manage Products</h2>
 
-<table class="table ">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>title</th>
-            <th>description</th>
-            <th>price</th>
-            <th>stock</th>
-            <th>img_url</th>
-            <th class="manage">Manage</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($products as $product) : ?>
+    <?=$message ?>
+    <div id="new-product">
+        <form action="create-product.php" method="GET">
+            <button type="submit" class="btn btn-warning"><i class="fas fa-plus"></i> Add new product</button>
+        </form>
+    </div>
+    <br>
+
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>title</th>
+                <th>description</th>
+                <th>price</th>
+                <th>stock</th>
+                <th>img_url</th>
+                <th class="manage">Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($products as $product) : ?>
             <tr>
                 <td><?=htmlentities($product['id']) ?></td>
                 <td><?=htmlentities($product['title']) ?></td>
@@ -51,15 +51,16 @@
 
                     <form action="" method="POST">
                         <input type="hidden" name="productId" value="<?=htmlentities($product['id']) ?>">
-                        <button type="submit" name="deleteUserBtn" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        <button type="submit" name="deleteUserBtn" class="btn btn-danger"><i
+                                class="fas fa-trash"></i></button>
                     </form>
                 </td>
-            
+
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>          
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
 </div>
-    
-    <?php include('layout/footer.php'); ?>
+
+<?php include('layout/footer.php'); ?>

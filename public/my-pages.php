@@ -166,129 +166,133 @@
 
 <?php include('layout/header.php'); ?>
 
-    
+
 
 <div class="container emp-profile">
-    
-    <form method="post">   
+
+    <form method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                        alt="" />
                     <div class="file btn btn-lg btn-primary">
                         Change Photo
-                        <input type="file" name="file"/>
+                        <input type="file" name="file" />
                     </div>
                 </div>
 
-            <div class="col-md-8 ">
-                <div class="profile-work">
+                <div class="col-md-8 ">
+                    <div class="profile-work">
                         <ul>
                             <li>Registerd <?=htmlentities($userById['create_date']) ?></li>
                             <li><a href="">Order History</a></li>
-                            
-                        </ul>   
-                        </div>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
-                <div class="col-md-6">
-                        <div class="profile-head">
-                                    <h5>
-                                    <?=htmlentities(ucfirst($userById['first_name']))?> <?=htmlentities(ucfirst($userById['last_name']))?>
-                                    </h5>
-                                    
-                                    <div class="col-md-6">
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        <?=htmlentities(ucfirst($userById['first_name']))?>
+                        <?=htmlentities(ucfirst($userById['last_name']))?>
+                    </h5>
+
+                    <div class="col-md-6">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                       
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?=htmlentities($userById['username']) ?></p>
 
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?=htmlentities($userById['email']) ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?=htmlentities($userById['phone']) ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Postal Code</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?=htmlentities($userById['postal_code']) ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Street</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?=htmlentities($userById['street']) ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>City</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?=htmlentities($userById['city']) ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Country</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?=htmlentities($userById['country']) ?></p>
-                                            </div>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>User Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?=htmlentities($userById['username']) ?></p>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?=htmlentities($userById['email']) ?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Phone</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?=htmlentities($userById['phone']) ?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Postal Code</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?=htmlentities($userById['postal_code']) ?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Street</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?=htmlentities($userById['street']) ?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>City</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?=htmlentities($userById['city']) ?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Country</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?=htmlentities($userById['country']) ?></p>
+                                    </div>
+                                </div>
                             </div>
-                          
+
                         </div>
                     </div>
-                          
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                   
-                        <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfile" aria-expanded="false" aria-controls="collapseProfile">
-                        <i class="fas fa-user-edit"></i> Edit Profile
-                        </button>
-                        <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapsePassword" aria-expanded="false" aria-controls="collapsePassword">
-                        Change Password
-                        </button>
-                        <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
-                    </div>
-                    
-                
-            </div>       
+
+                </div>
+            </div>
+            <div class="col-md-2">
+
+                <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfile"
+                    aria-expanded="false" aria-controls="collapseProfile">
+                    <i class="fas fa-user-edit"></i> Edit Profile
+                </button>
+                <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapsePassword"
+                    aria-expanded="false" aria-controls="collapsePassword">
+                    Change Password
+                </button>
+                <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
+            </div>
+
+
         </div>
-    </form>                 
- </div>
-       
+</div>
+</form>
+</div>
+
 
 
 <div class="collapse" id="collapseProfile">
 
     <div class="d-flex justify-content-center bg-dark text-light py-5">
-        <form action="" method="POST">      
-            <?=$msgProfile ?> 
+        <form action="" method="POST">
+            <?=$msgProfile ?>
             <div class="col-md-12">
                 <label for="input1">Username</label>
                 <input class="text" type="text" name="username" value="<?=htmlentities($userById['username'])?>">
@@ -299,9 +303,9 @@
             </div>
             <div class="col-md-12">
                 <label for="input4">Last name</label> <br>
-                <input type="text" class="text" name="last_name" value="<?=htmlentities($userById['last_name'])?>">     
+                <input type="text" class="text" name="last_name" value="<?=htmlentities($userById['last_name'])?>">
             </div>
-  
+
             <div class="col-md-12">
                 <label for="input1">E-mail address</label> <br>
                 <input type="text" class="text" name="email" value="<?=htmlentities($userById['email'])?>">
@@ -312,7 +316,7 @@
             </div>
             <div class="col-md-12">
                 <label for="input6">Street</label> <br>
-                <input type="text" class="text" name="street" value="<?=htmlentities($userById['street'])?>"> 
+                <input type="text" class="text" name="street" value="<?=htmlentities($userById['street'])?>">
             </div>
 
             <div class="col-md-12">
@@ -327,47 +331,47 @@
                 <label for="input9">Country</label> <br>
                 <input type="text" class="text" name="country" value="<?=htmlentities($userById['country'])?>">
             </div>
-                
-                <div class="d-flex justify-content-center">
 
-                    <div class="col text-center">
-                        <input type="submit" class="btn btn-secondary" name="updateUserBtn" value="Update">
-                    </div>
-                    
-                   
-                    
+            <div class="d-flex justify-content-center">
+
+                <div class="col text-center">
+                    <input type="submit" class="btn btn-secondary" name="updateUserBtn" value="Update">
                 </div>
 
+
+
+            </div>
+
         </form>
-    </div> 
+    </div>
 </div>
 <div class="collapse" id="collapsePassword">
 
     <div class="d-flex justify-content-center bg-dark text-light py-5">
-        <form action="" method="POST">      
-            <?=$msgPassword ?> 
-          
+        <form action="" method="POST">
+            <?=$msgPassword ?>
+
             <div class="col-md-12">
-                <label for="input10">Password</label> 
+                <label for="input10">Password</label>
                 <input type="password" class="form-control" name="password">
-                
+
             </div>
             <div class="col-md-12">
                 <label for="input11">Confirm password</label>
                 <input type="password" class="text" name="confirmPassword">
             </div>
-            
-                
-                <div class="d-flex justify-content-center">
 
-                    <div class="col text-center">
-                        <input type="submit" class="btn btn-secondary" name="updateUserPasswordBtn" value="Update Password">
-                    </div>
 
-                  
+            <div class="d-flex justify-content-center">
+
+                <div class="col text-center">
+                    <input type="submit" class="btn btn-secondary" name="updateUserPasswordBtn" value="Update Password">
                 </div>
 
+
+            </div>
+
         </form>
-    </div> 
+    </div>
 </div>
 <?php include('layout/footer.php'); ?>

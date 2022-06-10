@@ -128,56 +128,65 @@
 <div id="content">
     <h4>Update user</h4>
     <?=$msg?>
-   
-   
+
+
     <table class="table">
         <form method="POST" action="#">
             <tr>
                 <td>
                     <label for="input1">Username:</label><br>
-                    <input type="text" class="text form-control" name="username" value="<?=htmlentities($userById['username']) ?>">
+                    <input type="text" class="text form-control" name="username"
+                        value="<?=htmlentities($userById['username']) ?>">
                 </td>
                 <td>
                     <label for="input2">E-mail address:</label><br>
-                    <input type="text" class="text form-control" name="email" value="<?=htmlentities($userById['email']) ?>">
-                </td>                 
+                    <input type="text" class="text form-control" name="email"
+                        value="<?=htmlentities($userById['email']) ?>">
+                </td>
             </tr>
-                
-            <tr>    
+
+            <tr>
                 <td>
                     <label for="input5">First name:</label><br>
-                    <input type="text" class="text form-control" name="first_name" value="<?=htmlentities($userById['first_name']) ?>">
+                    <input type="text" class="text form-control" name="first_name"
+                        value="<?=htmlentities($userById['first_name']) ?>">
                 </td>
                 <td>
                     <label for="input6">Last name:</label><br>
-                    <input type="text" class="text form-control" name="last_name" value="<?=htmlentities($userById['last_name']) ?>">
+                    <input type="text" class="text form-control" name="last_name"
+                        value="<?=htmlentities($userById['last_name']) ?>">
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="input7">Phone:</label><br>
-                    <input type="text" class="text form-control" name="phone" value="<?=htmlentities($userById['phone']) ?>">
+                    <input type="text" class="text form-control" name="phone"
+                        value="<?=htmlentities($userById['phone']) ?>">
                 </td>
                 <td>
                     <label for="input8">Street:</label><br>
-                    <input type="text" class="text form-control" name="street" value="<?=htmlentities($userById['street']) ?>">
+                    <input type="text" class="text form-control" name="street"
+                        value="<?=htmlentities($userById['street']) ?>">
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="input9">City</label><br>
-                    <input type="text" class="text form-control" name="city" value="<?=htmlentities($userById['city']) ?>">
+                    <input type="text" class="text form-control" name="city"
+                        value="<?=htmlentities($userById['city']) ?>">
                 </td>
 
                 <td>
                     <label for="input7">Postal code</label><br>
-                    <input type="text" class="text form-control" name="postal_code"value="<?=htmlentities($userById['postal_code']) ?>">
+                    <input type="text" class="text form-control" name="postal_code"
+                        value="<?=htmlentities($userById['postal_code']) ?>">
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="country">Country</label><br>
-                    <input type="text" class="text form-control" name="country" value="<?=htmlentities($userById['country']) ?>">
+                    <input type="text" class="text form-control" name="country"
+                        value="<?=htmlentities($userById['country']) ?>">
                     <!-- <select id="country" name="country" class="form-control">   
                         <option value="sweden">Sweden</option>                        
                         <option value="denmark">Denmark</option>
@@ -186,16 +195,17 @@
                     </select> -->
                 </td>
             </tr>
-             
+
             <tr>
                 <td id="user">
-                    <input type="submit" name="updateUserBtn" value="Update" class="btn btn-dark text-light mt-4 d-block">
+                    <input type="submit" name="updateUserBtn" value="Update"
+                        class="btn btn-dark text-light mt-4 d-block">
                 </td>
             <tr>
-            </form>
-            </table>
-            
-            <a href="users.php"><i class="fas fa-angle-left"></i> Back</a>
-    
+        </form>
+    </table>
+
+    <a href="users.php"><i class="fas fa-angle-left"></i> Back</a>
+
 </div>
 <?php include('layout/footer.php'); ?>
