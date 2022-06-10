@@ -3,6 +3,7 @@
     $pageTitle= 'My pages';
     $pageId = 'my pages';
     checkLoginSession();
+    // debug($_POST);
     if (!isset($_GET['userId']) || !is_numeric($_GET['userId'])) {
         redirect('my-pages.php?invalidUser');
     }
@@ -17,60 +18,65 @@
     $username    = '';
     $email       = '';
     $error       = '';
-    $msgProfile  = '';
-    $msgPassword  = '';
+    $msg         = '';
 
     if (isset($_POST['updateUserBtn'])) {
         $username          = trim($_POST['username']);
         $first_name        = trim($_POST['first_name']);
         $last_name         = trim($_POST['last_name']);
         $email             = trim($_POST['email']);
+        $password          = trim($_POST['password']);
+        $confirmPassword   = trim($_POST['confirmPassword']);
         $phone             = trim($_POST['phone']);
         $street            = trim($_POST['street']);
         $postal_code       = trim($_POST['postal_code']);
         $city              = trim($_POST['city']);
         $country           = trim($_POST['country']);
 
+        if (empty($username)) {
+            $error .= "<div class='alert alert-danger' role='alert'>The username is mandatory</div>";
+        }
+
         if (empty($first_name)) {
-            $error .= "<li>The first name is mandatory</li>";
+            $error .= "<div class='alert alert-danger' role='alert'>The first name is mandatory</div>";
         }
 
         if (empty($last_name)) {
-            $error .= "<li>The last name is mandatory</li>";
+            $error .= "<div class='alert alert-danger' role='alert'>The last name is mandatory</div>";
         }
 
         if (empty($email)) {
-            $error .= "<li>The e-mail address is mandatory</li>";
+            $error .= "<div class='alert alert-danger' role='alert'>The e-mail address is mandatory</div>";
         }
 
         
 
         if (empty($phone)) {
-            $error .= "<li>The phone is mandatory</li>";
+            $error .= "<div class='alert alert-danger' role='alert'>The phone is mandatory</div>";
         }
 
         if (empty($street)) {
-            $error .= "<li>The street is mandatory</li>";
+            $error .= "<div class='alert alert-danger' role='alert'>The street is mandatory</div>";
         }
 
         if (empty($postal_code)) {
-            $error .= "<li>The postal code is mandatory</li>";
+            $error .= "<div class='alert alert-danger' role='alert'>The postal code is mandatory</div>";
         }
 
         if (empty($city)) {
-            $error .= "<li>The city is mandatory</li>";
+            $error .= "<div class='alert alert-danger' role='alert'>The city is mandatory</div>";
         }
 
         if (empty($country)) {
-            $error .= "<li>The country is mandatory</li>";
+            $error .= "<div class='alert alert-danger' role='alert'>The country is mandatory</div>";
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error .= "<li>Unvalid e-mail address</li>";
+            $error .= "<div class='alert alert-danger' role='alert'>Unvalid e-mail address</div>";
         }
 
         if ($error) {
-            $msg = "<ul class='error_msg'>{$error}</ul>";
+            $msg .= "<div class='error_msg'>{$error}</div><div class='alert alert-danger' role='alert'>Failed to update the user. Please try again.</div>";
         }
 
         if (empty($error)) {
@@ -102,7 +108,7 @@
                     $city,
                     $country
                 );
-                $msgProfile = '   
+                $msg = '   
                 <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
                   <i class="bi-check-circle-fill"></i>
                   <strong class="mx-2">Success!</strong> The user was successfully updated.
@@ -110,53 +116,60 @@
                 </div>
               ';
             } else {
-                $msgProfile = '<div class="alert alert-danger" role="alert">Failed to update the user. Please try again.</div>';
+                $msg .= '<div class="alert alert-danger" role="alert">Failed to update the user. Please try again.</div>';
             }
         }
     }
-    if (isset($_POST['updateUserPasswordBtn'])) {
-        $password        = trim($_POST['password']);
-        $confirmPassword = trim($_POST['confirmPassword']);
+    // if (isset($_POST['updateUserPasswordBtn'])) {
+    //     $password        = trim($_POST['password']);
+    //     $confirmPassword = trim($_POST['confirmPassword']);
+    //     if (empty($password)) {
+    //         $error .= "<li>The password is mandatory</li>";
+    //     }
+    //     if (empty($confirmPassword)) {
+    //         $error .= "<li>The confirmPassword is mandatory</li>";
+    //     }
+    //     if ($password !== $confirmPassword) {
+    //         $error .= '
+    //             <div class="error_msg">
+    //                 Confirmed password incorrect!
+    //             </div>
+    //         ';
+    //     } else {
+    //         $userDbHandler->changeUserPassword($_GET['userId'], $password);
+    //     }
 
-        if ($password !== $confirmPassword) {
-            $message = '
-                <div class="error_msg">
-                    Confirmed password incorrect!
-                </div>
-            ';
-        } else {
-            $userDbHandler->changeUserPassword($_GET['userId'], $password);
-        }
+    //     if ($error) {
+    //         $msg = "<ul class='error_msg'>{$error}</ul>";
+    //     }
 
-        if ($error) {
-            $msg = "<ul class='error_msg'>{$error}</ul>";
-        }
-
-        if (empty($error)) {
-            $userData = [
-                'password'           => $password,
+    //     if (empty($error)) {
+    //         $userData = [
+    //             'password'           => $password,
+    //             'confirmPassword'    => $confirmPassword
               
-            ];
+    //         ];
 
-            $result = ($userData);
+    //         $result = ($userData);
 
-            if ($result) {
-                $userDbHandler->changeUserPassword(
-                    $_GET['userId'],
-                    $password
-                );
-                $msgPassword = '   
-                <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
-                  <i class="bi-check-circle-fill"></i>
-                  <strong class="mx-2">Success!</strong> Your password was successfully updated.
-                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-              ';
-            } else {
-                $msgPassword = '<div class="alert alert-danger" role="alert">Failed to update the password. Please try again.</div>';
-            }
-        }
-    }
+    //         if ($result) {
+    //             $userDbHandler->changeUserPassword(
+    //                 $_GET['userId'],
+    //                 $password,
+                    
+    //             );
+    //             $msg = '   
+    //             <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+    //               <i class="bi-check-circle-fill"></i>
+    //               <strong class="mx-2">Success!</strong> Your password was successfully updated.
+    //               <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    //             </div>
+    //           ';
+    //         } else {
+    //             $msg = '<div class="alert alert-danger" role="alert">Failed to update the password. Please try again.</div>';
+    //         }
+    //     }
+    // }
     /**
      * Fetch user by Id
      */
@@ -166,10 +179,7 @@
 
 <?php include('layout/header.php'); ?>
 
-
-
 <div class="container emp-profile">
-
     <form method="post">
         <div class="row">
             <div class="col-md-4">
@@ -181,16 +191,6 @@
                         <input type="file" name="file" />
                     </div>
                 </div>
-
-                <div class="col-md-8 ">
-                    <div class="profile-work">
-                        <ul>
-                            <li>Registerd <?=htmlentities($userById['create_date']) ?></li>
-                            <li><a href="">Order History</a></li>
-
-                        </ul>
-                    </div>
-                </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
@@ -198,89 +198,81 @@
                         <?=htmlentities(ucfirst($userById['first_name']))?>
                         <?=htmlentities(ucfirst($userById['last_name']))?>
                     </h5>
-
-                    <div class="col-md-6">
-                        <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>User Name</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><?=htmlentities($userById['username']) ?></p>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Email</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><?=htmlentities($userById['email']) ?></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Phone</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><?=htmlentities($userById['phone']) ?></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Postal Code</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><?=htmlentities($userById['postal_code']) ?></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Street</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><?=htmlentities($userById['street']) ?></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>City</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><?=htmlentities($userById['city']) ?></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Country</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><?=htmlentities($userById['country']) ?></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
+                    <p class='logInBtn'>Regsitered <?=htmlentities($userById['create_date'])?></p>
                 </div>
             </div>
             <div class="col-md-2">
-
                 <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfile"
                     aria-expanded="false" aria-controls="collapseProfile">
                     <i class="fas fa-user-edit"></i> Edit Profile
                 </button>
-                <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapsePassword"
-                    aria-expanded="false" aria-controls="collapsePassword">
-                    Change Password
-                </button>
-                <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
 
+                    <a href="">My orders</a><br />
 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['email']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['phone']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Postal Code</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['postal_code']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Street</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['street']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>City</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['city']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Country</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['country']) ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
 </div>
 </form>
@@ -288,11 +280,13 @@
 
 
 
+
+
 <div class="collapse" id="collapseProfile">
 
     <div class="d-flex justify-content-center bg-dark text-light py-5">
         <form action="" method="POST">
-            <?=$msgProfile ?>
+            <?=$msg ?>
             <div class="col-md-12">
                 <label for="input1">Username</label>
                 <input class="text" type="text" name="username" value="<?=htmlentities($userById['username'])?>">
@@ -345,11 +339,11 @@
         </form>
     </div>
 </div>
-<div class="collapse" id="collapsePassword">
+<!-- <div class="collapse" id="collapsePassword">
 
     <div class="d-flex justify-content-center bg-dark text-light py-5">
         <form action="" method="POST">
-            <?=$msgPassword ?>
+            
 
             <div class="col-md-12">
                 <label for="input10">Password</label>
@@ -373,5 +367,5 @@
 
         </form>
     </div>
-</div>
+</div> -->
 <?php include('layout/footer.php'); ?>
