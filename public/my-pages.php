@@ -268,7 +268,7 @@
                     <div class="col-md-2">
                    
                         <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfile" aria-expanded="false" aria-controls="collapseProfile">
-                        Edit Profile
+                        <i class="fas fa-user-edit"></i> Edit Profile
                         </button>
                         <button class='btn logInBtn' type="button" data-bs-toggle="collapse" data-bs-target="#collapsePassword" aria-expanded="false" aria-controls="collapsePassword">
                         Change Password

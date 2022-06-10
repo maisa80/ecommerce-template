@@ -22,21 +22,33 @@ a{
 }
 
 .logo {
-    margin: 0 auto;
+    margin: 0 5px;
+    width: 40vh;
 }
-
-.indexPage .shopBtn {
+#shop{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 70vh;
+    margin-left: 100vh;
+}
+.indexPage  {
     background-color: #fcbd4d;
     margin-bottom: 30em;    
   }
-
+  .shopBtn {
+    background-color: #fcbd4d;
+     
+  }
 .indexBtn {
     color: black;   
   }
 
 
 /* Header ---------------------------------*/
-.navBtn {text-transform: uppercase;}
+.navBtn {
+    text-transform: uppercase;
+    font-weight: 600;
+}
 
 .logInBtn, .logInBtn a, .navBtn, .logInBtn span {
     color:#bf1f2d !important;
@@ -183,6 +195,13 @@ a, span{
 }
 .d-flex{
     padding-top:10px;
+    align-items: center;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
 }
 /* Admin page ---------------------------------*/
 

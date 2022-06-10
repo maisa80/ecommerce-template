@@ -18,30 +18,33 @@
       
 	<div class="container-fluid p-0">
 		<!-- Log in/ Log out -->
-		<div class="d-flex justify-content-end bg-transparent">
-			<div class="d-flex justify-content-end">
-			
-        	
-			
-			<?php
-				if (isset($_SESSION['username'])) {
-					
-				// ucfirst makes the first letter to a CAPITAL letter :)
-				$loggedInUsername = htmlentities(ucfirst($_SESSION['username']));
-				$loggedInUserId = htmlentities($_SESSION['id']);
-				$aboveNave = "<span class='logInBtn'><b>Hi {$loggedInUsername}</b></span>
-				<a id='mypages' class='logInBtn' href='my-pages.php?userId=$loggedInUserId'>My pages</a>
-				<a href='logout.php' class='logInBtn' >Log out</a>";
-				} else {
-				$aboveNave = "<a href='register.php' class='logInBtn'>Sin up</a> 
-				 <a href='login.php' class='logInBtn'>Log in</a>";
-				}
+		
+			<div class="header">
+				<div id="logo">
+					<img class="logo" src="img/babysme_logo.png" alt="logo">
+				</div>
+				<div id="topmenu">
+					<?php
+						if (isset($_SESSION['username'])) {
+							
+						// ucfirst makes the first letter to a CAPITAL letter :)
+						$loggedInUsername = htmlentities(ucfirst($_SESSION['username']));
+						$loggedInUserId = htmlentities($_SESSION['id']);
+						$aboveNave = "<span class='logInBtn'><b>Hi {$loggedInUsername}</b></span>
+						<a id='mypages' class='logInBtn' href='my-pages.php?userId=$loggedInUserId'><i class='fas fa-user-alt'></i> My account</a>
+						<a href='logout.php' class='logInBtn' ><i class='fas fa-sign-out-alt'></i> Log out</a>";
+						} else {
+						$aboveNave = "<a href='register.php' class='logInBtn'><i class='fas fa-user'></i> Sin up</a> 
+						<a href='login.php' class='logInBtn'><i class='fas fa-sign-in-alt'></i> Log in</a>";
+						}
 
-				echo $aboveNave;
-				
-        	?>
-			<a id="dashboard"  class="logInBtn" href="admin/index.php">Dashboard</a>
-		</div>			  
+						echo $aboveNave;
+						
+					?>
+				</div>
+			</div>
+			<!-- <a id="dashboard"  class="logInBtn" href="admin/index.php">Dashboard</a> -->
+					  
 	</div>
 	<!-- <form action="my-pages.php?" method="GET">
 					<input type="hidden" name="id" value="">
@@ -103,5 +106,7 @@
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</div>
+		
