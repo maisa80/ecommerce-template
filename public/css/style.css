@@ -33,7 +33,7 @@ a{
 }
 .indexPage  {
     background-color: #fcbd4d;
-    margin-bottom: 30em;    
+    /* margin-bottom: 30em;     */
   }
   .shopBtn {
     background-color: #fcbd4d;
@@ -202,6 +202,9 @@ a, span{
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+}
+footer{
+    margin-top: 30px;
 }
 /* Admin page ---------------------------------*/
 
