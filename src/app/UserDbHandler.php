@@ -90,7 +90,8 @@ class UserDbHandler
         $sql = "
             UPDATE users
             SET username=:username, first_name = :first_name, last_name= :last_name, email = :email, 
-            phone = :phone, street = :street, postal_code= :postal_code, city = :city, country = :country   
+            phone = :phone, street = :street, postal_code= :postal_code, city = :city,
+            country = :country  
             WHERE id = :id
         ";
 
@@ -122,6 +123,22 @@ class UserDbHandler
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':password', $encryptedPassword);
+        $stmt->execute();
+    }
+    public function changeUserImage(
+        $id,
+        $img_url
+    ) {
+        $sql = "
+            UPDATE users
+            SET img_url=:img_url
+            WHERE id = :id
+        ";
+
+    
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':img_url', $img_url);
         $stmt->execute();
     }
     /*------------------------------------------------------------*/

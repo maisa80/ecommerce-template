@@ -28,6 +28,7 @@
         $postal_code       = trim($_POST['postal_code']);
         $city              = trim($_POST['city']);
         $country           = trim($_POST['country']);
+        
 
         if (empty($first_name)) {
             $error .= "<li>The first name is mandatory</li>";
@@ -93,6 +94,7 @@
                 'country'       => $country,
                 'first_name'    => $first_name,
                 'last_name'     => $last_name,
+                
             ];
 
             $result = ($userData);
