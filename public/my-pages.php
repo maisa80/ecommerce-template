@@ -367,7 +367,7 @@
             
 
                 <?php if($userById['img_url'] == "") { ?>
-                <img class="myImg" src="img/daffy.jpg" alt="<?php echo $userById['username']; ?>"
+                <img class="myImg" src="img/default-user.png" alt="<?php echo $userById['username']; ?>"
                     >
                 <?php } else { ?>
                 <img class="myImg" src="<?php echo $userById['img_url']?>"
