@@ -1,5 +1,5 @@
 # Baby's & Me Online Shop
-  ## The project is an online store website made during Web server programming course in @ChangeMakerEducations written in PHP, Javascript & CSS3 using MySql & Apache web server.
+The project is an online store website made during Webserver programming course in @ChangeMakerEducations written in PHP, Javascript & CSS3 using MySql & Apache web server.
 
   1. User can register new account and log in.
   2. User can browse shop and add items to cart.
