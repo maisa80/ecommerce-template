@@ -4,11 +4,19 @@
     $pageId = 'login';
     $message = "";
     if (isset($_GET['mustLogin'])) {
-        $message = '<div class="alert alert-danger" role="alert">Error! You need to log in to view this page. Please log in och sign up.</div>';
+        $message = '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
+        <i class="bi-check-circle-fill"></i>
+        Error! You need to log in to view this page. Please log in och sign up.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>';
     }
 
     if (isset($_GET['logout'])) {
-        $message = '<div class="alert alert-success" role="alert">You have logged out!</div>';
+        $message = '<div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+        <i class="bi-check-circle-fill"></i>
+        You have logged out!
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>';
     }
 
     if (isset($_POST['doLogin'])) {
@@ -27,11 +35,11 @@
             $_SESSION['id']       = $user['id'];
             redirect('index.php');
         } else {
-            $message = '
-                <div class="error_msg">
-                    Fel inloggningsuppgifter. Försök igen!
-                </div>
-            ';
+            $message ='<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
+            <i class="bi-check-circle-fill"></i>
+            Unvalid e-mail OR password. Please try again!
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>'; 
         }
 
 

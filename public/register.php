@@ -31,55 +31,57 @@
         
 
         if (empty($first_name)) {
-            $error .= "<li>The first name is mandatory</li>";
+            $error .= "<li>The first name is mandatory</li><br>";
         }
 
         if (empty($last_name)) {
-            $error .= "<li>The last name is mandatory</li>";
+            $error .= "<li>The last name is mandatory</li><br>";
         }
 
         if (empty($email)) {
-            $error .= "<li>The e-mail address is mandatory</li>";
+            $error .= "<li>The e-mail address is mandatory</li><br>";
         }
 
         if (empty($password)) {
-            $error .= "<li>The password is mandatory</li>";
+            $error .= "<li>The password is mandatory</li><br>";
         }
 
         if (empty($phone)) {
-            $error .= "<li>The phone is mandatory</li>";
+            $error .= "<li>The phone is mandatory</li><br>";
         }
 
         if (empty($street)) {
-            $error .= "<li>The street is mandatory</li>";
+            $error .= "<li>The street is mandatory</li><br>";
         }
 
         if (empty($postal_code)) {
-            $error .= "<li>The postal code is mandatory</li>";
+            $error .= "<li>The postal code is mandatory</li><br>";
         }
 
         if (empty($city)) {
-            $error .= "<li>The city is mandatory</li>";
+            $error .= "<li>The city is mandatory</li><br>";
         }
 
         if (empty($country)) {
-            $error .= "<li>The country is mandatory</li>";
+            $error .= "<li>The country is mandatory</li><br>";
         }
 
         if (!empty($password) && strlen($password) < 6) {
-            $error .= "<li>The password cant be less than 6 characters</li>";
+            $error .= "<li>The password cant be less than 6 characters</li><br>";
         }
 
         if ($confirmPassword !== $password) {
-            $error .= "<li>The confirmed password doesnt match</li>";
+            $error .= "<li>The confirmed password doesnt match</li><br>";
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error .= "<li>Unvalid e-mail address</li>";
+            $error .= "<li>Unvalid e-mail address</li><br>";
         }
 
         if ($error) {
-            $msg = "<ul class='error_msg'>{$error}</ul>";
+            $msg = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+            <i class='bi-check-circle-fill'></i><ul>{$error}</ul>
+            <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
         }
 
         if (empty($error)) {
@@ -98,14 +100,27 @@
             ];
 
             $result = ($userData);
-
-            if ($result) {
-                $userDbHandler->addUser($username,$first_name, $last_name, $email, $password, $phone, 
+            if ($error) {
+                $msg .= '<div class="alert alert-danger" role="alert">Failed to create an account. Please try again.</div>';
+            } else {
+                try {
+                    $userDbHandler->addUser($username,$first_name, $last_name, $email, $password, $phone, 
                 $street, $postal_code, $city, $country);
                 $msg = '<div class="alert alert-success" role="alert">The account was successfully created</div>';
-            } else {
-                $msg = '<div class="alert alert-danger" role="alert">Failed to create an account. Please try again.</div>';
+                } catch (\PDOException $e) {
+                    if ((int) $e->getCode() === 23000) {
+                        $msg = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+                        <i class='bi-check-circle-fill'></i>This email is already registerd. Please enter another email!
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
+                       
+                    } else {
+                        throw new \PDOException($e->getMessage(), (int) $e->getCode());
+                    }
+                }
+                
+                
             }
+            
         }
     }
 

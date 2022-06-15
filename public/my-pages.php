@@ -77,7 +77,7 @@
         }
         
     }
-    // debug($_POST);
+    
     $first_name  = '';
     $last_name   = '';
     $phone       = '';
@@ -107,87 +107,49 @@
         $country           = trim($_POST['country']);
 
         if (empty($username)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            The username is mandatory
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>'; 
+            $error .= "<li>The username name is mandatory</li><br>";
         }
 
         if (empty($first_name)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            The first name is mandatory
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>'; 
+            $error .= "<li>The first name is mandatory</li><br>";
         }
 
         if (empty($last_name)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            The last name is mandatory
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>';  
+            $error .= "<li>The last name is mandatory</li><br>"; 
         }
 
         if (empty($email)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            The e-mail address is mandatory
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>';   
+            $error .= "<li>The email address is mandatory</li><br>"; 
         }
 
         if (empty($phone)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            The phone is mandatory
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div> ';  
+            $error .= "<li>The phone is mandatory</li><br>";
         }
 
         if (empty($street)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            The street is mandatory
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>';  
+            $error .= "<li>The street is mandatory</li><br>";
         }
 
         if (empty($postal_code)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            The postal code is mandatory
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>';
+            $error .= "<li>The postal code is mandatory</li><br>";
         }
 
         if (empty($city)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            The city is mandatory
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>';
+            $error .= "<li>The city is mandatory</li><br>";
         }
 
         if (empty($country)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            The country is mandatory
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>';
+            $error .= "<li>The country is mandatory</li><br>";
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error .= '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
-            <i class="bi-check-circle-fill"></i>
-            Unvalid e-mail address
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>';
+            $error .= "<li>Unvalid e-mail address</li><br>";
         }
 
         if ($error) {
-            $msg .= "<div class='error_msg'>{$error}</div><div class='alert alert-danger' role='alert'>Failed to update the user. Please try again.</div>";
+            $msg .= "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+            <i class='bi-check-circle-fill'></i><ul>{$error}</ul>
+            <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
         }
 
         if (empty($error)) {
@@ -348,6 +310,13 @@
             }
         }
     }
+
+    if (isset($_POST['deleteUserBtn'])) {
+        $userDbHandler->deleteUser();
+        session_destroy();
+        redirect('login.php');
+        
+    }
     /**
      * Fetch user by Id
      */
@@ -364,18 +333,16 @@
     <div class="row">
         <div class="col-md-4">
             <div class="profile-img">
-            
+
 
                 <?php if($userById['img_url'] == "") { ?>
-                <img class="myImg" src="img/default-user.png" alt="<?php echo $userById['username']; ?>"
-                    >
+                <img class="myImg" src="img/default-user.png" alt="<?php echo $userById['username']; ?>">
                 <?php } else { ?>
-                <img class="myImg" src="<?php echo $userById['img_url']?>"
-                    alt="<?php echo $userById['username']; ?>" >
+                <img class="myImg" src="<?php echo $userById['img_url']?>" alt="<?php echo $userById['username']; ?>">
                 <?php } ?>
-                
 
-                
+
+
             </div>
         </div>
         <div class="col-md-6">
@@ -386,66 +353,66 @@
                 </h5>
                 <p class='logInBtn'>Regsitered <?=htmlentities($userById['create_date'])?></p>
                 <div class="tab-content profile-tab" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Username</label>
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Username</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['username']) ?></p>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <p><?=htmlentities($userById['username']) ?></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['email']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['phone']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Postal Code</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['postal_code']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Street</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['street']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>City</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['city']) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Country</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><?=htmlentities($userById['country']) ?></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Email</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p><?=htmlentities($userById['email']) ?></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Phone</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p><?=htmlentities($userById['phone']) ?></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Postal Code</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p><?=htmlentities($userById['postal_code']) ?></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Street</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p><?=htmlentities($userById['street']) ?></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>City</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p><?=htmlentities($userById['city']) ?></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Country</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p><?=htmlentities($userById['country']) ?></p>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
+                </div>
             </div>
         </div>
         <div class="col-md-2">
@@ -480,10 +447,15 @@
                 <button type="button" class="btn logInBtn">
                     My orders
                 </button>
+                <input type="hidden" name="userId" value="<?=$userById['id']?>">
+                <button type="button" class="btn logInBtn" data-toggle="modal" data-target="#deleteUserAccountModal"
+                    data-username="<?=htmlentities($userById['username'])?>" data-id="<?=htmlentities($_POST['id'])?>">
+                    Delete my account
+                </button>
             </div>
         </div>
         <div class="col-md-4">
-            
+
 
         </div>
     </div>
@@ -513,7 +485,7 @@
                         <label class="required">Last Name</label>
                         <input type="text" class="form-control" name="last_name">
                         <label class="required">Email</label>
-                        <input type="text" class="form-control" name="email">
+                        <input type="text" class="form-control" name="email" disabled>
                         <label class="required">Phone</label>
                         <input type="text" class="form-control" name="phone">
                         <label class="required">Street</label>
@@ -593,4 +565,32 @@
     </div>
 </div>
 
+<!-- Delete User account Modal -->
+<div class="modal fade" id="deleteUserAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteUserLabel">Delete User Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="POST">
+                <div class="modal-body">
+                    <p>Are you sure you want to delete your account <?=htmlentities($userById['username'])?>??</p>
+                    <input type="hidden" name="userId" value="<?=$userById['id']?>">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <form action="" method="POST" class="float-end">
+
+                        <input type="submit" name="deleteUserBtn" value="Delete" class="btn btn-danger">
+                    </form>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <?php include('layout/footer.php'); ?>
