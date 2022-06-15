@@ -167,28 +167,7 @@
             ];
 
             $result = ($userData);
-
-            if ($result) {
-                $userDbHandler->updateUser(
-                    $_GET['userId'],
-                    $username,
-                    $first_name,
-                    $last_name,
-                    $email,
-                    $phone,
-                    $street,
-                    $postal_code,
-                    $city,
-                    $country
-                );
-                $msg = '   
-                <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
-                  <i class="bi-check-circle-fill"></i>
-                  <strong class="mx-2">Success!</strong> User profile was successfully updated.
-                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-              ';
-            } else {
+            if ($error) {
                 $msg = '
                 <div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
                 <i class="bi-check-circle-fill"></i>
@@ -196,6 +175,37 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
                 ';
+            } else {
+                try {
+                    $userDbHandler->updateUser(
+                        $_GET['userId'],
+                        $username,
+                        $first_name,
+                        $last_name,
+                        $email,
+                        $phone,
+                        $street,
+                        $postal_code,
+                        $city,
+                        $country
+                    );
+                    $msg = '   
+                    <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+                      <i class="bi-check-circle-fill"></i>
+                      <strong class="mx-2">Success!</strong> User profile was successfully updated.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                  ';
+                } catch (\PDOException $e) {
+                    if ((int) $e->getCode() === 23000) {
+                        $msg = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+                        <i class='bi-check-circle-fill'></i>This email is already registerd. Please enter another email!
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
+                       
+                    } else {
+                        throw new \PDOException($e->getMessage(), (int) $e->getCode());
+                    }
+                }
             }
         }
     }
@@ -485,7 +495,7 @@
                         <label class="required">Last Name</label>
                         <input type="text" class="form-control" name="last_name">
                         <label class="required">Email</label>
-                        <input type="text" class="form-control" name="email" disabled>
+                        <input type="text" class="form-control" name="email" >
                         <label class="required">Phone</label>
                         <input type="text" class="form-control" name="phone">
                         <label class="required">Street</label>

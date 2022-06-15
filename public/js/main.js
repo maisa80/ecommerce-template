@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   // Delete User Ajax  -------------------------------------------//
   $(".delete-user-btn").on("click", deleteUserEvent);
@@ -222,5 +223,8 @@ function updateProductEvent(e) {
     },
   });
 }
+
+/*User profile modal*/
+
 
 
