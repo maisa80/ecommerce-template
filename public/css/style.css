@@ -236,9 +236,9 @@ footer{
     margin: 20px;
    
 }
-/* .cart-detail .col{
+.cart-detail .col{
 margin:10px;
-} */
+}
 .cart-detail{
     display: flex;
     align-items: center;

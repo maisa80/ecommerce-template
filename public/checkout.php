@@ -11,7 +11,7 @@
             WHERE id = :id;
         ";
         
-        $stmt = $dbconnect->prepare($query);
+        $stmt = $dbo->prepare($query);
         $stmt->bindValue(':id', $_SESSION['id']);
         $stmt->execute();
         $user = $stmt->fetch();

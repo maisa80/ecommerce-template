@@ -23,7 +23,7 @@
                 VALUES (:title, :description, :price, :image_url);
                 ";
 
-                $stmt = $dbconnect->prepare($query);
+                $stmt = $pdo->prepare($query);
                 $stmt->bindValue(':image_url', $image_url);
                 $stmt->bindValue(':title', $title);
                 $stmt->bindValue(':description', $description);

@@ -26,7 +26,7 @@ if (isset($_POST['send'])) {
                 WHERE id = :id
                 ";
 
-            $stmt = $dbconnect->prepare($query);
+            $stmt = $pdo->prepare($query);
             $stmt->bindValue(':title', $title);
             $stmt->bindValue(':description', $description);
             $stmt->bindValue(':price', $price);

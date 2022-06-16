@@ -59,23 +59,23 @@
 				</form>
 			</div> -->
     <!-- Navbar -->
-    <div class="d-flex justify-content-center text-center bg-transparent pb-4">
-        <div class="col">
+    <div >
+        <div class="col-2">
             <form action="index.php?">
                 <input type="submit" value="Home" class="btn navBtn">
             </form>
         </div>
-        <div class="col">
+        <div class="col-2">
             <form action="products.php?">
                 <input type="submit" value="Products" class="btn navBtn">
             </form>
         </div>
-        <div class="col">
+        <div class="col-2">
             <form action="contact.php?">
                 <input type="submit" value="Contact" class="btn navBtn">
             </form>
         </div>
-        <div class="d-flex justify-content-end mr-2">
+        <div class="col-6">
             
 
             <?php include('cart.php'); ?>
