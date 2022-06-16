@@ -1,18 +1,18 @@
- <?php
+<?php
     require('../src/config.php');
     $pageTitle= 'Checkout';
     $pageId = 'checkout';
     
-    checkLoginSession(); //refakturerad
+    checkLoginSession(); // Check if user is logged in
 
     try {
-        $query = "
+        $sql = "
             SELECT * FROM users
             WHERE id = :id;
         ";
         
-        $stmt = $dbo->prepare($query);
-        $stmt->bindValue(':id', $_SESSION['id']);
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $_SESSION['id']);
         $stmt->execute();
         $user = $stmt->fetch();
     } catch (\PDOException $e) {
@@ -38,7 +38,7 @@
     <tbody>
         <?php foreach ($_SESSION['items'] as $articleId => $articleItem) {?>
             <tr>
-                <td><img src="img/<?=$articleItem['img_url']?>" style="width:50px;height:auto;"></td>
+                <td><img src="img/<?=$articleItem['image_url']?>" style="width:50px;height:auto;"></td>
                 <td><?=$articleItem['description']?></td>
                 <td>
                     <form action="delete-cart-item.php" method="POST">
@@ -113,7 +113,7 @@
             <input type="text" class="form-control" name="city" id="inputCity" <?= !empty($user) ? 'readonly' : '' ?> value="<?= isset($user['city']) ? htmlentities($user['city']) : ''?>">
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4">               
+            <div class="form-group col-md-4">             
                 <label for="inputCountry">Country</label>
             </div>
         </div>
