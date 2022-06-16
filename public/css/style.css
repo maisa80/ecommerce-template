@@ -214,6 +214,9 @@ a, span{
     align-items: center;
     margin-top: 10px;
 }
+
+/* Footer ---------------------------------*/
+
 footer{
     margin-top: 30px;
 }
@@ -225,6 +228,49 @@ footer{
 .form-group label{
     color:#bf1f2d;
 }
+
 /* Admin page ---------------------------------*/
 
 .adminBtn {margin-top: 25em;}
+
+/* Contact page ---------------------------------*/
+
+div.elem-group {
+  margin: 40px 0;
+}
+
+label {
+  display: block;
+  font-family: 'Mukta', sans-serif;
+  padding-bottom: 4px;
+  font-size: 1.25em;
+}
+
+input, select, textarea {
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1.25em;
+  font-family:  'Kameron', sans-serif;
+  width: 500px;
+  padding: 8px;
+}
+
+textarea {
+  height: 250px;
+}
+
+button {
+  height: 50px;
+  background: green;
+  color: white;
+  border: 2px solid darkgreen;
+  font-size: 1.25em;
+  font-family:  'Mukta', sans-serif;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 2px solid black;
+}
