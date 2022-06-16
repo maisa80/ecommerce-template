@@ -1,7 +1,7 @@
 <?php
 require('../../src/config.php');
 checkLoginSession();
-require('../../src/dbconnect.php');
+
 
 $title          = '';
 $description    = '';
@@ -85,16 +85,16 @@ if ($error) {
 
 if (empty($error)) {
   try {
-    $query = "
-                INSERT INTO products (title, description, price, img_url)
-                VALUES (:title, :description, :price, :img_url);
+    $sql= "
+                INSERT INTO products (title, description, price, image_url)
+                VALUES (:title, :description, :price, :image_url);
             ";
 
-    $stmt = $dbconnect->prepare($query);
-    $stmt->bindValue(':title', $title);
-    $stmt->bindValue(':description', $description);
-    $stmt->bindValue(':price', $price);
-    $stmt->bindValue(':img_url', $img_url);
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':title', $title);
+    $stmt->bindParam(':description', $description);
+    $stmt->bindParam(':price', $price);
+    $stmt->bindParam(':image_url', $image_url);
     $products = $stmt->execute();
   } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int) $e->getCode());
