@@ -14,10 +14,11 @@
                 <p>We are located in the heart of the city of Stockholm, Sweden. We are open Monday to Friday from 9:00 to 17:00. We are also open on weekends from 10:00 to 17:00.</p>
                 <p>We are happy to answer any questions you have.</p>
                 <p>Please feel free to contact us using the contact form.</p> 
-                <p>You can also contact us by phone or email.</p>
-                 
+                <p>You can also contact us by phone or email.</p>                 
             </div>
         </div>
+
+
         <div class="col-12 col-md-6">
             <div class="contact-form">
                 <h1>Contact Form</h1>
