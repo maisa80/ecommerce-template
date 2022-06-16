@@ -2,48 +2,52 @@
     require('../src/config.php');
     $pageTitle= 'Cart';
     $pageId = 'cart';
-
+    debug($_POST);
     // echo"<pre>";
     // print_r($_POST);
     // echo"<pre>";
     
     if(!empty($_POST['quantity'])) {
-        $articleId = (int) $_POST['articleId'];
+        $productId = (int) $_POST['productId'];
         $quantity = (int) $_POST['quantity'];
        
         try{
-            $query = "
+            $sql = "
                 SELECT * FROM products
                 WHERE id = :id;
                 ";
-            $stmt = $dbconnect->prepare($query);
-            $stmt->bindValue(':id', $articleId);
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':id', $productId);
             $stmt->execute();
-            $article = $stmt->fetch();
+            $product = $stmt->fetch();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int) $e->getCode());
         }
         
-        if ($article) {
-            $article = array_merge($article, ['quantity' => $quantity]);
+        if ($product) {
+            $product = array_merge($product, ['quantity' => $quantity]);
              echo"<pre>";
-             print_r($article);
+             print_r($product);
              echo"<pre>";
         
-            $articleItem = [$articleId => $article];
+            $cartItem = [$productId => $product];
+
+             // debug($cartItem);
         }
 
-        if (empty($_SESSION['items'])) {
-            $_SESSION['items'] = $articleItem;
+        if (empty($_SESSION['cartItems'])) {
+            $_SESSION['cartItems'] = $cartItem;
         } else {
-            if (isset($_SESSION['items'][$articleId])) {
-                $_SESSION['items'][$articleId]['quantity'] += $quantity;
+            if (isset($_SESSION['cartItems'][$productId])) {
+                $_SESSION['cartItems'][$productId]['quantity'] += $quantity;
             } else {
-                $_SESSION['items'] += $articleItem;
+                $_SESSION['cartItems'] += $cartItem;
             }
+            // debug($_SESSION['cartItems']);
+           
         }
     }
-
-    header('Location: products.php');
+    header('Location:'. $_SERVER['HTTP_REFERER']);
+    // header('Location: products.php');
     exit;
 ?>

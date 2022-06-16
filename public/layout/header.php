@@ -76,39 +76,9 @@
             </form>
         </div>
         <div class="d-flex justify-content-end mr-2">
-            <a href="products.php" data-toggle="dropdown" role="button" aria-expanded="false">
-                <button type="button" class="btn dropdown-toggle cartBtn" data-toggle="dropdown-toggle">
-                    <span class="fa fa-gift bigicon">View Cart</span>
-                    <span class="badge badge-pill badge-danger"></span>
-                </button>
-            </a>
+            
 
-            <!-- Dropdown Menu -->
-            <div class="dropdown-menu">
-                <div class="d-flex flex-column">
-                    <div class="col">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="col total-section text-left">
-
-                        <div class="row cart-detail">
-                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                                <img src="admin/" style="width:50px;height:auto;">
-                            </div>
-                            <div class="col">
-                            </div>
-                            <div class="col">
-                                Antal:
-                            </div>
-                        </div>
-                        <span class="count">Total:kr</span>
-                        <form action="checkout.php" method="POST">
-                            <input type="submit" name="" value="Checkout" class="btn btn-primary">
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <?php include('cart.php'); ?>
 
         </div>
     </div>

@@ -225,6 +225,23 @@ footer{
 .form-group label{
     color:#bf1f2d;
 }
+
+.manage{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+   
+}
+.cart-detail .col{
+margin:10px;
+}
+.cart-detail{
+    display: flex;
+    align-items: center;
+}
+.row{
+    align-items: center;
+}
 /* Admin page ---------------------------------*/
 
 .adminBtn {margin-top: 25em;}
