@@ -1,5 +1,4 @@
 <?php
-require '../src/dbconnect.php';
 require '../src/config.php';
 
 if (isset($_POST['deleteBtn'])) {
@@ -20,16 +19,16 @@ if (isset($_POST['send'])) {
 
     if (empty($error)) {
         try {
-            $query = "
+            $sql= "
                 UPDATE products
                 SET title = :title, description = :description, price = :price
                 WHERE id = :id
                 ";
 
-            $stmt = $pdo->prepare($query);
-            $stmt->bindValue(':title', $title);
-            $stmt->bindValue(':description', $description);
-            $stmt->bindValue(':price', $price);
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':title', $title);
+            $stmt->bindParam(':description', $description);
+            $stmt->bindParam(':price', $price);
             $stmt->execute();
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int) $e->getCode());
