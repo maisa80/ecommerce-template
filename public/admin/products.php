@@ -49,9 +49,9 @@
                         <button type="submit" class="btn btn-warning"><i class="fas fa-edit"></i></button>
                     </form>
 
-                    <form action="" method="POST">
+                    <form action="delete-product.php" method="POST">
                         <input type="hidden" name="productId" value="<?=htmlentities($product['id']) ?>">
-                        <button type="submit" name="deleteUserBtn" class="btn btn-danger"><i
+                        <button type="submit" name="deleteProductBtn" class="btn btn-danger"><i
                                 class="fas fa-trash"></i></button>
                     </form>
                 </td>
