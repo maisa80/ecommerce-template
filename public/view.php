@@ -31,7 +31,7 @@ if (isset($_POST['send'])) {
             $stmt->bindValue(':description', $description);
             $stmt->bindValue(':price', $price);
             $stmt->execute();
-        } catch (\PDOException$e) {
+        } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
@@ -40,28 +40,25 @@ if (isset($_POST['send'])) {
 $product = $productDbHandler->fetchProductById($id);
 ?>
 
-<?php include 'layout/header.php';?>
+<?php include 'layout/header.php'; ?>
 
 <div class="d-flex flex-column mt-5 ml-5" id="productPage">
     <form action="#" method="POST">
         <div class="d-flex justify-content-center">
             <div class="col-3">
-                <img src="admin/<?=$product['image_url']?>" style="width:300px;height:auto;">
+                <img src="admin/<?= $product['image_url'] ?>" style="width:400px;height:auto;">
             </div>
-
-            <div class="d-flex flex-column">
-                <div class="col">
-                    <h1><?=htmlentities($product['title'])?></h1> <br>
-                    <p><?=htmlentities($product['description'])?></p>
-                </div>
-
-                <div class="col">
-                    <h3 class="font-weight-bold"><?=htmlentities($product['price'])?> SEK</h3>
-                </div>
+        </div>
+        <div class="d-flex flex-column">
+            <div class="col">
+                <h1><?= htmlentities($product['title']) ?></h1> <br>
+                <p><?= htmlentities($product['description']) ?></p>
+            </div>
+            <div class="col">
+                <h3 class="font-weight-bold"><?= htmlentities($product['price']) ?> SEK</h3>
             </div>
         </div>
     </form>
-
     <div class="d-flex justify-content-center">
         <form action="products.php">
             <input type="submit" class="form-control btn-dark btn text-light mx-auto" value="Back to products">
@@ -69,5 +66,4 @@ $product = $productDbHandler->fetchProductById($id);
     </div>
 </div>
 
-
-<?php include 'layout/footer.php';?>
+<?php include 'layout/footer.php'; ?>
