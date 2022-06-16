@@ -1,53 +1,51 @@
 <?php
-    require('../src/config.php');
-    $pageTitle= 'Cart';
-    $pageId = 'cart';
-    debug($_POST);
-    // echo"<pre>";
-    // print_r($_POST);
-    // echo"<pre>";
-    
-    if(!empty($_POST['quantity'])) {
-        $productId = (int) $_POST['productId'];
-        $quantity = (int) $_POST['quantity'];
-       
-        try{
-            $sql = "
+require('../src/config.php');
+$pageTitle = 'Cart';
+$pageId = 'cart';
+debug($_POST);
+
+echo"<pre>";
+print_r($_POST);
+echo"<pre>";
+
+if (!empty($_POST['stock'])) {
+    $articleId = (int) $_POST['articleId'];
+    $stock = (int) $_POST['stock'];
+
+    try {
+        $sql = "
                 SELECT * FROM products
                 WHERE id = :id;
                 ";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':id', $productId);
-            $stmt->execute();
-            $product = $stmt->fetch();
-        } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int) $e->getCode());
-        }
-        
-        if ($product) {
-            $product = array_merge($product, ['quantity' => $quantity]);
-             echo"<pre>";
-             print_r($product);
-             echo"<pre>";
-        
-            $cartItem = [$productId => $product];
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $articleId);
+        $stmt->execute();
+        $article = $stmt->fetch();
+    } catch (\PDOException $e) {
+        throw new \PDOException($e->getMessage(), (int) $e->getCode());
+    }
 
-             // debug($cartItem);
-        }
+    if ($article) {
+        $article = array_merge($article, ['stock' => $stock]);
+        echo "<pre>";
+        print_r($article);
+        echo "<pre>";
 
-        if (empty($_SESSION['cartItems'])) {
-            $_SESSION['cartItems'] = $cartItem;
+        $articleItem = [$articleId => $article];
+    }
+
+    if (empty($_SESSION['items'])) {
+        $_SESSION['items'] = $articleItem;
+    } else {
+        if (isset($_SESSION['items'][$articleId])) {
+            $_SESSION['items'][$articleId]['stock'] += $stock;
         } else {
-            if (isset($_SESSION['cartItems'][$productId])) {
-                $_SESSION['cartItems'][$productId]['quantity'] += $quantity;
-            } else {
-                $_SESSION['cartItems'] += $cartItem;
-            }
-            // debug($_SESSION['cartItems']);
-           
+            $_SESSION['items'] += $articleItem;
         }
     }
-    header('Location:'. $_SERVER['HTTP_REFERER']);
-    // header('Location: products.php');
-    exit;
-?>
+}
+
+header('Location: products.php');
+// header('Location:'. $_SERVER['HTTP_REFERER']);
+
+exit;
