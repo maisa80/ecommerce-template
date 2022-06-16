@@ -229,8 +229,7 @@ footer{
     color:#bf1f2d;
 }
 
-
-.manage{
+/* .manage{
     display: flex;
     justify-content: flex-end;
     margin: 20px;
@@ -242,7 +241,7 @@ margin:10px;
 .cart-detail{
     display: flex;
     align-items: center;
-}
+} */
 /* .row{
     align-items: center;
 }
@@ -254,7 +253,7 @@ margin:10px;
 /* Contact page ---------------------------------*/
 
 div.elem-group {
-  margin: 40px 0;
+    margin : 10px;
 }
 
 label {
@@ -270,19 +269,19 @@ input, select, textarea {
   box-sizing: border-box;
   font-size: 1.25em;
   font-family:  'Kameron', sans-serif;
-  width: 500px;
+  width: 100%;
   padding: 8px;
 }
 
 textarea {
-  height: 250px;
+  height: 100px;
 }
 
 button {
   height: 50px;
-  background: green;
-  color: white;
-  border: 2px solid darkgreen;
+  background: #bf1f2d;
+  color: #fff;
+  border: 2px solid #fcbd4d;
   font-size: 1.25em;
   font-family:  'Mukta', sans-serif;
   border-radius: 4px;
@@ -290,5 +289,5 @@ button {
 }
 
 button:hover {
-  border: 2px solid black;
+  border: 2px solid #6c757d;
 }
