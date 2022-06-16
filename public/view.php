@@ -41,7 +41,7 @@ $product = $productDbHandler->fetchProductById($id);
 ?>
 
 <?php include 'layout/header.php'; ?>
-
+<div class="container">
 <div class="d-flex flex-column mt-5 ml-5" id="productPage">
     <form action="#" method="POST">
         <div class="d-flex justify-content-center">
@@ -65,5 +65,5 @@ $product = $productDbHandler->fetchProductById($id);
         </form>
     </div>
 </div>
-
+</div>
 <?php include 'layout/footer.php'; ?>

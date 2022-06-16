@@ -6,7 +6,8 @@
     // echo"<pre>";
     // print_r($_POST);
     // echo"<pre>";
-    
+
+
     if(!empty($_POST['quantity'])) {
         $productId = (int) $_POST['productId'];
         $quantity = (int) $_POST['quantity'];

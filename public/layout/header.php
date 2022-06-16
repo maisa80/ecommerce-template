@@ -59,26 +59,26 @@
 				</form>
 			</div> -->
     <!-- Navbar -->
-    <div >
-        <div class="col-2">
+    <div class="d-flex justify-content-center text-center bg-transparent pb-4">
+
+        <div class="col">
             <form action="index.php?">
                 <input type="submit" value="Home" class="btn navBtn">
             </form>
         </div>
-        <div class="col-2">
+        <div class="col">
             <form action="products.php?">
                 <input type="submit" value="Products" class="btn navBtn">
             </form>
         </div>
-        <div class="col-2">
+        <div class="col">
             <form action="contact.php?">
                 <input type="submit" value="Contact" class="btn navBtn">
             </form>
         </div>
-        <div class="col-6">
-            
 
-            <?php include('cart.php'); ?>
 
-        </div>
+    </div>
+    <div class="d-flex justify-content-end mr-2">
+        <?php include('cart.php')?>
     </div>

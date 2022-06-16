@@ -54,7 +54,12 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/js/fontawesome.min.js"></script> -->
 
 <!-- CUSTOM JavaScript -->
-<script src="js/main.js"></script>
+<!-- <script src="js/main.js"></script> -->
+<script type="text/javascript">
+    $('.update-cart-form input[name="quantity"]').on('change', function(){
+        $(this).parent().submit();
+})
+</script>
 <script>
 $('#updateUserModal').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
