@@ -175,14 +175,14 @@ function appendProductList(data) {
 }
 
 // Update Btn Ajax  -------------------------------------------//
-$('.update-cart-form input[name="quantity"]').on("change", function () {
-  let quantity = $(this).val();
+$('.update-cart-form input[name="stock"]').on("change", function () {
+  let stock = $(this).val();
   let cartId = $(this).data("id");
 
   $.ajax({
     method: "POST",
     url: "../update-cart-item.php",
-    data: { quantity: quantity, cartId: cartId },
+    data: { stock: stock, cartId: cartId },
     success: function () {},
   });
 });
@@ -225,6 +225,3 @@ function updateProductEvent(e) {
 }
 
 /*User profile modal*/
-
-
-
