@@ -2,7 +2,6 @@
 require('../../src/config.php');
 checkLoginSession();
 
-
 $title          = '';
 $description    = '';
 $price          = '';
@@ -85,16 +84,16 @@ if ($error) {
 
 if (empty($error)) {
   try {
-    $sql= "
-                INSERT INTO products (title, description, price, image_url)
-                VALUES (:title, :description, :price, :image_url);
+    $query = "
+                INSERT INTO products (title, description, price, img_url)
+                VALUES (:title, :description, :price, :img_url);
             ";
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':title', $title);
-    $stmt->bindParam(':description', $description);
-    $stmt->bindParam(':price', $price);
-    $stmt->bindParam(':image_url', $image_url);
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':title', $title);
+    $stmt->bindValue(':description', $description);
+    $stmt->bindValue(':price', $price);
+    $stmt->bindValue(':img_url', $img_url);
     $products = $stmt->execute();
   } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int) $e->getCode());
@@ -104,7 +103,7 @@ if (empty($error)) {
   }
 }
 
-$products = $productDbHandler -> fetchAllProducts(); // fetch all products
+$products = $productDbHandler->fetchAllProducts();
 
 ?>
 
@@ -140,8 +139,7 @@ $products = $productDbHandler -> fetchAllProducts(); // fetch all products
   </div>
 </div>
 
-/*<!-- Products -->*/
-
+<!--  Display all products -->
 <table class="table table-dark lists">
   <thead>
     <tr>

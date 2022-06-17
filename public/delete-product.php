@@ -4,18 +4,19 @@
     require('../src/config.php');
 
     if (isset($_POST['deleteProductBtn'])) {
-        $productDbHandler->deleteProduct();
+      $id = $_POST['id'];
+      $productDbHandler->deleteProduct($id);
     }
     
-    $products = $productDbHandler -> deleteProduct();
+    $products = $productDbHandler->fetchAllProducts();
 
     $data = [
 
-        'products' => $products, 
-        'pageTitle' => 'Manage Products',
-        'pageId' => 'manage-products'
-
+        'products' => $products,
         
     ];
 
     echo json_encode($data);
+
+
+?>
