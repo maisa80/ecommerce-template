@@ -19,7 +19,7 @@ a {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    color: white;
+    color: #fff;
     min-height: 100vh;
     margin-top: -18rem !important;
 }
@@ -34,6 +34,7 @@ a {
     justify-content: flex-end;
     margin-top: 70vh;
     margin-left: 100vh;
+    color: #fcbd4d;
 }
 
 #shop a {
@@ -44,19 +45,18 @@ a {
 }
 
 #shop a:hover {
-    color: snow;
+    color: #495057;
 }
 
 
 .indexPage {
-    background-color: #fccc6c;
+    background-color: #bf1f2d;
 
     background-position: center;
 }
 
 .shopBtn {
     background-color: #fcbd4d;
-
 }
 
 .indexBtn {
@@ -84,7 +84,6 @@ a {
 .navBtn,
 .logInBtn span {
     color: #bf1f2d !important;
-
 }
 
 a,
@@ -98,6 +97,10 @@ span {
 
 .cartBtn a {
     color: #be1f2c;
+}
+
+.btn-warning {
+    background-color: #fcbd4d !important;
 }
 
 /* Product page ---------------------------------*/
@@ -200,7 +203,7 @@ span {
 }
 
 .profile-head h6 {
-    color: #0062cc;
+    color: #bf1f2d;
 }
 
 .profile-edit-btn {
@@ -263,7 +266,6 @@ span {
 }
 
 .profile-tab p {
-
     color: #333;
 }
 
@@ -290,8 +292,6 @@ input[type=email],
     padding-top: 10px;
     align-items: center;
 }
-
-
 
 /* Footer ---------------------------------*/
 
