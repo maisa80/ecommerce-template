@@ -10,7 +10,7 @@ foreach($_SESSION['cartItems'] as $cartId => $cartItem){
 }
 ?>
 
- <div class="container">
+ <div class="container text-end">
 
      <a href="products.php" data-toggle="dropdown" role="button" aria-expanded="false">
 

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 
@@ -62,7 +60,7 @@
 			</div> -->
     <!-- Navbar -->
     <div class="d-flex justify-content-center text-center bg-transparent pb-4">
-        
+
         <div class="col">
             <form action="index.php?">
                 <input type="submit" value="Home" class="btn navBtn">
@@ -78,9 +76,9 @@
                 <input type="submit" value="Contact" class="btn navBtn">
             </form>
         </div>
-        
-       
+
+
     </div>
     <div class="d-flex justify-content-end mr-2">
-    <?php include('cart.php')?> 
-                    </div>
+        <?php include('cart.php')?>
+    </div>
