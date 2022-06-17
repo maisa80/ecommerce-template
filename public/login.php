@@ -1,56 +1,52 @@
 <?php
-    require('../src/config.php');
-    $pageTitle= 'Login';
-    $pageId = 'login';
-    $message = "";
-    if (isset($_GET['mustLogin'])) {
-        $message = '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
+require('../src/config.php');
+$pageTitle = 'Login';
+$pageId = 'login';
+$message = "";
+if (isset($_GET['mustLogin'])) {
+    $message = '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
         <i class="bi-check-circle-fill"></i>
         Error! You need to log in to view this page. Please log in och sign up.
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>';
-    }
+}
 
-    if (isset($_GET['logout'])) {
-        $message = '<div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+if (isset($_GET['logout'])) {
+    $message = '<div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
         <i class="bi-check-circle-fill"></i>
         You have logged out!
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>';
-    }
+}
 
-    if (isset($_POST['doLogin'])) {
-        $email    = trim($_POST['email']);
-        $password = $_POST['password'];
+if (isset($_POST['doLogin'])) {
+    $email    = trim($_POST['email']);
+    $password = $_POST['password'];
 
-        $user = $userDbHandler->fetchUserByEmail($email);
-    
+    $user = $userDbHandler->fetchUserByEmail($email);
 
-
-        // Tom array => false
-        // Icke tim array => true
-        if ($user && password_verify($password, $user['password'])) { // password_verify($password, $encryptedPassword);
-            // User exists
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['id']       = $user['id'];
-            redirect('index.php');
-        } else {
-            $message ='<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
+    // Check if user exists
+    // If user does not exist, show error message
+    if ($user && password_verify($password, $user['password'])) { // password_verify($password, $encryptedPassword);
+        // User exists
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['id']       = $user['id'];
+        redirect('index.php');
+    } else {
+        $message = '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
             <i class="bi-check-circle-fill"></i>
             Unvalid e-mail OR password. Please try again!
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>'; 
-        }
-
-
+            </div>';
     }
+}
 ?>
 
 
 <?php include('layout/header.php'); ?>
 
 <div class="d-flex justify-content-center mt-5">
-    <?=$message ?>
+    <?= $message ?>
 </div>
 
 <div class="d-flex justify-content-center mt-5">
