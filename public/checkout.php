@@ -1,4 +1,4 @@
- <?php
+<?php
     require('../src/config.php');
     $pageTitle= 'Checkout';
     $pageId = 'checkout';
@@ -148,3 +148,4 @@
  </form>
 
  <?php include('layout/footer.php'); ?>
+ 
