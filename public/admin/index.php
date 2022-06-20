@@ -38,9 +38,7 @@
             <div class="overviewcard__info">
                 <h2><a href="orders.php">Orders</a></h2>
             </div>
-            <h3>
-                <?echo "(0)" ?>
-            </h3>
+            <h3>( <?=count($orders);?> )</h3>
         </div>
         <!-- <div class="overviewcard">
         <div class="overviewcard__icon">Overview</div>
