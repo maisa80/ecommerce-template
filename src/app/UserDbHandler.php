@@ -73,6 +73,7 @@ class UserDbHandler
         $stmt->bindParam(':city', $city);
         $stmt->bindParam(':country', $country);
         $stmt->execute();
+        
     }
 
     public function updateUser(

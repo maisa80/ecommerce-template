@@ -34,6 +34,8 @@ require(SRC_PATH . '/app/UserDbHandler.php');
 $userDbHandler = new UserDbHandler($pdo);
 require(SRC_PATH . '/app/ProductDbHandler.php');
 $productDbHandler = new ProductDbHandler($pdo);
+require(SRC_PATH . '/app/OrderDbHandler.php');
+$orderDbHandler = new OrderDbHandler($pdo);
 
 // Follow the same paatern when creating other classes and functions :)
 

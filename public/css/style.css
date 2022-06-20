@@ -102,7 +102,9 @@ span {
 .btn-warning {
     background-color: #fcbd4d !important;
 }
-
+.order-body{
+    min-height:80vh;
+}
 /* Product page ---------------------------------*/
 #productPage {
     background: url("../img/") no-repeat center center fixed;
