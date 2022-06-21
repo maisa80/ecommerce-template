@@ -45,7 +45,7 @@ if (isset($_POST['createOrderBtn']) && !empty($_SESSION['cartItems'])) {
         $city,
         $country
     );
-    $orderId = $orderDbHandler->fetchOrdersByUserId($userId)['id'];
+    $orderId = $pdo->lastInsertId();
 
  
     echo "UserId";

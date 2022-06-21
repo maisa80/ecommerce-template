@@ -314,12 +314,13 @@ $userById = $userDbHandler->fetchUserById($_GET['userId']);
 
  /** Fetch orders by user Id  **/
  $orders = $orderDbHandler->fetchOrdersByUserId($_GET['userId']);
- 
+ debug($_GET['userId']);
+ debug($orders);
   
-/** Fetch orders by user Id  **/
+/** Fetch orders by order Id  **/
 
-$items = $orderDbHandler->fetchOrdersByOrderId($_GET['userId']);
- debug($items);
+// $items = $orderDbHandler->fetchOrdersByOrderId($_GET['orderId']);
+//  debug($items);
 ?>
 
 <?php include 'layout/header.php';?>
@@ -473,7 +474,7 @@ $items = $orderDbHandler->fetchOrdersByOrderId($_GET['userId']);
                                         <div id="card-header">
                                             <td><a class="collapsed btn" data-bs-toggle="collapse" 
                                                     href="#collapseTwo">#<?=htmlentities($order['id']) ?> 
-                                                    <input type="hidden" name="userId" value="<?=$userById['id']?>"></a>
+                                                    <input type="hidden" name="orderId" value="<?=$order['id']?>"></a>
                                                 <?php foreach($items as $item) : ?>
                                                 <div id="collapseTwo" class="collapse" data-bs-parent="#card-header">
                                                 

@@ -67,16 +67,15 @@ class OrderDbHandler
         $sql = "
     SELECT * FROM orders WHERE user_id = :id;
     
-
     ";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
-    // Fetch order by orders id user id
+    // Fetch order by orders id 
     public function fetchOrdersByOrderId($id)
     {
         $sql = "
