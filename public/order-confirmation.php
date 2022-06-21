@@ -18,11 +18,10 @@
 <?php include('layout/header.php'); ?>
 <div class="container order-body">
 
-    <h2>Thank you for your shop!</h2>
+    <h2>Thank you for your purchase!</h2>
     <table class="table table-borderless">
         <thead>
             <tr>
-
                 <th>Product</th>
                 <th>Title</th>
                 <th>Quantity</th>
@@ -32,8 +31,8 @@
         <tbody>
             <?php foreach($cartItems as $item):?>
             <tr>
-
-                <td><img class="rounded mx-auto d-block" width="100" src="<?=$item['image_url']?>">
+                <td>
+                <img class="rounded mx-auto " width="100" src="<?=$item['image_url']?>">
                 </td>
                 <td><?=$item['title']?></td>
                 <td><?=$item['quantity']?></td>
@@ -41,7 +40,6 @@
             </tr>
             <?php endforeach; ?>
             <tr class="border-top">
-
                 <td></td>
                 <td></td>
                 <td></td>
