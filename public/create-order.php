@@ -1,8 +1,9 @@
 <?php
     require('../src/config.php');
-    ini_set('display_errors', 1);
-    debug($_POST);
-    debug($_SESSION);
+    // ini_set('display_errors', 1);
+    // debug($_POST);
+    // debug($_SESSION);
+
     if(isset($_POST['createOrderBtn']) && !empty($_SESSION['cartItems'])){
     $username          = trim($_POST['username']);
     $first_name        = trim($_POST['first_name']);
@@ -22,20 +23,18 @@
 
    
     /*Create user if does not exist*/
-   
     if(empty($user)){
   
-    $userDbHandler->addUser($username, $first_name, $last_name, $email, $password, $phone, 
-        $street, $postal_code, $city, $country);
-        
+    $userDbHandler->addUser($username, $first_name, $last_name, $email,
+     $password, $phone, $street, $postal_code, $city, $country);
         
         $userId = $pdo->lastInsertId();
         
     }
    
-   
-    $fullName =  $first_name . "". $last_name;
-    /*Create order*/
+   /*Create order*/
+    $fullName =  $first_name . " ". $last_name;
+    
     $orderDbHandler->addOrder(
         $userId,
         $cartTotalSum,

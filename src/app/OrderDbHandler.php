@@ -84,7 +84,7 @@ class OrderDbHandler
     $sql = "
     SELECT u.id, o.user_id, o.id, o.total_price, o.create_date, i.product_title, i.order_id, i.quantity, i.unit_price
     FROM users as u INNER JOIN orders as o inner JOIN order_items as i ON u.id= o.user_id AND i.order_id=o.id
-     WHERE  u.id =:id AND o.id=i.order_id
+     WHERE u.id=:id
     ";
 
     $stmt = $this->pdo->prepare($sql);
