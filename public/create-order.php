@@ -4,18 +4,7 @@
     // debug($_POST);
     // debug($_SESSION);
 
-    if(isset($_POST['createOrderBtn']) && !empty($_SESSION['cartItems'])){
-    $username          = trim($_POST['username']);
-    $first_name        = trim($_POST['first_name']);
-    $last_name         = trim($_POST['last_name']);
-    $email             = trim($_POST['email']);
-    $password          = trim($_POST['password']);
-    $phone             = trim($_POST['phone']);
-    $street            = trim($_POST['street']);
-    $postal_code       = trim($_POST['postal_code']);
-    $city              = trim($_POST['city']);
-    $country           = trim($_POST['country']);
-    $cartTotalSum      = $_POST['cartTotalSum'];
+    
 
 if (isset($_POST['createOrderBtn']) && !empty($_SESSION['cartItems'])) {
     $username = trim($_POST['username']);
