@@ -7,15 +7,7 @@
 
     try {
         $user = $userDbHandler->fetchUserById($_SESSION['id']);
-        // $query = "
-        //     SELECT * FROM users
-        //     WHERE id = :id;
-        // ";
-        
-        // $stmt = $pdo->prepare($query);
-        // $stmt->bindValue(':id', $_SESSION['id']);
-        // $stmt->execute();
-        // $user = $stmt->fetch();
+
     } catch (\PDOException $e) {
         throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }

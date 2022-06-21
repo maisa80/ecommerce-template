@@ -16,7 +16,7 @@ class UserDbHandler
         
         return $stmt->fetchAll();
     }
-
+ 
     public function deleteUser()
     {
         $sql = "
@@ -27,7 +27,6 @@ class UserDbHandler
         $stmt->bindParam(':id', $_POST['userId']);
         $stmt->execute();
     }
-
     
     public function fetchUserByEmail($email)
     {
@@ -142,28 +141,8 @@ class UserDbHandler
         $stmt->bindParam(':img_url', $img_url);
         $stmt->execute();
     }
-    /*------------------------------------------------------------*/
-    // Används på view.php
 
-    public function deleteProduct()
-    {
 
-        if (empty($title)) {
-            try {
-                $query = "
-                DELETE FROM products
-                WHERE id = :id;
-                ";
-        
-                $stmt = $dbconnect->prepare($query);
-                $stmt->bindValue(':id', $_POST['id']);
-                $stmt->execute();
-            } catch (\PDOException $e) {
-                throw new \PDOException($e->getMessage(), (int) $e->getCode());
-            }
-        }
-    }
-  
     public function fetchUserById($id) {
         $sql = "
             SELECT * FROM users

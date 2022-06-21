@@ -6,6 +6,7 @@
     
     $users = $userDbHandler->fetchAllUsers();
     $products = $productDbHandler->fetchAllProducts();
+    $orders =  $orderDbHandler->fetchAllOrders();
 ?>
 <?php include('layout/header.php'); ?>
 
@@ -40,10 +41,7 @@
             </div>
             <h3>( <?=count($orders);?> )</h3>
         </div>
-        <!-- <div class="overviewcard">
-        <div class="overviewcard__icon">Overview</div>
-        <div class="overviewcard__info">Card</div>
-      </div> -->
+
     </div>
 
     <div class="main-cards">
