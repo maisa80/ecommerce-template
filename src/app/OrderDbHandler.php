@@ -89,4 +89,35 @@ class OrderDbHandler
 
         return $stmt->fetch();
     }
+    public function fetchOrdersByOrderIdJoinUsers($id)
+    {
+        $sql = "
+        SELECT * FROM orders as o
+        INNER JOIN users as u on o.user_id = u.id 
+        WHERE o.id = :id;
+    
+    ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+    public function fetchOrdersItemsByOrderId($id)
+    {
+        $sql = "
+        SELECT * FROM order_items as i
+            INNER JOIN orders as o on i.order_id = o.id
+            INNER JOIN products as p on i.product_id = p.id
+            WHERE o.id=:id
+    
+    ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

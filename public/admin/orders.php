@@ -29,7 +29,12 @@
          <tbody>
              <?php foreach($orders as $order) : ?>
              <tr>
-                 <td>#<?=htmlentities($order['id']) ?></td>
+                 <td>
+                 <form action="order.php" method="GET">
+                        <input type="hidden" name="orderId" value="<?=htmlentities($order['id']) ?>">
+                        <button type="submit" class="btn btn-warning">#<?=htmlentities($order['id']) ?></button>
+                    </form> 
+                 </td>
                  <td><?=htmlentities($order['billing_full_name']) ?></td>
                  <td><?=htmlentities($order['total_price']) ?></td>
                  <td><?=htmlentities($order['create_date']) ?></td>
