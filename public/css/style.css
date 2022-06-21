@@ -170,11 +170,18 @@ span {
     border-radius: 0.5rem;
     background: #FAD69C;
 }
-
+.card, .card-header {
+    background: #FAD69C;
+    border: none;
+    margin: 0px 15px;
+    padding:0px;
+}
 .profile-img {
     text-align: center;
 }
-
+.dropdown-menu{
+    background-color: #FAD69C;
+}
 .profile-img img {
     width: 70%;
     height: 80%;
@@ -463,3 +470,140 @@ button {
 button:hover {
     border: 2px solid #be1f2c;
 }
+/*cart*/
+.lighter-text {
+    color: #ABB0BE;
+  }
+  
+  
+nav {
+  padding: 20px 0 40px 0;
+  background: #F8F8F8;
+  font-size: 16px;
+}
+  .navbar-left {
+    float: left;
+  }
+  
+  .navbar-right {
+    float: right;
+  }
+  ul  li {
+      display: inline;
+      padding-left: 20px;
+    
+       color: #777777;
+     text-decoration: none;
+             
+   
+  }
+  li:hover {
+    color: black;
+
+}
+
+
+
+
+.badge {
+    background-color: #fcbd4d;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.shopping-cart {
+  margin: 20px 0;
+  float: right;
+  background: white;
+  width: 320px;
+  position: relative;
+  border-radius: 3px;
+  padding: 20px;
+}
+  
+  .shopping-cart-header {
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 15px;
+  } 
+    .shopping-cart-total {
+      float: right;
+    }
+  
+  
+  .shopping-cart-items li {
+    
+    padding-top: 20px;
+
+     margin-bottom: 18px;
+
+     
+    }
+    li a{
+        float: left;
+        margin-right: 12px;
+    }
+    .item-name {
+      display: block;
+      padding-top: 10px;
+      font-size: 16px;
+    }
+    
+    .item-price {
+     
+      margin-right: 8px;
+    }
+
+
+   
+
+.shopping-cart:after {
+	bottom: 100%;
+	left: 89%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-bottom-color: white;
+	border-width: 8px;
+	margin-left: -8px;
+}
+
+.cart-icon {
+  color: #515783;
+  font-size: 24px;
+  margin-right: 7px;
+  float: left;
+}
+
+.button {
+    background-color: #fcbd4d;
+  color:#fff;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  border-radius: 3px;
+  font-size: 16px;
+  margin: 25px 0 15px 0;
+  
+  
+}
+.button:hover {
+    background: #000;
+    color:#fcbd4d;
+  }
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+

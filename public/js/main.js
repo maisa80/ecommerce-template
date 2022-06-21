@@ -1,4 +1,10 @@
-
+(function(){
+ 
+  $("#cart").on("click", function() {
+    $(".shopping-cart").fadeToggle( "fast");
+  });
+  
+})();
 $(document).ready(function () {
   // Delete User Ajax  -------------------------------------------//
   $(".delete-user-btn").on("click", deleteUserEvent);

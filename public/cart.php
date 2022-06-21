@@ -9,7 +9,6 @@ foreach($_SESSION['cartItems'] as $cartId => $cartItem){
     // $cartItemCount +=$cartItem['quantity'];
 }
 ?>
-
  <div class="container text-end">
 
      <a href="products.php" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -23,20 +22,17 @@ foreach($_SESSION['cartItems'] as $cartId => $cartItem){
      </a>
      <!-- Dropdown Menu -->
      <div class="dropdown-menu">
-         <div class="row total-header-section">
-             <div class="col-lg-4 col-sm-4 col-4">
-                 <span class="badge bg-dark"><?=$cartItemCount?></span>
-             </div>
+         <div class="shopping-cart">
+             <div class="shopping-cart-header">
+                 <i class="fa fa-shopping-cart cart-icon"></i><span class="badge"><?=$cartItemCount?></span>
 
-             <div class=" col-lg-8 col-sm-8 col-8 total-section">
-                 <i class="fa fa-shopping-cart" aria-hidden="true"></i> total: <span
-                     class="text-warning"><?=$cartTotalSum?>
-                     kr</span>
+                 <span class="badge"> total: <?=$cartTotalSum?> kr</span>
+
 
              </div>
+         
 
-         </div>
-         <hr>
+
          <div class="d-flex flex-column">
 
              <div class="col ">
@@ -65,10 +61,49 @@ foreach($_SESSION['cartItems'] as $cartId => $cartItem){
                  <?php endforeach; ?>
                  <div class="manage">
                      <form action="checkout.php" method="POST">
-                         <a href="checkout.php" class="btn btn-warning">Checkout</a>
+                         <a href="checkout.php" class="button">Checkout</a>
                      </form>
                  </div>
              </div>
          </div>
      </div>
  </div>
+ </div>
+ <!-- <div class="container">
+     <div class="shopping-cart">
+         <div class="shopping-cart-header">
+             <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+             <div class="shopping-cart-total">
+                 <span class="lighter-text">Total:</span>
+                 <span class="main-color-text">$2,229.97</span>
+             </div>
+         </div>
+         end shopping-cart-header 
+
+         <ul class="shopping-cart-items">
+             <li class="clearfix">
+                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
+                 <span class="item-name">Sony DSC-RX100M III</span>
+                 <span class="item-price">$849.99</span>
+                 <span class="item-quantity">Quantity: 01</span>
+             </li>
+
+             <li class="clearfix">
+                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
+                 <span class="item-name">KS Automatic Mechanic...</span>
+                 <span class="item-price">$1,249.99</span>
+                 <span class="item-quantity">Quantity: 01</span>
+             </li>
+
+             <li class="clearfix">
+                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
+                 <span class="item-name">Kindle, 6" Glare-Free To...</span>
+                 <span class="item-price">$129.99</span>
+                 <span class="item-quantity">Quantity: 01</span>
+             </li>
+         </ul>
+
+         <a href="#" class="button">Checkout</a>
+     </div>
+     end shopping-cart
+ </div> end container -->
