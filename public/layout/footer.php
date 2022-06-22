@@ -5,20 +5,18 @@
                 <div class="footer-col">
                     <h4>About us</h4>
                     <p>Welcome to Baby's & Me, your one-stop shop for finding the best baby clothing and accessories.
-                        Shop for the top-quality baby supplies and accessories online.</p>
-                    <p>&copy; 2019 - <?php echo date('Y'); ?> <a href="#">Baby's & Me</a>. All rights reserved.</p>
+                        Shop for the top-quality baby supplies and accessories online.</p>                   
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="footer-col middle">
                     <h4>More from us</h4>
                     <ul class="list-unstyled">
-                        <li><a href="index.php">About us</a></li>
-                        <li><a href="#">Faq's</a></li>
+                        <li><a href="index.php">About us</a></li>                        
                         <li><a href="contact.php">Contact us</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>                        
                     </ul>
+                     <p>&copy; 2019 - <?php echo date('Y'); ?> <a href="#">Baby's & Me</a>. All rights reserved.</p>
                 </div>
             </div>
             <div class="col-md-4">
