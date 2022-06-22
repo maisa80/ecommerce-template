@@ -19,7 +19,7 @@
 <div class="container order-body">
 
     <h2>Thank you for your purchase!</h2>
-    <table class="table table-borderless">
+    <table id="confirmationTbl" class="table table-borderless">
         <thead>
             <tr>
                 <th>Product</th>

@@ -69,7 +69,7 @@
         </tbody>
     </table>
 
-    <form action="create-order.php" method="POST" class="mx-5">
+    <form action="create-order.php" method="POST" class="justify-content-center ">
         <input type="hidden" name="cartTotalSum" value="<?=$cartTotalSum?>">
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -82,59 +82,61 @@
                 <input type="text" class="form-control" name="last_name" id="inputLastName"
                     value="<?= htmlentities($user['last_name'])?>">
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputUsername">Username</label>
-            <input type="text" class="form-control" id="inputUsername" name="username"
-                value="<?= htmlentities($user['username']) ?>">
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" name="password"
-                value="<?= htmlentities($user['password'])?>">
-        </div>
-        <div class="form-group">
-            <label for="inputEmail">Email</label>
-            <input type="text" class="form-control" id="inputEmail" name="email"
-                value="<?= htmlentities($user['email']) ?>">
-        </div>
-        <div class="form-group">
-            <label for="inputPhone">Phone</label>
-            <input type="text" class="form-control" id="inputPhone" name="phone"
-                value="<?= htmlentities($user['phone'])?>">
-        </div>
-        <div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" name="street"
-                value="<?= htmlentities($user['street']) ?>">
-        </div>
-        <div class="form-group ">
-            <label for="inputZipcode">Zip code</label>
-            <input type="text" class="form-control" name="postal_code" id="inputZipcode"
-                value="<?= htmlentities($user['postal_code']) ?>">
-        </div>
-        <div class="form-group">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" name="city" id="inputCity"
-                value="<?= htmlentities($user['city'])?>">
-        </div>
-        <div class="form-group">
-            <label for="inputCountry">Country</label>
-            <input type="text" class="form-control" name="country" id="inputCountry"
-                value="<?= htmlentities($user['country'])?>">
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check if you agree terms
-                </label>
+            <div class="form-group col-md-6">
+                <label for="inputUsername">Username</label>
+                <input type="text" class="form-control" id="inputUsername" name="username"
+                    value="<?= htmlentities($user['username']) ?>">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" name="password"
+                    value="<?= htmlentities($user['password'])?>">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail">Email</label>
+                <input type="text" class="form-control" id="inputEmail" name="email"
+                    value="<?= htmlentities($user['email']) ?>">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPhone">Phone</label>
+                <input type="text" class="form-control" id="inputPhone" name="phone"
+                    value="<?= htmlentities($user['phone'])?>">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" name="street"
+                    value="<?= htmlentities($user['street']) ?>">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputZipcode">Zip code</label>
+                <input type="text" class="form-control" name="postal_code" id="inputZipcode"
+                    value="<?= htmlentities($user['postal_code']) ?>">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" name="city" id="inputCity"
+                    value="<?= htmlentities($user['city'])?>">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputCountry">Country</label>
+                <input type="text" class="form-control" name="country" id="inputCountry"
+                    value="<?= htmlentities($user['country'])?>">
+            </div>
+            <div class="form-group col-md-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check if you agree terms
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="submit" class="btn btn-dark text-light" name="createOrderBtn" value="Order now">
             </div>
         </div>
-        <input type="submit" class="btn btn-dark text-light" name="createOrderBtn" value="Order now">
+
+
     </form>
+
 </div>
 <?php include('layout/footer.php'); ?>
