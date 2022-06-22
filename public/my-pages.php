@@ -314,9 +314,10 @@ $userById = $userDbHandler->fetchUserById($_GET['userId']);
 
  /** Fetch orders by user Id  **/
  $orders = $orderDbHandler->fetchOrdersByUserId($_GET['userId']);
- debug($_GET['userId']);
- debug($orders);
-  
+//  debug($_GET['userId']);
+//  debug($orders);
+ $order = $orderDbHandler->fetchOrdersItemsByOrderId($_GET['orderId']);
+//  debug($order);
 /** Fetch orders by order Id  **/
 
 // $items = $orderDbHandler->fetchOrdersByOrderId($_GET['orderId']);
@@ -326,7 +327,9 @@ $userById = $userDbHandler->fetchUserById($_GET['userId']);
 <?php include 'layout/header.php';?>
 <?=$msg?>
 <?=$message?>
+
 <div class="container emp-profile">
+
     <div class="row">
         <div class="col-md-4">
             <div class="profile-img">
@@ -445,65 +448,64 @@ $userById = $userDbHandler->fetchUserById($_GET['userId']);
         </div>
 
     </div>
-    <div id="accordion">
 
-        <div class="card">
-            <div class="card-header">
-                <a class="btn logInBtn" data-bs-toggle="collapse" href="#collapseOne">
-                    <input type="hidden" name="userId" value="<?=$userById['id']?>">
 
-                    My orders
+    <div class="card">
+        <div class="card-header">
 
-                </a>
-            </div>
-            <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
-                <div class="card-body">
-                    <table class="table ">
-                        <thead>
-                            <tr>
-                                <th>Order Id</th>
-                                <th>Total Price</th>
-                                <th>Order date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($orders as $order) : ?>
-                            <tr>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div id="card-header">
-                                            <td><a class="collapsed btn" data-bs-toggle="collapse" 
-                                                    href="#collapseTwo">#<?=htmlentities($order['id']) ?> 
-                                                    <input type="hidden" name="orderId" value="<?=$order['id']?>"></a>
-                                                <?php foreach($items as $item) : ?>
-                                                <div id="collapseTwo" class="collapse" data-bs-parent="#card-header">
-                                                
-                                                    <div class="card-body">
-                                                        product_title <?=htmlentities($item['product_title']) ?>
-                                                    </div>
-                                                </div>
+            <a class="btn logInBtn" data-bs-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false"
+                aria-controls="collapseOne">
+                My orders
+            </a>
+            <input type="hidden" name="orderId" value="<?=$order['id']?>">
 
-                                        </div>
-                                        <?php endforeach; ?>
+        </div>
+
+        <div id="collapseOne" class="collapse">
+            <div class="card-body">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Total Price</th>
+                            <th>Order date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($orders as $order) : ?>
+                        <tr>
+                            <div class="card">
+                                <div class="card-header">
+                                    <div id="card-header">
+                                        <td>
+                                            <form action="my-order.php" method="GET">
+                                                <input type="hidden" name="orderId"
+                                                    value="<?=htmlentities($order['id']) ?>">
+                                                <button type="submit" class="btn btn-warning">#<?=htmlentities($order['id']) ?></button>
+                                            </form>
                                         </td>
+
                                     </div>
-                                    <td><?=htmlentities($order['total_price']) ?> kr</td>
-                                    <td><?=htmlentities($order['create_date']) ?></td>
 
 
                                 </div>
+                                <td><?=htmlentities($order['total_price']) ?> kr</td>
+                                <td><?=htmlentities($order['create_date']) ?></td>
+
+
+                            </div>
 
 
 
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
-
     </div>
+
+
 </div>
 
 
@@ -630,4 +632,5 @@ $userById = $userDbHandler->fetchUserById($_GET['userId']);
         </div>
     </div>
 </div>
+
 <?php include 'layout/footer.php';?>
