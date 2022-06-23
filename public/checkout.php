@@ -18,20 +18,21 @@
 
 <?php include('layout/header.php'); ?>
 <div class="container">
-    <table class="table table-borderless">
+    <h2>Checkout</h2>
+    <table class="table table-hover">
         <thead>
             <tr>
-                <th style="width: 15%">Image</th>
+                <th style="width: 5%">Image</th>
                 <th style="width: 15%">Title</th>
-                <th style="width: 15%"></th>
-                <th style="width: 15%">Quantity</th>
-                <th style="width: 15%">Price</th>
+                <th style="width: 10%"></th>
+                <th style="width: 5%">Quantity</th>
+                <th class="text-center" style="width: 15%">Price</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach($_SESSION['cartItems'] as $cartId => $cartItem):?>
             <tr>
-                <td><img src="<?=$cartItem['image_url']?>" style="width:50px;height:auto;"></td>
+                <td><img src="<?=$cartItem['image_url']?>" style="width:60px;height:auto;"></td>
                 <td><?=$cartItem['title']?></td>
                 <td>
                     <form action="delete-cart-item.php" method="POST">
@@ -50,11 +51,11 @@
                 <td>
                     <form class="update-cart-form" action="update-cart-item.php" method="POST">
                         <input type="hidden" name="cartId" value="<?=$cartId?>">
-                        <input type="number" class="form-control" name="quantity" value="<?=$cartItem['quantity']?>"
-                            min="0">
+                        <input type="number" class="form-control" id="quantity" name="quantity"
+                            value="<?=$cartItem['quantity']?>" min="0">
                     </form>
                 </td>
-                <td><?=$cartItem['price']?> SEK</td>
+                <td class="text-center"><b><?=$cartItem['price']?> kr</b></td>
             </tr>
             <?php endforeach; ?>
 
@@ -64,79 +65,92 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><b>Total: <?=$cartTotalSum?> SEK</b></td>
+                <td class="text-center"><b>Total: <?=$cartTotalSum?> SEK</b></td>
             </tr>
         </tbody>
     </table>
-
-    <form action="create-order.php" method="POST" class="justify-content-center ">
-        <input type="hidden" name="cartTotalSum" value="<?=$cartTotalSum?>">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputFirstName">First name</label>
-                <input type="text" class="form-control" name="first_name" id="inputFirstName"
-                    value="<?= htmlentities($user['first_name']) ?>">
+    <br>
+    <h3>Billing Address</h3>
+    <div class="container">
+        
+        <form action="create-order.php" method="POST">
+            <input type="hidden" name="cartTotalSum" value="<?=$cartTotalSum?>">
+    
+            <div class="row">
+                <div class="col-4">
+                    <label for="inputFirstName">First name</label>
+                    <input type="text" class="form-control" name="first_name" id="inputFirstName"
+                        value="<?= htmlentities($user['first_name']) ?>">
+                </div>
+                <div class="col-4">
+                    <label for="inputLastName">Last name</label>
+                    <input type="text" class="form-control" name="last_name" id="inputLastName"
+                        value="<?= htmlentities($user['last_name'])?>">
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputLastName">Last name</label>
-                <input type="text" class="form-control" name="last_name" id="inputLastName"
-                    value="<?= htmlentities($user['last_name'])?>">
+            <div class="row">
+                <div class="col-4">
+                    <label for="inputUsername">Username</label>
+                    <input type="text" class="form-control" id="inputUsername" name="username"
+                        value="<?= htmlentities($user['username']) ?>">
+                </div>
+                <div class="col-4">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" name="password"
+                        value="<?= htmlentities($user['password'])?>">
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputUsername">Username</label>
-                <input type="text" class="form-control" id="inputUsername" name="username"
-                    value="<?= htmlentities($user['username']) ?>">
+            <div class="row">
+                <div class="col-4">
+                    <label for="inputEmail">Email</label>
+                    <input type="text" class="form-control" id="inputEmail" name="email"
+                        value="<?= htmlentities($user['email']) ?>">
+                </div>
+                <div class="col-4">
+                    <label for="inputPhone">Phone</label>
+                    <input type="text" class="form-control" id="inputPhone" name="phone"
+                        value="<?= htmlentities($user['phone'])?>">
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" name="password"
-                    value="<?= htmlentities($user['password'])?>">
+            <div class="row">
+                <div class="col-4">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" name="street"
+                        value="<?= htmlentities($user['street']) ?>">
+                </div>
+                <div class="col-4">
+                    <label for="inputZipcode">Zip code</label>
+                    <input type="text" class="form-control" name="postal_code" id="inputZipcode"
+                        value="<?= htmlentities($user['postal_code']) ?>">
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputEmail">Email</label>
-                <input type="text" class="form-control" id="inputEmail" name="email"
-                    value="<?= htmlentities($user['email']) ?>">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputPhone">Phone</label>
-                <input type="text" class="form-control" id="inputPhone" name="phone"
-                    value="<?= htmlentities($user['phone'])?>">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" name="street"
-                    value="<?= htmlentities($user['street']) ?>">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputZipcode">Zip code</label>
-                <input type="text" class="form-control" name="postal_code" id="inputZipcode"
-                    value="<?= htmlentities($user['postal_code']) ?>">
-            </div>
-            <div class="form-group col-md-6">
+            <div class="row">
+                <div class="col-4">
                 <label for="inputCity">City</label>
                 <input type="text" class="form-control" name="city" id="inputCity"
                     value="<?= htmlentities($user['city'])?>">
             </div>
-            <div class="form-group col-md-6">
+            <div class="col-4">
                 <label for="inputCountry">Country</label>
                 <input type="text" class="form-control" name="country" id="inputCountry"
                     value="<?= htmlentities($user['country'])?>">
+                    </div>
             </div>
-            <div class="form-group col-md-6">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check if you agree terms
-                    </label>
-                </div>
-            </div>
-            <div class="form-group col-md-6">
+            <!-- <div class="form-group col-md-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Check if you agree terms
+                        </label>
+                    </div>
+                </div> -->
+            <div class=" col-4">
                 <input type="submit" class="btn btn-dark text-light" name="createOrderBtn" value="Order now">
             </div>
-        </div>
+    </div>
 
 
     </form>
-
+</div>
 </div>
 <?php include('layout/footer.php'); ?>

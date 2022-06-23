@@ -57,6 +57,8 @@ a {
 
 .shopBtn {
     background-color: #fcbd4d;
+    color: #be1f2c;
+    margin:0px
 }
 
 .indexBtn {
@@ -113,6 +115,7 @@ span {
     background-size: contain;
     -o-background-size: contain;
     width: auto;
+    margin-bottom: 50px;
 }
 
 .innerProductPage {
@@ -288,7 +291,6 @@ input[type=email],
     border: 1px solid #333;
     outline: 0;
     border-radius: 6px;
-    background-color: #FAD69C;
     font-size: 15px;
     font-weight: 300;
     color: #333;
@@ -451,7 +453,21 @@ textarea {
 textarea {
     height: 150px;
 }
-
+.read-more{
+    color:#bf1f2d;
+    border: none;
+}
+h6{
+    color:#bf1f2d;
+    font-weight: 600; 
+    font-size: 20px; 
+    margin: 10px 0px;  
+}
+#addBtn{
+    color:#bf1f2d;
+    font-weight: 600; 
+    font-size: 1.1rem; 
+}
 button {
     height: 50px;
     background: #bf1f2d;
@@ -609,7 +625,10 @@ nav {
 #confirmationTbl, .container h2 {
 margin:50px 0px;
 }
-#confirmationTbl td{
+ td{
     vertical-align: baseline;
+}
+#quantity{
+    text-align: center;
 }
 
