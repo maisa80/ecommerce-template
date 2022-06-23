@@ -23,18 +23,36 @@
         </div>
 
         <header class="header">
-            <div class="header__search">
 
-                <div class="imgDiv">
-                    <h2><img src="img/logo_socials.png"><a href="../index.php"> Baby's & Me</a></h2>
+
+            <div id="logo">
+                <img class="logo" src="img/babysme_logo.png" alt="logo">
+            </div>
+
+
+
+
+
+            <!-- Navbar -->
+            <div class="d-flex justify-content-center text-center bg-transparent pb-4">
+                <div class="col">
+                    <form action="../index.php?">
+                        <input type="submit" value="Home" class="btn navBtn">
+                    </form>
                 </div>
+                <div class="col">
+                    <form action="../products.php?">
+                        <input type="submit" value="Products" class="btn navBtn">
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="../contact.php?">
+                        <input type="submit" value="Contact" class="btn navBtn">
+                    </form>
+                </div>
+
             </div>
-            <div class="header__avatar">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-            </div>
+
         </header>
 
         <aside class="sidenav">
