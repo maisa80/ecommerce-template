@@ -43,7 +43,9 @@ a {
     font-size: 1.5rem;
     font-family: 'Bebas Neue', cursive;
 }
-
+.container{
+    margin-bottom: 50px;
+}
 #shop a:hover {
     color: #495057;
 }
@@ -302,6 +304,7 @@ input[type=email],
 .d-flex {
     padding-top: 10px;
     align-items: center;
+    column-gap: 50px;
 }
 
 /* Footer ---------------------------------*/

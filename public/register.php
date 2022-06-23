@@ -132,7 +132,7 @@
         <?=$msg?>
     </div>
 
-    <h2>Register</h2>
+    <h2 class="text-center">Register</h2>
     <div class="d-flex justify-content-center mt-5">
         <table class="table-light card p-5 rounded border-0 shadow">
             <form method="POST" action="#">
