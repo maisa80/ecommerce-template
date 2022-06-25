@@ -2,7 +2,15 @@
     require('../src/config.php');
     $pageTitle= 'Checkout';
     $pageId = 'checkout';
-    
+    $msg='';
+   if(isset($_SESSION['errorMessages'])){
+        $msg=$_SESSION['errorMessages'];
+        unset($_SESSION['errorMessages']);
+   }
+   
+   
+        
+   
     // checkLoginSession(); //refakturerad
 
     try {
@@ -12,13 +20,16 @@
         throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }
      
-    $msg = '';
+  
 
 ?>
 
 <?php include('layout/header.php'); ?>
 <div class="container">
     <h2>Checkout</h2>
+    <div class="d-flex justify-content-center ">
+        <?=$msg?>
+</div>
     <table class="table table-hover">
         <thead>
             <tr>

@@ -11,7 +11,7 @@
 <!-- Sidans/Dokumentets huvudsakliga innehåll -->
 <div id="content">
 
-    <h4>Manage users </h4>
+    <h4>Manage orders </h4>
 
     <br>
     <?=$message ?>

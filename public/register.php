@@ -29,7 +29,9 @@
         $city              = trim($_POST['city']);
         $country           = trim($_POST['country']);
         
-
+        if (empty($username)) {
+            $error .= "<li>The username is mandatory</li><br>";
+        }
         if (empty($first_name)) {
             $error .= "<li>The first name is mandatory</li><br>";
         }
