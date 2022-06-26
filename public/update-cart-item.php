@@ -1,6 +1,6 @@
 <?php
     require('../src/config.php');
-    debug($_POST);
+    // debug($_POST);
     
     if(isset($_POST['cartId']) 
     && !empty($_POST['quantity'])

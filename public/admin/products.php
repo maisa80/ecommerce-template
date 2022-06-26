@@ -26,36 +26,38 @@ $products = $productDbHandler->fetchAllProducts();
         <thead>
             <tr>
                 <th>Id</th>
+                <th>image</th>
                 <th>title</th>
-                <th>description</th>
-                <th>price</th>
-                <th>stock</th>
-                <th>image_url</th>
+                <th>price (kr)</th>
+                <th>stock </th>
+
                 <th class="manage">Manage</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($products as $product) : ?>
-                <tr>
-                    <td><?= htmlentities($product['id']) ?></td>
-                    <td><?= htmlentities($product['title']) ?></td>
-                    <td><?= htmlentities($product['description']) ?></td>
-                    <td><?= htmlentities($product['price']) ?></td>
-                    <td><?= htmlentities($product['stock']) ?></td>
-                    <td><?= htmlentities($product['image_url']) ?></td>
-                    <td class="manage">
-                        <form action="update-product.php" method="GET">
-                            <input type="hidden" name="productId" value="<?= htmlentities($product['id']) ?>">
-                            <button type="submit" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        </form>
+            <tr>
+                <td><?= htmlentities($product['id']) ?></td>
+                <td><image class="rounded" src="<?=$product['image_url']?>"
+                        style="width:50px;height:auto;"></td>
+                <td><?= htmlentities($product['title']) ?></td>
+                <td><?= htmlentities($product['price']) ?></td>
+                <td><?= htmlentities($product['stock']) ?></td>
 
-                        <form action="delete-product.php" method="POST">
-                            <input type="hidden" name="productId" value="<?= htmlentities($product['id']) ?>">
-                            <button type="submit" name="deleteProductBtn" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                        </form>
-                    </td>
+                <td class="manage">
+                    <form action="update-product.php" method="GET">
+                        <input type="hidden" name="productId" value="<?= htmlentities($product['id']) ?>">
+                        <button type="submit" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                    </form>
 
-                </tr>
+                    <form action="delete-product.php" method="POST">
+                        <input type="hidden" name="productId" value="<?= htmlentities($product['id']) ?>">
+                        <button type="submit" name="deleteProductBtn" class="btn btn-danger"><i
+                                class="fas fa-trash"></i></button>
+                    </form>
+                </td>
+
+            </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
