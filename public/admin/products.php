@@ -3,9 +3,20 @@ require('../../src/config.php');
 $pageTitle = 'Manage Products';
 $pageId = 'manage-products';
 
+
+if (isset($_POST['deleteProductBtn'])) {
+    $productDbHandler->deleteProduct();
+     // Success message
+  $message = '   
+  <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+    <i class="bi-check-circle-fill"></i>
+    <strong class="mx-2">Success!</strong> The product was successfully deleted.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+';
+}
+
 $products = $productDbHandler->fetchAllProducts();
-
-
 ?>
 
 <?php include('layout/header.php'); ?>
@@ -50,7 +61,7 @@ $products = $productDbHandler->fetchAllProducts();
                         <button type="submit" class="btn btn-warning"><i class="fas fa-edit"></i></button>
                     </form>
 
-                    <form action="delete-product.php" method="POST">
+                    <form action="" method="POST">
                         <input type="hidden" name="productId" value="<?= htmlentities($product['id']) ?>">
                         <button type="submit" name="deleteProductBtn" class="btn btn-danger"><i
                                 class="fas fa-trash"></i></button>
