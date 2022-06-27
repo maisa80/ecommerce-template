@@ -26,7 +26,9 @@
 
 
             <div id="logo">
-                <img class="logo" src="img/babysme_logo.png" alt="logo">
+                <a href="../index.php">
+                    <img class="logo" src="img/babysme_logo.png" alt="logo">
+                </a>
             </div>
 
 
