@@ -25,9 +25,6 @@
                     <img class="logo" src="img/babysme_logo.png" alt="logo">
                 </a>
             </div>
-            
-                    
-                
             <div id="topmenu">
                 <?php
                 if (isset($_SESSION['username'])) {
