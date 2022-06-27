@@ -28,8 +28,8 @@ class ProductDbHandler
 
     public function addProduct($title, $description, $price, $stock, $image_url) {
         $sql = "
-            INSERT INTO products (title, description, price, stock, image_url)
-            VALUES (:title, :description, :price, :stock, :image_url);
+            INSERT INTO products (title, description, price, stock, img_url)
+            VALUES (:title, :description, :price, :stock, :img_url);
         ";
 
         $stmt = $this->pdo->prepare($sql);
@@ -37,14 +37,14 @@ class ProductDbHandler
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':stock', $stock);
-        $stmt->bindParam(':image_url', $image_url);
+        $stmt->bindParam(':img_url', $img_url);
         $stmt->execute();
     }
 
-    public function updateProduct($id, $title, $description, $price, $stock, $image_url) {
+    public function updateProduct($id, $title, $description, $price, $stock, $img_url) {
         $sql = "
             UPDATE products
-            SET title = :title, description= :description, price = :price, stock = :stock, image_url = :image_url  
+            SET title = :title, description= :description, price = :price, stock = :stock, img_url = :img_url  
             WHERE id = :id
         ";
 
@@ -55,7 +55,7 @@ class ProductDbHandler
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':stock', $stock);
-        $stmt->bindParam(':image_url', $image_url);
+        $stmt->bindParam(':img_url', $img_url);
         $stmt->execute();
     }
 
