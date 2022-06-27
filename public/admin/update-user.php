@@ -76,7 +76,9 @@
         }
 
         if ($error) {
-            $msg = "<ul class='error_msg'>{$error}</ul>";
+            $msg = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+            <i class='bi-check-circle-fill'></i><ul>{$error}</ul>
+            <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
         }
 
         if (empty($error)) {
