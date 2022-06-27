@@ -21,8 +21,13 @@
     <div class="container-fluid p-0 m-0">
         <div class="header">
             <div id="logo">
-                <img class="logo" src="img/babysme_logo.png" alt="logo">
+                <a href="../public/index.php">
+                    <img class="logo" src="img/babysme_logo.png" alt="logo">
+                </a>
             </div>
+            
+                    
+                
             <div id="topmenu">
                 <?php
                 if (isset($_SESSION['username'])) {
