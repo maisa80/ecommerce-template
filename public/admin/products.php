@@ -2,6 +2,7 @@
 require('../../src/config.php');
 $pageTitle = 'Manage Products';
 $pageId = 'manage-products';
+$message = "";
 
 
 if (isset($_POST['deleteProductBtn'])) {
