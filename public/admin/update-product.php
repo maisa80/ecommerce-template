@@ -20,7 +20,26 @@
   $price       = trim($_POST['price']);
   $stock       = trim($_POST['stock']);
   $image_url   = trim($_POST['image_url']);
- 
+    if (empty($title)) {
+        $error .= "<li>The title is mandatory</li>";
+    }
+    if (empty($description)) {
+        $error .= "<li>The description is mandatory</li>";
+    }
+    if (empty($price)) {
+        $error .= "<li>The price is mandatory</li>";
+    }
+    if (empty($stock)) {
+        $error .= "<li>The stock is mandatory</li>";
+    }
+    if (empty($image_url)) {
+        $error .= "<li>The image_url is mandatory</li>";
+    }
+    if ($error) {
+        $error = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+        <i class='bi-check-circle-fill'></i><ul>{$error}</ul>
+        <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
+    }
     if (is_uploaded_file($_FILES['uploadedFile']['tmp_name'])) {
         // Get the file name and size
         $fileName = $_FILES['uploadedFile']['name'];
@@ -60,6 +79,7 @@
         }
     }
     if (empty($error)) {
+        
         // INSERT INTO/ UPDATE
         $productDbHandler->updateProduct(
           $_GET['productId'],

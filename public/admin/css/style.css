@@ -45,7 +45,7 @@ h3{ font-weight: 600;
   }
   .manage{
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
   }
   /* Assign grid instructions to our parent grid container, mobile-first (hide the sidenav) */
   .grid-container {
