@@ -125,11 +125,10 @@
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                       </div>
                         ";
+                    } else {
+                        throw new \PDOException($e->getMessage(), (int) $e->getCode());
                     }
-                } else {
-                    throw new \PDOException($e->getMessage(), (int) $e->getCode());
                 }
-                
             } else {
                 $msg = '<div class="alert alert-danger" role="alert">Failed to update the user. Please try again.</div>';
             }
