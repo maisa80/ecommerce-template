@@ -11,7 +11,7 @@
   $description = '';
   $price       = '';
   $stock       = '';
-  $image_url   = '';
+  $img_url   = '';
 
 
   if (isset($_POST['uploadBtn'])) {
@@ -19,27 +19,8 @@
   $description = trim($_POST['description']);
   $price       = trim($_POST['price']);
   $stock       = trim($_POST['stock']);
-  $image_url   = trim($_POST['image_url']);
-    if (empty($title)) {
-        $error .= "<li>The title is mandatory</li>";
-    }
-    if (empty($description)) {
-        $error .= "<li>The description is mandatory</li>";
-    }
-    if (empty($price)) {
-        $error .= "<li>The price is mandatory</li>";
-    }
-    if (empty($stock)) {
-        $error .= "<li>The stock is mandatory</li>";
-    }
-    if (empty($image_url)) {
-        $error .= "<li>The image_url is mandatory</li>";
-    }
-    if ($error) {
-        $error = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
-        <i class='bi-check-circle-fill'></i><ul>{$error}</ul>
-        <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
-    }
+  $img_url     = trim($_POST['img_url']);
+ 
     if (is_uploaded_file($_FILES['uploadedFile']['tmp_name'])) {
         // Get the file name and size
         $fileName = $_FILES['uploadedFile']['name'];
@@ -71,7 +52,7 @@
 
             if ($isTheFileUploaded) {
                 // Success the file is uploaded
-                $image_url = $newFilePath;
+                $img_url = $newFilePath;
             } else {
                 // Could not upload the file
                 $error = "Could not upload the file";
@@ -79,7 +60,6 @@
         }
     }
     if (empty($error)) {
-        
         // INSERT INTO/ UPDATE
         $productDbHandler->updateProduct(
           $_GET['productId'],
@@ -87,7 +67,7 @@
           $description,
           $price,
           $stock,
-          $image_url
+          $img_url
           
       );
         $msg = '
@@ -116,12 +96,12 @@
             <tr>
                 <td>
 
-                    <image class="rounded mx-auto d-block" src="<?=$products['image_url']?>"
+                    <image class="rounded mx-auto d-block" src="<?=$products['img_url']?>"
                         style="width:200px;height:auto;">
                         <label>File:</label>
                         <input type="file" name="uploadedFile"><br>
-                        <input type="hidden" class="text form-control" name="image_url"
-                            value="<?=htmlentities($products['image_url']) ?>">
+                        <input type="hidden" class="text form-control" name="img_url"
+                            value="<?=htmlentities($products['img_url']) ?>">
                 </td>
             </tr>
             <tr>

@@ -152,7 +152,7 @@ $products = $productDbHandler->fetchAllProducts();
     <tbody class="articleList">
       <tr>
         <td scope="row articleImg">
-          <img src="<?=$article['image_url']?>" style="width:50px;height:auto;">
+          <img src="<?=$article['img_url']?>" style="width:50px;height:auto;">
         </td>
         <td>
           <input type="text" class="bg-dark border-0 text-white" name="title" value="<?=htmlentities($article['title'])?>">

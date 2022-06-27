@@ -49,7 +49,7 @@ $products = $productDbHandler->fetchAllProducts();
             <?php foreach ($products as $product) : ?>
             <tr>
                 <td><?= htmlentities($product['id']) ?></td>
-                <td><image class="rounded" src="<?=$product['image_url']?>"
+                <td><image class="rounded" src="<?=$product['img_url']?>"
                         style="width:50px;height:auto;"></td>
                 <td><?= htmlentities($product['title']) ?></td>
                 <td><?= htmlentities($product['price']) ?></td>
