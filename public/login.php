@@ -31,7 +31,16 @@ if (isset($_POST['doLogin'])) {
         // User exists
         $_SESSION['username'] = $user['username'];
         $_SESSION['id']       = $user['id'];
+
+        if ( $_SESSION['username'] == 'admin' ) { 
+
+            redirect("../public/admin/index.php");
+            //header('location: admin/index.php');
+        
+            }
+        else {
         redirect('index.php');
+            }
     } else {
         $message = '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
             <i class="bi-check-circle-fill"></i>
@@ -39,6 +48,7 @@ if (isset($_POST['doLogin'])) {
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>';
     }
+    
 }
 ?>
 
