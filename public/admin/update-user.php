@@ -34,6 +34,9 @@
         $city              = trim($_POST['city']);
         $country           = trim($_POST['country']);
 
+        if (empty($username)) {
+            $error .= "<li>The fusername is mandatory</li>";
+        }
         if (empty($first_name)) {
             $error .= "<li>The first name is mandatory</li>";
         }
@@ -93,25 +96,40 @@
             $result = ($userData);
 
             if ($result) {
-                $userDbHandler->updateUser(
-                    $_GET['userId'],
-                    $username,
-                    $first_name,
-                    $last_name,
-                    $email,
-                    $phone,
-                    $street,
-                    $postal_code,
-                    $city,
-                    $country
-                );
-                $msg = '   
-                <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
-                  <i class="bi-check-circle-fill"></i>
-                  <strong class="mx-2">Success!</strong> The user was successfully updated.
-                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-              ';
+                try {
+                    $userDbHandler->updateUser(
+                        $_GET['userId'],
+                        $username,
+                        $first_name,
+                        $last_name,
+                        $email,
+                        $phone,
+                        $street,
+                        $postal_code,
+                        $city,
+                        $country
+                    );
+                    $msg = '   
+                    <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+                      <i class="bi-check-circle-fill"></i>
+                      <strong class="mx-2">Success!</strong> The user was successfully updated.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                  ';
+                } catch (\PDOException $e) {
+                    if ((int) $e->getCode() === 23000) {
+                        $msg = "
+                        '<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+                        <i class='bi-check-circle-fill'></i>
+                        <strong class='mx-2'></strong> This email is already registerd. Please choose another email address!
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                      </div>
+                        ";
+                    }
+                } else {
+                    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+                }
+                
             } else {
                 $msg = '<div class="alert alert-danger" role="alert">Failed to update the user. Please try again.</div>';
             }

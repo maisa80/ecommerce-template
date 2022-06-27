@@ -100,38 +100,38 @@ if (isset($_POST['createOrderBtn']) && !empty($_SESSION['cartItems'])) {
                     $password, $phone, $street, $postal_code, $city, $country);
                        
                        $userId = $pdo->lastInsertId();
-                      /*Create order*/
-     $fullName =  $first_name . " ". $last_name;
-    
-     $orderDbHandler->addOrder(
-         $userId,
-         $cartTotalSum,
-         $fullName,
-         $street,
-         $postal_code,
-         $city,
-         $country
-     );
-     $orderId = $pdo->lastInsertId();
+                                        /*Create order*/
+                        $fullName =  $first_name . " ". $last_name;
+                        
+                        $orderDbHandler->addOrder(
+                            $userId,
+                            $cartTotalSum,
+                            $fullName,
+                            $street,
+                            $postal_code,
+                            $city,
+                            $country
+                        );
+                        $orderId = $pdo->lastInsertId();
   
-     // echo "UserId";
-     // debug($userId);
-     // echo "OrderId";
-     // debug($orderId);
+                        // echo "UserId";
+                        // debug($userId);
+                        // echo "OrderId";
+                        // debug($orderId);
      
-     /*Create order items*/
+                        /*Create order items*/
      
-     foreach ($_SESSION['cartItems'] as $item) {
-         $orderDbHandler->addOrder_items(
-             $orderId,
-             $item['id'],
-             $item['title'],
-             $item['quantity'],
-             $item['price']
-         );
-     }
-     header('location: order-confirmation.php');
-     exit;
+                        foreach ($_SESSION['cartItems'] as $item) {
+                            $orderDbHandler->addOrder_items(
+                                $orderId,
+                                $item['id'],
+                                $item['title'],
+                                $item['quantity'],
+                                $item['price']
+                            );
+            }
+            header('location: order-confirmation.php');
+            exit;
  
                 } catch (\PDOException $e) {
                    

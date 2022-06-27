@@ -29,6 +29,9 @@
         $city              = trim($_POST['city']);
         $country           = trim($_POST['country']);
 
+        if (empty($username)) {
+            $error .= "<li>The username is mandatory</li>";
+        }
         if (empty($first_name)) {
             $error .= "<li>The first name is mandatory</li>";
         }
@@ -69,9 +72,7 @@
             $error .= "<li>The password cant be less than 6 characters</li>";
         }
 
-        if ($confirmPassword !== $password) {
-            $error .= "<li>The confirmed password doesnt match</li>";
-        }
+    
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error .= "<li>Unvalid e-mail address</li>";
@@ -101,7 +102,8 @@
             $result = ($userData);
 
             if ($result) {
-                $userDbHandler->addUser($username, $first_name, $last_name, $email, $password, $phone, 
+                try {
+                    $userDbHandler->addUser($username, $first_name, $last_name, $email, $password, $phone, 
                 $street, $postal_code, $city, $country);
                 $msg =  '<div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
                 <i class="bi-check-circle-fill"></i>
@@ -109,6 +111,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
               </div>
             ';
+                } catch (\PDOException $e) {
+                    if ((int) $e->getCode() === 23000) {
+                        $msg = "
+                        '<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+                        <i class='bi-check-circle-fill'></i>
+                        <strong class='mx-2'></strong> This email is already registerd. Please choose another email address!
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                      </div>
+                        ";
+                    } else {
+                        throw new \PDOException($e->getMessage(), (int) $e->getCode());
+                    }
+                }
+               
                 
             } else {
                 $msg = '<div class="alert alert-danger" role="alert">Failed to create a user. Please try again.</div>';

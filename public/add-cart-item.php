@@ -2,10 +2,8 @@
     require('../src/config.php');
     $pageTitle= 'Cart';
     $pageId = 'cart';
-    debug($_POST);
-    // echo"<pre>";
-    // print_r($_POST);
-    // echo"<pre>";
+    // debug($_POST);
+    
 
 
     if(!empty($_POST['quantity'])) {

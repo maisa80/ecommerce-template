@@ -186,7 +186,7 @@
             } catch (\PDOException$e) {
                 if ((int) $e->getCode() === 23000) {
                     $msg = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
-                        <i class='bi-check-circle-fill'></i>This email is already registerd. Please enter another email!
+                        <i class='bi-check-circle-fill'></i>This email is already registerd. Please choose another email address!
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
                 } else {
                     throw new \PDOException($e->getMessage(), (int) $e->getCode());
