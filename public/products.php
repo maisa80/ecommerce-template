@@ -16,7 +16,7 @@
                 <input type="hidden" name="id" value="<?=$article['id']?>">
             </form>
 
-            <image class="rounded mx-auto d-block" src="<?=$article['image_url']?>" style="width:300px;height:auto;">
+            <image class="rounded mx-auto d-block" src="<?=$article['img_url']?>" style="width:300px;height:auto;">
 
                 <div class="text-center mx-auto mt-4">
                     <h5 class="m-0"><?=substr(htmlentities($article['title']), 0, 20)?></h5> <br>
