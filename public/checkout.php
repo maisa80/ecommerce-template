@@ -43,7 +43,7 @@
         <tbody>
             <?php foreach($_SESSION['cartItems'] as $cartId => $cartItem):?>
             <tr>
-                <td><img src="<?=$cartItem['image_url']?>" style="width:60px;height:auto;"></td>
+                <td><img src="<?=$cartItem['img_url']?>" style="width:60px;height:auto;"></td>
                 <td><?=$cartItem['title']?></td>
                 <td>
                     <form action="delete-cart-item.php" method="POST">
