@@ -5,6 +5,7 @@ checkLoginSession();
 $title = '';
 $description = '';
 $price = '';
+$stock = '';
 $error = '';
 $msg = '';
 $newPathAndName = "";
@@ -16,6 +17,7 @@ if (isset($_POST['add'])) {
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
     $price = trim($_POST['price']);
+    $stock = trim($_POST['stock']);
 
     // Upload image  
     // Get the file name and extension
@@ -62,6 +64,10 @@ if (isset($_POST['add'])) {
       $error = "The price type is invalid. Allowed type is integer. <br>";
     }
 
+    if(filter_var($stock, FILTER_VALIDATE_INT) == false) {
+      $error = "The stock type is invalid. Allowed type is integer. <br>";
+    }
+
     if (empty($error)) {
         $msg = "Successfully uploaded the new rum";
         // Insert the new product into the database
@@ -84,6 +90,10 @@ if (empty($price)) {
     $error .= "<p>Price is mandatory</p>";
 }
 
+if (empty($stock)) {
+  $error .= "<p>Stock is mandatory</p>";
+}
+
 if ($error) {
     $msg = "<div class='errors'>{$error}</div>";
 }
@@ -91,14 +101,15 @@ if ($error) {
 if (empty($error)) {
     try {
         $query = "
-                INSERT INTO products (title, description, price, img_url)
-                VALUES (:title, :description, :price, :img_url);
+                INSERT INTO products (title, description, price, stock, img_url)
+                VALUES (:title, :description, :price, :stock, :img_url);
             ";
 
         $stmt = $pdo->prepare($query);
         $stmt->bindValue(':title', $title);
         $stmt->bindValue(':description', $description);
         $stmt->bindValue(':price', $price);
+        $stmt->bindValue(':stock', $stock);
         $stmt->bindValue(':img_url', $img_url);
         $products = $stmt->execute();
     } catch (\PDOException$e) {
@@ -135,6 +146,9 @@ $products = $productDbHandler->fetchAllProducts();
       <div class="wp-100"></div>
 
       <input type="text" name="price" placeholder="Price">
+      
+      <input type="text" name="stock" placeholder="Stock">
+       
       <button class="btn1" name="add">Add product</button>
     </div>
   </form>
@@ -152,6 +166,7 @@ $products = $productDbHandler->fetchAllProducts();
       <th scope="col">Title</th>
       <th scope="col">Description</th>
       <th scope="col">Price</th>
+      <th scope="col">Stock</th>
       <th scope="col"></th>
       <th scope="col"></th>
     </tr>
@@ -174,6 +189,11 @@ $products = $productDbHandler->fetchAllProducts();
         <td>
           <input type="text" name="price" value="<?=htmlentities($article['price'])?>">SEK
         </td>
+
+        <td>
+          <input type="text" name="price" value="<?=htmlentities($article['stock'])?>">
+        </td>
+
 
         <td>
           <form method="POST">
