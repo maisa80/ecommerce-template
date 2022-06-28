@@ -112,7 +112,7 @@ $products = $productDbHandler->fetchAllProducts();
 <?php include 'layout/header.php';?>
 <div id="content">
     <!-- Add new products -->
-    <div class="d-flex flex-column bg-light py-6">
+    <div class="d-flex flex-column py-6">
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="col">
                 <?=$msg?>
