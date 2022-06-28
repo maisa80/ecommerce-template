@@ -10,6 +10,7 @@ $msg = '';
 $newPathAndName = "";
 $img_url = "";
 $pageTitle = 'Add Product';
+$pageId = 'CreateProduct';
 
 if (isset($_POST['add'])) {
     $title = trim($_POST['title']);
@@ -37,9 +38,9 @@ if (isset($_POST['add'])) {
             'image/gif',
             'image/png',
         ];
-        echo "<pre>";
+        /* echo "<pre>";
         var_dump((bool) array_search($fileType, $allowedFileTypes, true));
-        echo "</pre>";
+        echo "</pre>"; */
 
         $isFileTypeAllowed = (bool) array_search($fileType, $allowedFileTypes, true);
         if ($isFileTypeAllowed == false) {
@@ -53,6 +54,12 @@ if (isset($_POST['add'])) {
                 $error = "Could not upload the file. Please try again<br>";
             }
         }
+        
+
+    }
+
+    if(filter_var($price, FILTER_VALIDATE_INT) == false) {
+      $error = "The price type is invalid. Allowed type is integer. <br>";
     }
 
     if (empty($error)) {
@@ -62,6 +69,7 @@ if (isset($_POST['add'])) {
     } else {
         $msg = $error;
     }
+
 }
 
 if (empty($title)) {
@@ -108,7 +116,7 @@ $products = $productDbHandler->fetchAllProducts();
 <?php include 'layout/header.php';?>
 
 <!-- Add new products -->
-<div class="d-flex flex-column bg-light py-4">
+<div class="container-fluid d-flex flex-column  py-5">
   <form action="" method="POST" enctype="multipart/form-data">
     <div class="col">
       <h5>Add product</h5>
