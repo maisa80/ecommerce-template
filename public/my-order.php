@@ -25,7 +25,7 @@
             <?php foreach($order as $orderItem) : ?>
             <tr>
 
-                <td><img class="rounded " src="<?=$orderItem['image_url']?>" style="width:50px;height:50px;"></td>
+                <td><img class="rounded " src="<?=$orderItem['img_url']?>" style="width:50px;height:50px;"></td>
                 <td><?=htmlentities($orderItem['product_title']) ?></td>
                 <td><?=htmlentities($orderItem['quantity']) ?></td>
                 <td><?=htmlentities($orderItem['unit_price']) ?> kr</td>

@@ -32,7 +32,7 @@
             <?php foreach($cartItems as $item):?>
             <tr>
                 <td>
-                <img class="rounded mx-auto " width="100" src="<?=$item['image_url']?>">
+                <img class="rounded mx-auto " width="100" src="<?=$item['img_url']?>">
                 </td>
                 <td><?=$item['title']?></td>
                 <td><?=$item['quantity']?></td>
