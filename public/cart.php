@@ -33,7 +33,7 @@
                     <?php foreach($_SESSION['cartItems'] as $cartId => $cartItem):?>
                     <div class="row cart-detail">
                         <div class="col">
-                            <img class="rounded mx-auto d-block" src="<?=$cartItem['image_url']?>"
+                            <img class="rounded mx-auto d-block" src="<?=$cartItem['img_url']?>"
                                 style="width:50px;height:50px;">
                         </div>
                         <div class="col-4">
