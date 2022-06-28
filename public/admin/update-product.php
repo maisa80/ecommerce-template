@@ -14,7 +14,7 @@
   $img_url   = '';
 
 
-  if (isset($_POST['uploadBtn'])) {
+  if (isset($_POST['updateProductBtn'])) {
   $title       = trim($_POST['title']);
   $description = trim($_POST['description']);
   $price       = trim($_POST['price']);
@@ -135,7 +135,7 @@
             </tr>
             <tr>
                 <td id="product">
-                    <input type="submit" class="btn btn-warning" value="Update" name="uploadBtn">
+                    <input type="submit" class="btn btn-warning" value="Update" name="updateProductBtn">
 
                 </td>
             <tr>

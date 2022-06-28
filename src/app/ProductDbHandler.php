@@ -26,7 +26,7 @@ class ProductDbHandler
 
     
 
-    public function addProduct($title, $description, $price, $stock, $image_url) {
+    public function addProduct($title, $description, $price, $stock, $img_url) {
         $sql = "
             INSERT INTO products (title, description, price, stock, img_url)
             VALUES (:title, :description, :price, :stock, :img_url);
