@@ -130,74 +130,73 @@
 
 <?php include('layout/header.php'); ?>
 <div class="container">
-    <div class="d-flex justify-content-center ">
+    <div class="row">
         <?=$msg?>
     </div>
-
     <h2 class="text-center">Register</h2>
     <div class="d-flex justify-content-center mt-5">
         <table class="table-light card p-5 rounded border-0 shadow">
             <form method="POST" action="#">
                 <tr>
                     <td>
-                        <label for="input1">Username:</label><br>
+                        <label for="input1">Username:</label>
                         <input type="text" class="text form-control" name="username"
                             value="<?=htmlentities($username)?>">
                     </td>
                     <td>
-                        <label for="input2">E-mail address:</label><br>
+                        <label for="input2">E-mail address:</label>
                         <input type="text" class="text form-control" name="email" value="<?=htmlentities($email)?>">
                     </td>
 
                 </tr>
                 <tr>
                     <td>
-                        <label for="input3">Password:</label><br>
+                        <label for="input3">Password:</label>
                         <input type="password" class="text form-control" name="password">
                     </td>
 
                     <td>
-                        <label for="input4">Confirm Password:</label><br>
+                        <label for="input4">Confirm Password:</label>
                         <input type="password" class="text form-control" name="confirmPassword">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="input5">First name:</label><br>
+                        <label for="input5">First name:</label>
                         <input type="text" class="text form-control" name="first_name"
                             value="<?=htmlentities($first_name)?>">
                     </td>
                     <td>
-                        <label for="input6">Last name:</label><br>
+                        <label for="input6">Last name:</label>
                         <input type="text" class="text form-control" name="last_name"
                             value="<?=htmlentities($last_name)?>">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="input7">Phone:</label><br>
+                        <label for="input7">Phone:</label>
                         <input type="text" class="text form-control" name="phone" value="<?=htmlentities($phone)?>">
                     </td>
                     <td>
-                        <label for="input8">Street:</label><br>
+                        <label for="input8">Street:</label>
                         <input type="text" class="text form-control" name="street" value="<?=htmlentities($street)?>">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="input9">City</label><br>
+                        <label for="input9">City</label>
                         <input type="text" class="text form-control" name="city" value="<?=htmlentities($city)?>">
                     </td>
 
                     <td>
-                        <label for="input7">Postal code</label><br>
+                        <label for="input7">Postal code</label>
                         <input type="text" class="text form-control" name="postal_code"
                             value="<?=htmlentities($postal_code)?>">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="country">Country</label><br>
+                        <label for="country">Country</label>
                         <input type="text" class="text form-control" name="country" value="<?=htmlentities($country)?>">
                     </td>
                 </tr>

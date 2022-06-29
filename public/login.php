@@ -32,15 +32,14 @@ if (isset($_POST['doLogin'])) {
         $_SESSION['username'] = $user['username'];
         $_SESSION['id']       = $user['id'];
 
-        if ( $_SESSION['username'] == 'admin' ) { 
+        if ($_SESSION['username'] == 'admin') {
 
             redirect("../public/admin/index.php");
             //header('location: admin/index.php');
-        
-            }
-        else {
-        redirect('index.php');
-            }
+
+        } else {
+            redirect('index.php');
+        }
     } else {
         $message = '<div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
             <i class="bi-check-circle-fill"></i>
@@ -48,14 +47,13 @@ if (isset($_POST['doLogin'])) {
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>';
     }
-    
 }
 ?>
 
 
 <?php include('layout/header.php'); ?>
 <div class="container">
-    <div class="d-flex justify-content-center mt-5">
+    <div class="row">
         <?= $message ?>
     </div>
     <h2 class="text-center">Log in</h2>
@@ -64,20 +62,18 @@ if (isset($_POST['doLogin'])) {
             <form method="POST">
                 <tr>
                     <td>
-                        <label for="input1">Email</label> <br>
+                        <label for="input1">Email</label>
                         <input type="text" class="text" name="email">
                     </td>
                 </tr>
-
                 <tr>
                     <td>
-                        <label for="input2">Password</label> <br>
+                        <label for="input2">Password</label>
                         <input type="password" class="text" name="password">
                     </td>
                 </tr>
                 <td>
-                    <input type="submit" name="doLogin" value="Log in"
-                        class="btn btn-dark text-light mt-4 mx-auto d-block">
+                    <input type="submit" name="doLogin" value="Log in" class="btn btn-dark text-light mt-4 mx-auto d-block">
                 </td>
             </form>
         </table>
