@@ -45,9 +45,9 @@
     </div>
 
     <div class="main-cards">
-        <div class="card">Card</div>
-        <div class="card">Card</div>
-        <div class="card">Card</div>
+        <div class="card"><img src="img/cat1.png"></div>
+        <div class="card"><img src="img/cat2.png"></div>
+        <div class="card"><img src="img/cat3.png"></div>
     </div>
 </main>
 
