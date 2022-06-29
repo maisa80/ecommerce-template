@@ -60,21 +60,21 @@
         }
     }
     if (empty($title)) {
-        $error .= "<p>Title is mandatory</p>";
+        $error .= "<li>Title is mandatory</li>";
       }
     
       if (empty($description)) {
-        $error .= "<p>Description is mandatory</p>";
+        $error .= "<li>Description is mandatory</li>";
       }
     
       if (empty($price)) {
-        $error .= "<p>Price is mandatory</p>";
+        $error .= "<li>Price is mandatory</li>";
       }
       if (empty($stock)) {
-        $error .= "<p>Stock is mandatory</p>";
+        $error .= "<p>Stock is mandatory</li>";
       }
       if (empty($img_url)) {
-        $error .= "<p>Product's image is mandatory</p>";
+        $error .= "<li>Product's image is mandatory</li>";
       }
       if ($error) {
         $msg = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
