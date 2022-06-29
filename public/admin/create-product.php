@@ -101,11 +101,11 @@ if(filter_var($stock, FILTER_VALIDATE_INT) == false) {
 if (empty($error)) {
     // INSERT INTO/ UPDATE
     $productData = [
-        'title'      => $title,
+        'title'          => $title,
         'description'    => $description,
-        'price'     => $price,
-        'stock'         => $stock,
-        'img_url'         => $img_url
+        'price'          => $price,
+        'stock'          => $stock,
+        'img_url'        => $img_url
     ];
 
     $result = ($productData);
@@ -138,29 +138,30 @@ $products = $productDbHandler->fetchAllProducts();
 
 <?php include 'layout/header.php';?>
 <div id="content">
-<h5>Add product</h5>
-<?=$msg?>
+    <h5>Add product</h5>
+    <?=$msg?>
     <!-- Add new products -->
     <form action="" method="POST" enctype="multipart/form-data">
-    <div class="col">
-     
-      <input type="text" class="text form-control" name="title" placeholder="Title">
-      <br>
-      <form action="products.php?" method="POST">
-        <input type="file" class="btn py-2 px-0" name="upload" value="" />
-      </form>
-      <br>
-      <textarea type="text" class="text form-control" name="description" placeholder="Description" rows="5" cols="60" style="resize:none"></textarea>
-      <br>
+        <div class="col">
 
-      <input type="text" class="text form-control" name="price" placeholder="Price">
-      <br>
-      <input type="text" class="text form-control" name="stock" placeholder="Stock">
-      <br>
-      <button class="btn btn-warning" name="add">Add product</button>
-    </div>
-  </form>
-  <br>
+            <input type="text" class="text form-control" name="title" placeholder="Title">
+            <br>
+            <form action="products.php?" method="POST">
+                <input type="file" class="btn py-2 px-0" name="upload" value="" />
+            </form>
+            <br>
+            <textarea type="text" class="text form-control" name="description" placeholder="Description" rows="5"
+                cols="60" style="resize:none"></textarea>
+            <br>
+
+            <input type="text" class="text form-control" name="price" placeholder="Price">
+            <br>
+            <input type="text" class="text form-control" name="stock" placeholder="Stock">
+            <br>
+            <button class="btn btn-warning" name="add">Add product</button>
+        </div>
+    </form>
+    <br>
     <a href="products.php"><i class="fas fa-angle-left"></i> Back</a>
 </div>
 <?php include('layout/footer.php'); ?>
