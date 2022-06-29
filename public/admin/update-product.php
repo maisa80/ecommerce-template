@@ -83,7 +83,7 @@
       }
     if (empty($error)) {
         // INSERT INTO/ UPDATE
-        $userData = [
+        $productData = [
             'title'      => $title,
             'description'    => $description,
             'price'     => $price,
@@ -91,7 +91,7 @@
             'img_url'         => $img_url
         ];
 
-        $result = ($userData);
+        $result = ($productData);
 
         if ($result) {
         $productDbHandler->updateProduct(

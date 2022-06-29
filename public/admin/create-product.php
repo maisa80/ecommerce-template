@@ -66,44 +66,71 @@ if (isset($_POST['add'])) {
     }
   }
 
-
   if (empty($title)) {
-    $error .= "<p>Title is mandatory</p>";
+    $error .= "<li>Title is mandatory</li>";
   }
 
   if (empty($description)) {
-    $error .= "<p>Description is mandatory</p>";
+    $error .= "<li>Description is mandatory</li>";
   }
 
   if (empty($price)) {
-    $error .= "<p>Price is mandatory</p>";
+    $error .= "<li>Price is mandatory</li>";
   }
   if (empty($stock)) {
-    $error .= "<p>Stock is mandatory</p>";
+    $error .= "<li>Stock is mandatory</li>";
   }
   if (empty($img_url)) {
-    $error .= "<p>Product's image is mandatory</p>";
+    $error .= "<li>Product's image is mandatory</li>";
   }
+  
+
+
+if(filter_var($price, FILTER_VALIDATE_INT) == false) {
+  $error .= "<li>The price must be numbers only </li>";
+}
+
+if(filter_var($stock, FILTER_VALIDATE_INT) == false) {
+  $error .= "<li>The stock  must be numbers only </li>";
+}
   if ($error) {
     $msg = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
     <i class='bi-check-circle-fill'></i><ul>{$error}</ul>
     <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
   }
-  if (empty($error)) {
-      try {
+if (empty($error)) {
+    // INSERT INTO/ UPDATE
+    $productData = [
+        'title'      => $title,
+        'description'    => $description,
+        'price'     => $price,
+        'stock'         => $stock,
+        'img_url'         => $img_url
+    ];
+
+    $result = ($productData);
+
+    if ($result) {
         
-        $productDbHandler->addProduct($title, $description, $price, $stock, $img_url);
-      } catch (\PDOException$e) {
-          throw new \PDOException($e->getMessage(), (int) $e->getCode());
-      }
+        $productDbHandler->addProduct(
+          $title,
+          $description,
+          $price,
+          $stock,
+          $img_url
+        );
+     
           $msg = '<div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
           <i class="bi-check-circle-fill"></i>
           <strong class="mx-2">Success!</strong> The product was successfully created.
           <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
       ';
+    } else {
+      $msg = $error;
   }
- 
+
+} 
 }
 $products = $productDbHandler->fetchAllProducts();
 
@@ -111,42 +138,29 @@ $products = $productDbHandler->fetchAllProducts();
 
 <?php include 'layout/header.php';?>
 <div id="content">
+<h5>Add product</h5>
+<?=$msg?>
     <!-- Add new products -->
-    <div class="d-flex flex-column py-6">
-        <form action="" method="POST" enctype="multipart/form-data">
-            <div class="col">
-                <?=$msg?>
-            </div>
-            <div class="row">
-                <div class="col">
-                <h4>Add product</h4>
+    <form action="" method="POST" enctype="multipart/form-data">
+    <div class="col">
+     
+      <input type="text" class="text form-control" name="title" placeholder="Title">
+      <br>
+      <form action="products.php?" method="POST">
+        <input type="file" class="btn py-2 px-0" name="upload" value="" />
+      </form>
+      <br>
+      <textarea type="text" class="text form-control" name="description" placeholder="Description" rows="5" cols="60" style="resize:none"></textarea>
+      <br>
 
-                    <input type="text" class="text form-control" name="title" placeholder="Title">
-
-                    </br>
-
-                    <form action="products.php?" method="POST">
-                        <input type="file" class="btn py-2 px-0" name="upload" value="" />
-                    </form>
-
-                    </br>
-
-                    <textarea type="text" class="text form-control" name="description" placeholder="Description"
-                        rows="5" cols="60" style="resize:none"></textarea>
-
-                    </br>
-
-                    <input type="number" class="text form-control" name="price" value="1" min="0">
-                    </br>
-                    <input type="number" class="text form-control" name="stock" value="1" min="0">
-                    </br>
-                    <button class="btn btn-warning" name="add">Add product</button>
-                </div>
-
-        </form>
-
-
+      <input type="text" class="text form-control" name="price" placeholder="Price">
+      <br>
+      <input type="text" class="text form-control" name="stock" placeholder="Stock">
+      <br>
+      <button class="btn btn-warning" name="add">Add product</button>
     </div>
+  </form>
+  <br>
+    <a href="products.php"><i class="fas fa-angle-left"></i> Back</a>
 </div>
-
-<?php include 'layout/footer.php';?>
+<?php include('layout/footer.php'); ?>
