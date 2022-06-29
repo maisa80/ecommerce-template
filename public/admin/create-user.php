@@ -211,9 +211,9 @@
             </tr>
             <br>
             <tr>
-                <td id="user">
+                <td>
                     <input type="submit" name="createUserBtn" value="Create"
-                        class="btn btn-dark text-light mt-4 d-block">
+                        class="btn btn-warning">
                 </td>
             <tr>
     </table>
