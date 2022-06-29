@@ -1,23 +1,25 @@
 <?php
 require '../../src/config.php';
-checkLoginSession();
+$pageTitle = 'Create product';
+$pageId = 'createProduct';
+ini_set('display_errors', 1);
 
-$title = '';
-$description = '';
-$price = '';
-$stock = '';
-$error = '';
-$msg = '';
-$newPathAndName = "";
-$img_url = "";
-$pageTitle = 'Add Product';
-$pageId = 'CreateProduct';
+$title          = '';
+$description    = '';
+$price          = '';
+$stock          = '';
+$error          = '';
+$msg            = '';
+$newPathAndName = '';
+$img_url        = '';
 
 if (isset($_POST['add'])) {
-    $title = trim($_POST['title']);
+    $title       = trim($_POST['title']);
     $description = trim($_POST['description']);
-    $price = trim($_POST['price']);
-    $stock = trim($_POST['stock']);
+    $stock       = trim($_POST['stock']);
+    $price       = trim($_POST['price']);
+  
+    
 
     // Upload image  
     // Get the file name and extension
@@ -29,7 +31,7 @@ if (isset($_POST['add'])) {
         //this is the temporary name of the file
         $fileTempName = $_FILES['upload']['tmp_name'];
         //this is the path where you want to save the actual file
-        $path = "../img/";
+        $path = "img/";
         //this is the actual path and actual name of the file
         $newPathAndName = $path . $fileName;
 
@@ -40,178 +42,111 @@ if (isset($_POST['add'])) {
             'image/gif',
             'image/png',
         ];
-        /* echo "<pre>";
-        var_dump((bool) array_search($fileType, $allowedFileTypes, true));
-        echo "</pre>"; */
 
-        $isFileTypeAllowed = (bool) array_search($fileType, $allowedFileTypes, true);
-        if ($isFileTypeAllowed == false) {
-            $error = "The file type is invalid. Allowed types are jpeg, png, gif.<br>";
-        } else {
-            // Will try to upload the file with the function 'move_uploaded_file'
-            // Returns true/false depending if it was successful or not
-            $isTheFileUploaded = move_uploaded_file($fileTempName, $newPathAndName);
-            if ($isTheFileUploaded == false) {
-                // Otherwise, if upload unsuccessful, show errormessage
-                $error = "Could not upload the file. Please try again<br>";
-            }
+        $isFileTypeAllowed = array_search($fileType, $allowedFileTypes, true);
+        if ($isFileTypeAllowed === false) {
+            $error .= "The file type is invalid. Allowed types are jpeg, png, gif. <br>";
         }
-        
 
-    }
-
-    if(filter_var($price, FILTER_VALIDATE_INT) == false) {
-      $error = "The price type is invalid. Allowed type is integer. <br>";
-    }
-
-    if(filter_var($stock, FILTER_VALIDATE_INT) == false) {
-      $error = "The stock type is invalid. Allowed type is integer. <br>";
-    }
-
+        /** File size error handling **/
+        if ($_FILES['upload']['size'] > 1000000) { // Allows only files under 1 mbyte
+            $error .= 'Exceeded filesize limit.<br>';
+        }
+    
     if (empty($error)) {
-        $msg = "Successfully uploaded the new rum";
-        // Insert the new product into the database
-        $img_url = $newPathAndName;
-    } else {
-        $msg = $error;
+      $isTheFileUploaded = move_uploaded_file($fileTempName, $newPathAndName);
+
+      if ($isTheFileUploaded) {
+          // Success the file is uploaded
+          $img_url = $newPathAndName;
+      } else {
+          // Could not upload the file
+          $error = "Could not upload the file";
+      }
     }
+  }
 
-}
 
-if (empty($title)) {
+  if (empty($title)) {
     $error .= "<p>Title is mandatory</p>";
-}
+  }
 
-if (empty($description)) {
+  if (empty($description)) {
     $error .= "<p>Description is mandatory</p>";
-}
+  }
 
-if (empty($price)) {
+  if (empty($price)) {
     $error .= "<p>Price is mandatory</p>";
+  }
+  if (empty($stock)) {
+    $error .= "<p>Stock is mandatory</p>";
+  }
+  if (empty($img_url)) {
+    $error .= "<p>Product's image is mandatory</p>";
+  }
+  if ($error) {
+    $msg = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+    <i class='bi-check-circle-fill'></i><ul>{$error}</ul>
+    <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
+  }
+  if (empty($error)) {
+      try {
+        
+        $productDbHandler->addProduct($title, $description, $price, $stock, $img_url);
+      } catch (\PDOException$e) {
+          throw new \PDOException($e->getMessage(), (int) $e->getCode());
+      }
+          $msg = '<div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+          <i class="bi-check-circle-fill"></i>
+          <strong class="mx-2">Success!</strong> The product was successfully created.
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      ';
+  }
+ 
 }
-
-if (empty($stock)) {
-  $error .= "<p>Stock is mandatory</p>";
-}
-
-if ($error) {
-    $msg = "<div class='errors'>{$error}</div>";
-}
-
-if (empty($error)) {
-    try {
-        $query = "
-                INSERT INTO products (title, description, price, stock, img_url)
-                VALUES (:title, :description, :price, :stock, :img_url);
-            ";
-
-        $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':title', $title);
-        $stmt->bindValue(':description', $description);
-        $stmt->bindValue(':price', $price);
-        $stmt->bindValue(':stock', $stock);
-        $stmt->bindValue(':img_url', $img_url);
-        $products = $stmt->execute();
-    } catch (\PDOException$e) {
-        throw new \PDOException($e->getMessage(), (int) $e->getCode());
-    }
-    if ($products) {
-        $msg = '<p class="success">Your product are now posted. </p>';
-    }
-}
-
 $products = $productDbHandler->fetchAllProducts();
 
 ?>
 
 <?php include 'layout/header.php';?>
+<div id="content">
+    <!-- Add new products -->
+    <div class="d-flex flex-column py-6">
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div class="col">
+                <?=$msg?>
+            </div>
+            <div class="row">
+                <div class="col">
+                <h4>Add product</h4>
 
-<!-- Add new products -->
-<div class="container-fluid d-flex flex-column  py-5">
-  <form action="" method="POST" enctype="multipart/form-data">
-    <div class="col">
-      <h5>Add product</h5>
-      <input type="text" name="title" placeholder="Title">
+                    <input type="text" class="text form-control" name="title" placeholder="Title">
 
-      <div class="wp-100"></div>
+                    </br>
 
-      <form action="products.php?" method="POST">
-        <input type="file" class="btn py-2 px-0" name="upload" value="" />
-      </form>
+                    <form action="products.php?" method="POST">
+                        <input type="file" class="btn py-2 px-0" name="upload" value="" />
+                    </form>
 
-      <div class="wp-100"></div>
+                    </br>
 
-      <textarea type="text" name="description" placeholder="Description" rows="5" cols="60" style="resize:none"></textarea>
+                    <textarea type="text" class="text form-control" name="description" placeholder="Description"
+                        rows="5" cols="60" style="resize:none"></textarea>
 
-      <div class="wp-100"></div>
+                    </br>
 
-      <input type="text" name="price" placeholder="Price">
-      
-      <input type="text" name="stock" placeholder="Stock">
-       
-      <button class="btn1" name="add">Add product</button>
+                    <input type="number" class="text form-control" name="price" value="1" min="0">
+                    </br>
+                    <input type="number" class="text form-control" name="stock" value="1" min="0">
+                    </br>
+                    <button class="btn btn-warning" name="add">Add product</button>
+                </div>
+
+        </form>
+
+
     </div>
-  </form>
-
-  <div class="col">
-    <?=$msg?>
-  </div>
 </div>
-
-<!--  Display all products -->
-<table class="table table-dark lists">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th scope="col">Stock</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-
-  <?php foreach ($products as $key => $article) {?>
-    <tbody class="articleList">
-      <tr>
-        <td scope="row articleImg">
-          <img src="<?=$article['img_url']?>" style="width:50px;height:auto;">
-        </td>
-        <td>
-          <input type="text" class="bg-dark border-0 text-white" name="title" value="<?=htmlentities($article['title'])?>">
-        </td>
-
-        <td>
-          <input type="text" class="bg-dark border-0 text-white" name="description" value="<?=substr(htmlentities($article['description']), 0, 10)?>">
-        </td>
-
-        <td>
-          <input type="text" name="price" value="<?=htmlentities($article['price'])?>">SEK
-        </td>
-
-        <td>
-          <input type="text" name="price" value="<?=htmlentities($article['stock'])?>">
-        </td>
-
-
-        <td>
-          <form method="POST">
-            <input type="hidden" name="id" value="<?=$article['id']?>">
-            <input type="submit" name="deleteProductBtn" value="Delete" class="delete-product-btn btn bg-light">
-          </form>
-        </td>
-
-        <td>
-          <form method="GET">
-            <input type="hidden" name="id" value="<?=$article['id']?>">
-            <input type="submit" name="updateProductBtn" value="Update" class="update-product-btn btn bg-white">
-          </form>
-        </td>
-      </tr>
-    <?php }?>
-    </tbody>
-</table>
-
 
 <?php include 'layout/footer.php';?>

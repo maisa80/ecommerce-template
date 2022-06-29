@@ -59,8 +59,41 @@
             }
         }
     }
+    if (empty($title)) {
+        $error .= "<p>Title is mandatory</p>";
+      }
+    
+      if (empty($description)) {
+        $error .= "<p>Description is mandatory</p>";
+      }
+    
+      if (empty($price)) {
+        $error .= "<p>Price is mandatory</p>";
+      }
+      if (empty($stock)) {
+        $error .= "<p>Stock is mandatory</p>";
+      }
+      if (empty($img_url)) {
+        $error .= "<p>Product's image is mandatory</p>";
+      }
+      if ($error) {
+        $msg = "<div class='alert alert-danger alert-dismissible d-flex align-items-center fade show'>
+        <i class='bi-check-circle-fill'></i><ul>{$error}</ul>
+        <button type='button' class='btn-close' data-bs-dismiss='alert'></button></div>";
+      }
     if (empty($error)) {
         // INSERT INTO/ UPDATE
+        $userData = [
+            'title'      => $title,
+            'description'    => $description,
+            'price'     => $price,
+            'stock'         => $stock,
+            'img_url'         => $img_url
+        ];
+
+        $result = ($userData);
+
+        if ($result) {
         $productDbHandler->updateProduct(
           $_GET['productId'],
           $title,
@@ -81,6 +114,7 @@
     }
 
   } 
+}
 
   $products = $productDbHandler->fetchProductById($_GET['productId']);
 
