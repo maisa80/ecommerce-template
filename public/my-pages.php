@@ -346,7 +346,7 @@ $userById = $userDbHandler->fetchUserById($_GET['userId']);
                     <?=htmlentities(ucfirst($userById['first_name']))?>
                     <?=htmlentities(ucfirst($userById['last_name']))?>
                 </h5>
-                <p class='logInBtn'>Regsitered <?=htmlentities($userById['create_date'])?></p>
+                <p class='logInBtn'>Registered <?=htmlentities($userById['create_date'])?></p>
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
