@@ -45,7 +45,7 @@ $product = $productDbHandler->fetchProductById($id);
     <form action="#" method="POST">
         <div class="d-flex justify-content-center">
             <div class="col-3">
-                <img src="admin/<?= $product['image_url'] ?>" style="width:400px;height:auto;">
+                <img src="admin/<?= $product['img_url'] ?>" style="width:400px;height:auto;">
             </div>
         </div>
         <div class="d-flex flex-column">
