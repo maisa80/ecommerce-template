@@ -24,7 +24,7 @@ $products = $productDbHandler->fetchAllProducts();
 
 <div id="content">
 
-    <h2>Manage Products</h2>
+    <h4>Manage Products</h4>
 
     <?= $message ?>
     <div id="new-product">
