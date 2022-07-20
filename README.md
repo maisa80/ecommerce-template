@@ -1,10 +1,18 @@
 # Baby's & Me Online Shop
 The project is an online store website made during Webserver programming course in @ChangeMakerEducations written in PHP, Javascript & CSS3 using MySql & Apache web server.
 
-  1. User can register new account and log in.
-  2. User can browse shop and add items to cart.
-  3. Cart displays selected items and calculates total price. User can make order.
-  4. User have access to orders history. (in progress)
-  5. Logging as admin shows additional admin panel.
-  6. Admin can edit or delete users and items.
-  7. Admin can send messages to users.
+![Baby's-Me-PHP-Website](/babysme.jpg)
+
+The following steps can be taken in order to use the source code correctly. 
+
+1) Go to localhost/phpmyadmin
+
+2) Create a new Database named "e-butik" 
+
+3) Import the file e-butik.sql to the newly created database which is in root folder.
+
+4) Now visit localhost/ecommerce-template, and you'll see the project is working fine on your browser. 
+
+5) All done! 
+
+Have fun! 
